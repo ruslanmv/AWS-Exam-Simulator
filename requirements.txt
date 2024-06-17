@@ -1,3 +1,5 @@
 huggingface_hub==0.22.2
 gradio==4.31.2
 gradio_client==0.16.3
+PyPDF2
+textract
