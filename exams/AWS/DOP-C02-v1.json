@@ -1,0 +1,1627 @@
+[
+    {
+        "question": "A company has a mobile application that makes HTTP API calls to an Application Load Balancer (ALB). Th e ALB routes requests to an AWS Lambda function. Many  different versions of the application are in use a t any given time, including versions that are in testing by a subset of users. The version of the applicatio n is defined in the user-agent header that is sent with all requ ests to the API. After a series of recent changes t o the API, the company has observed issues with the applicatio n. The company needs to gather a metric for each AP I operation by response code for each version of the application that is in use. A DevOps engineer has m odified the Lambda function to extract the API operation na me, version information from the user-agent header and response code. Which additional set of actions shou ld the DevOps engineer take to gather the required metrics?",
+        "options": [
+            "A. Modify the Lambda function to write the API opera tion name, response code, and version number as a l og",
+            "B. Modify the Lambda function to write the API opera tion name, response code, and version number as a l og",
+            "C. Configure the ALB access logs to write to an Amaz on CloudWatch Logs log group. Modify the Lambda",
+            "D. Configure AWS X-Ray integration on the Lambda fun ction. Modify the Lambda function to create an X-Ra y"
+        ],
+        "correct": "A. Modify the Lambda function to write the API opera tion name, response code, and version number as a l og",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company provides an application to customers. The  application has an Amazon API Gateway REST API tha t invokes an AWS Lambda function. On initialization, the Lambda function loads a large amount of data fr om an Amazon DynamoDB table. The data load process result s in long cold-start times of 8-10 seconds. The DynamoDB table has DynamoDB Accelerator (DAX) confi gured. Customers report that the application intermittently takes a long time to respond to requ ests. The application receives thousands of request s throughout the day. In the middle of the day, the a pplication experiences 10 times more requests than at any other time of the day. Near the end of the day, the  application's request volume decreases to 10% of i ts normal total. A DevOps engineer needs to reduce the latenc y of the Lambda function at all times of the day. Which solution will meet these requirements?",
+        "options": [
+            "A. Configure provisioned concurrency on the Lambda f unction with a concurrency value of 1. Delete the D AX",
+            "B. Configure reserved concurrency on the Lambda func tion with a concurrency value of 0.",
+            "C. Configure provisioned concurrency on the Lambda f unction. Configure AWS Application Auto Scaling on the",
+            "D. Configure reserved concurrency on the Lambda func tion. Configure AWS Application Auto Scaling on the"
+        ],
+        "correct": "C. Configure provisioned concurrency on the Lambda f unction. Configure AWS Application Auto Scaling on the",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company is adopting AWS CodeDeploy to automate it s application deployments for a Java-Apache Tomcat application with an Apache Webserver. The developme nt team started with a proof of concept, created a deployment group for a developer environment, and p erformed functional tests within the application. A fter completion, the team will create additional deploym ent groups for staging and production. The current log level is configured within the Apac he settings, but the team wants to change this conf iguration dynamically when the deployment occurs, so that the y can set different log level configurations depend ing on the deployment group without having a different app lication revision for each group. How can these requirements be met with the LEAST ma nagement overhead and without requiring different script versions for each deployment group?",
+        "options": [
+            "A. Tag the Amazon EC2 instances depending on the dep loyment group. Then place a script into the",
+            "B. Create a script that uses the CodeDeploy environm ent variable DEPLOYMENT_GROUP_ NAME to identify",
+            "C. Create a CodeDeploy custom environment variable f or each environment. Then place a script into the",
+            "D. Create a script that uses the CodeDeploy environm ent variable DEPLOYMENT_GROUP_ID to identify"
+        ],
+        "correct": "B. Create a script that uses the CodeDeploy environm ent variable DEPLOYMENT_GROUP_ NAME to identify",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company requires its developers to tag all Amazon  Elastic Block Store (Amazon EBS) volumes in an acc ount to indicate a desired backup frequency. This requir ement Includes EBS volumes that do not require back ups. The company uses custom tags named Backup_Frequency  that have values of none, dally, or weekly that correspond to the desired backup frequency. An audi t finds that developers are occasionally not taggin g the EBS volumes. A DevOps engineer needs to ensure that all EBS volu mes always have the Backup_Frequency tag so that th e company can perform backups at least weekly unless a different value is specified. Which solution will meet these requirements?",
+        "options": [
+            "A. Set up AWS Config in the account. Create a custom  rule that returns a compliance failure for all Ama zon",
+            "B. Set up AWS Config in the account. Use a managed r ule that returns a compliance failure for EC2::Volu me",
+            "C. Turn on AWS CloudTrail in the account. Create an Amazon EventBridge rule that reacts to EBS",
+            "D. Turn on AWS CloudTrail in the account. Create an Amazon EventBridge rule that reacts to EBS"
+        ],
+        "correct": "B. Set up AWS Config in the account. Use a managed r ule that returns a compliance failure for EC2::Volu me",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company is using an Amazon Aurora cluster as the data store for its application. The Aurora cluster is configured with a single DB instance. The applicati on performs read and write operations on the databa se by using the cluster's instance endpoint. The company has scheduled an update to be applied t o the cluster during an upcoming maintenance window . The cluster must remain available with the least po ssible interruption during the maintenance window. What should a DevOps engineer do to meet these requ irements?",
+        "options": [
+            "A. Add a reader instance to the Aurora cluster. Upda te the application to use the Aurora cluster endpoi nt for",
+            "B. Add a reader instance to the Aurora cluster. Crea te a custom ANY endpoint for the cluster. Update th e",
+            "C. Turn on the Multi-AZ option on the Aurora cluster . Update the application to use the Aurora cluster",
+            "D. Turn on the Multi-AZ option on the Aurora cluster . Create a custom ANY endpoint for the cluster."
+        ],
+        "correct": "A. Add a reader instance to the Aurora cluster. Upda te the application to use the Aurora cluster endpoi nt for",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company must encrypt all AMIs that the company sh ares across accounts. A DevOps engineer has access to a source account where an unencrypted custom AMI ha s been built. The DevOps engineer also has access t o a target account where an Amazon EC2 Auto Scaling g roup will launch EC2 instances from the AMI. The DevOps engineer must share the AMI with the target account. The company has created an AWS Key Management Service (AWS KMS) key in the source acco unt. Which additional steps should the DevOps engineer perform to meet the requirements? (Choose three.)",
+        "options": [
+            "A. In the source account, copy the unencrypted AMI t o an encrypted AMI. Specify the KMS key in the copy",
+            "B. In the source account, copy the unencrypted AMI t o an encrypted AMI. Specify the default Amazon Elas tic",
+            "C. In the source account, create a KMS grant that de legates permissions to the Auto Scaling group servi ce-",
+            "D. In the source account, modify the key policy to g ive the target account permissions to create a gran t. In the"
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company uses AWS CodePipeline pipelines to automa te releases of its application A typical pipeline c onsists of three stages build, test, and deployment. The co mpany has been using a separate AWS CodeBuild proje ct to run scripts for each stage. However, the company  now wants to use AWS CodeDeploy to handle the deployment stage of the pipelines. The company has packaged the application as an RPM package and must deploy the application to a fleet of Amazon EC2 instances. The EC2 instances are in an E C2 Auto Scaling group and are launched from a common AMI. Which combination of steps should a DevOps engineer  perform to meet these requirements? (Choose two.)",
+        "options": [
+            "A. Create a new version of the common AMI with the C odeDeploy agent installed. Update the IAM role of t he",
+            "B. Create a new version of the common AMI with the C odeDeploy agent installed. Create an AppSpec file t hat",
+            "C. Create an application in CodeDeploy. Configure an  in-place deployment type. Specify the Auto Scaling",
+            "D. Create an application in CodeDeploy. Configure an  in-place deployment type. Specify the Auto Scaling"
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "API Gateway APIs are associated with AWS WAF web AC Ls. The company has hundreds of AWS accounts, all of which are included in a single organization in AWS Organizations. The company has configured AW S Config for the organization. During an audit, the c ompany finds some externally facing ALBs that are n ot associated with AWS WAF web ACLs. Which combination of steps should a DevOps engineer  take to prevent future violations? (Choose two.)",
+        "options": [
+            "A. Delegate AWS Firewall Manager to a security accou nt.",
+            "B. Delegate Amazon GuardDuty to a security account.",
+            "C. Create an AWS Firewall Manager policy to attach A WS WAF web ACLs to any newly created ALBs and API",
+            "D. Create an Amazon GuardDuty policy to attach AWS W AF web ACLs to any newly created ALBs and API"
+        ],
+        "correct": "",
+        "explanation": "Explanation Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company uses AWS Key Management Service (AWS KMS)  keys and manual key rotation to meet regulatory compliance requirements. The security team wants to  be notified when any keys have not been rotated af ter 90 days. Which solution will accomplish this?",
+        "options": [
+            "A. Configure AWS KMS to publish to an Amazon Simple Notification Service (Amazon SNS) topic when keys",
+            "B. Configure an Amazon EventBridge event to launch a n AWS Lambda function to call the AWS Trusted",
+            "C. Develop an AWS Config custom rule that publishes to an Amazon Simple Notification Service (Amazon",
+            "D. Configure AWS Security Hub to publish to an Amazo n Simple Notification Service (Amazon SNS) topic"
+        ],
+        "correct": "C. Develop an AWS Config custom rule that publishes to an Amazon Simple Notification Service (Amazon",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A security review has identified that an AWS CodeBu ild project is downloading a database population sc ript from an Amazon S3 bucket using an unauthenticated r equest. The security team does not allow unauthenticated requests to S3 buckets for this pro ject. How can this issue be corrected in the MOST secure manner?",
+        "options": [
+            "A. Add the bucket name to the AllowedBuckets section  of the CodeBuild project settings. Update the buil d",
+            "B. Modify the S3 bucket settings to enable HTTPS bas ic authentication and specify a token. Update the b uild",
+            "C. Remove unauthenticated access from the S3 bucket with a bucket policy. Modify the service role for t he",
+            "D. Remove unauthenticated access from the S3 bucket with a bucket policy. Use the AWS CLI to download"
+        ],
+        "correct": "C. Remove unauthenticated access from the S3 bucket with a bucket policy. Modify the service role for t he",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "An ecommerce company has chosen AWS to host its new  platform. The company's DevOps team has started building an AWS Control Tower landing zone. The Dev Ops team has set the identity store within AWS IAM Identity Center (AWS Single Sign-On) to external id entity provider (IdP) and has configured SAML 2.0. The DevOps team wants a robust permission model tha t applies the principle of least privilege. The mod el must allow the team to build and manage only the te am's own resources. Which combination of steps will  meet these requirements? (Choose three.) A. Create IAM policies that include the required permi ssions. Include the aws:PrincipalTag condition key.",
+        "options": [
+            "B. Create permission sets. Attach an inline policy t hat includes the required permissions and uses the",
+            "C. Create a group in the IdP. Place users in the gro up. Assign the group to accounts and the permission  sets",
+            "D. Create a group in the IdP. Place users in the gro up. Assign the group to OUs and IAM policies."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "An ecommerce company is receiving reports that its order history page is experiencing delays in reflec ting the processing status of orders. The order processing s ystem consists of an AWS Lambda function that uses reserved concurrency. The Lambda function processes  order messages from an Amazon Simple Queue Service (Amazon SQS) queue and inserts processed or ders into an Amazon DynamoDB table. The DynamoDB table has auto scaling enabled for read and write c apacity. Which actions should a DevOps engineer tak e to resolve this delay? (Choose two.)",
+        "options": [
+            "A. Check the ApproximateAgeOfOldestMessage metric fo r the SQS queue. Increase the Lambda function",
+            "B. Check the ApproximateAgeOfOldestMessage metnc for  the SQS queue Configure a redrive policy on the",
+            "C. Check the NumberOfMessagesSent metric for the SQS  queue. Increase the SQS queue visibility timeout.",
+            "D. Check the WriteThrottleEvents metric for the Dyna moDB table. Increase the maximum write capacity uni ts"
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company has a single AWS account that runs hundre ds of Amazon EC2 instances in a single AWS Region. New EC2 instances are launched and terminated each hour in the account. The account also includes exis ting EC2 instances that have been running for longer tha n a week. The company's security policy requires al l running EC2 instances to use an EC2 instance profil e. If an EC2 instance does not have an instance pro file attached, the EC2 instance must use a default insta nce profile that has no IAM permissions assigned. A DevOps engineer reviews the account and discovers  EC2 instances that are running without an instance profile. During the review, the DevOps engineer als o observes that new EC2 instances are being launche d without an instance profile. Which solution will ensure that an instance profile  is attached to all existing and future EC2 instanc es in the Region?",
+        "options": [
+            "A. Configure an Amazon EventBridge rule that reacts to EC2 RunInstances API calls. Configure the rule t o",
+            "B. Configure the ec2-instance-profile-attached AWS C onfig managed rule with a trigger type of configura tion changes. Configure an automatic remediation action that invokes an AWS Systems Manager Automation",
+            "C. Configure an Amazon EventBridge rule that reacts to EC2 StartInstances API calls. Configure the rule  to",
+            "D. Configure the iam-role-managed-policy-check AWS C onfig managed rule with a trigger type of configura tion"
+        ],
+        "correct": "B. Configure the ec2-instance-profile-attached AWS C onfig managed rule with a trigger type of configura tion changes. Configure an automatic remediation action that invokes an AWS Systems Manager Automation",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A DevOps engineer is building a continuous deployme nt pipeline for a serverless application that uses AWS Lambda functions. The company wants to reduce the c ustomer impact of an unsuccessful deployment. The company also wants to monitor for issues. Which deploy stage configuration will meet these re quirements?",
+        "options": [
+            "A. Use an AWS Serverless Application Model (AWS SAM)  template to define the serverless application. Use",
+            "B. Use AWS CloudFormation to publish a new stack upd ate, and include Amazon CloudWatch alarms on all",
+            "C. Use AWS CloudFormation to publish a new version o n every stack update, and include Amazon",
+            "D. Use AWS CodeBuild to add sample event payloads fo r testing to the Lambda functions. Publish a new"
+        ],
+        "correct": "A. Use an AWS Serverless Application Model (AWS SAM)  template to define the serverless application. Use",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "To run an application, a DevOps engineer launches a n Amazon EC2 instance with public IP addresses in a public subnet. A user data script obtains the appli cation artifacts and installs them on the instances  upon launch. A change to the security classification of the application now requires the instances to run w ith no access to the internet. While the instances launch successfully and show as healthy, the application d oes not seem to be installed. Which of the following should successfully install the application while complying with the new rule?",
+        "options": [
+            "A. Launch the instances in a public subnet with Elas tic IP addresses attached. Once the application is installed",
+            "B. Set up a NAT gateway. Deploy the EC2 instances to  a private subnet. Update the private subnet's rout e",
+            "C. Publish the application artifacts to an Amazon S3  bucket and create a VPC endpoint for S3. Assign an  IAM",
+            "D. Create a security group for the application insta nces and allow only outbound traffic to the artifac t repository. Remove the security group rule once the install is complete."
+        ],
+        "correct": "C. Publish the application artifacts to an Amazon S3  bucket and create a VPC endpoint for S3. Assign an  IAM",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A development team is using AWS CodeCommit to versi on control application code and AWS CodePipeline to orchestrate software deployments. The team has deci ded to use a remote main branch as the trigger for the pipeline to integrate code changes. A developer has  pushed code changes to the CodeCommit repository, but noticed that the pipeline had no reaction, even aft er 10 minutes. Which of the following actions should be taken to t roubleshoot this issue?",
+        "options": [
+            "A. Check that an Amazon EventBridge rule has been cr eated for the main branch to trigger the pipeline.",
+            "B. Check that the CodePipeline service role has perm ission to access the CodeCommit repository.",
+            "C. Check that the developer\u2019s IAM role has permissio n to push to the CodeCommit repository.",
+            "D. Check to see if the pipeline failed to start beca use of CodeCommit errors in Amazon CloudWatch Logs."
+        ],
+        "correct": "A. Check that an Amazon EventBridge rule has been cr eated for the main branch to trigger the pipeline.",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company's developers use Amazon EC2 instances as remote workstations. The company is concerned that users can create or modify EC2 security groups to a llow unrestricted inbound access. A DevOps engineer needs to develop a solution to detect when users cr eate unrestricted security group rules. The solutio n must detect changes to security group rules in near real  time, remove unrestricted rules, and send email no tifications to the security team. The DevOps engineer has creat ed an AWS Lambda function that checks for security group ID from input, removes rules that grant unres tricted access, and sends notifications through Ama zon Simple Notification Service (Amazon SNS). What should the DevOps engineer do next to meet the  requirements?",
+        "options": [
+            "A. Configure the Lambda function to be invoked by th e SNS topic. Create an AWS CloudTrail subscription for",
+            "B. Create an Amazon EventBridge scheduled rule to in voke the Lambda function. Define a schedule pattern",
+            "C. Create an Amazon EventBridge event rule that has the default event bus as the source. Define the to invoke",
+            "D. Create an Amazon EventBridge custom event bus tha t subscribes to events from all AWS services."
+        ],
+        "correct": "C. Create an Amazon EventBridge event rule that has the default event bus as the source. Define the to invoke",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A DevOps engineer is creating an AWS CloudFormation  template to deploy a web service. The web service will run on Amazon EC2 instances in a private subnet beh ind an Application Load Balancer (ALB). The DevOps engineer must ensure that the service can accept re quests from clients that have IPv6 addresses. What should the DevOps engineer do with the CloudFo rmation template so that IPv6 clients can access th e web service?",
+        "options": [
+            "A. Add an IPv6 CIDR block to the VPC and the private  subnet for the EC2 instances. Create route table e ntries",
+            "B. Assign each EC2 instance an IPv6 Elastic IP addre ss. Create a target group, and add the EC2 instance s as",
+            "C. Replace the ALB with a Network Load Balancer (NLB ). Add an IPv6 CIDR block to the VPC and subnets fo r",
+            "D. Add an IPv6 CIDR block to the VPC and subnets for  the ALB. Create a listener on port 443. and specif y the"
+        ],
+        "correct": "D. Add an IPv6 CIDR block to the VPC and subnets for  the ALB. Create a listener on port 443. and specif y the",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company uses AWS Organizations and AWS Control To wer to manage all the company's AWS accounts. The company uses the Enterprise Support plan. A DevOps engineer is using Account Factory for Terr aform (AFT) to provision new accounts. When new accounts are provisioned, the DevOps engineer notic es that the support plan for the new accounts is se t to the Basic Support plan. The DevOps engineer needs to im plement a solution to provision the new accounts wi th the Enterprise Support plan. Which solution will meet these requirements?",
+        "options": [
+            "A. Use an AWS Config conformance pack to deploy the account-part-of-organizations AWS Config rule and t o",
+            "B. Create an AWS Lambda function to create a ticket for AWS Support to add the account to the Enterpris e",
+            "C. Add an additional value to the control_tower_para meters input to set the AWSEnterpriseSupport parame ter",
+            "D. Set the aft_feature_enterprise_support feature fl ag to True in the AFT deployment input configuratio n."
+        ],
+        "correct": "D. Set the aft_feature_enterprise_support feature fl ag to True in the AFT deployment input configuratio n.",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company's DevOps engineer uses AWS Systems Manage r to perform maintenance tasks during maintenance windows. The company has a few Amazon E C2 instances that require a restart after notificat ions from AWS Health. The DevOps engineer needs to imple ment an automated solution to remediate these notifications. The DevOps engineer creates an Amazo n EventBridge rule. How should the DevOps engineer configure the EventBridge rule to meet these requir ements?",
+        "options": [
+            "A. Configure an event source of AWS Health, a servic e of EC2. and an event type that indicates instance",
+            "B. Configure an event source of Systems Manager and an event type that indicates a maintenance window. Target a Systems Manager document to restart the EC 2 instance.",
+            "C. Configure an event source of AWS Health, a servic e of EC2, and an event type that indicates instance",
+            "D. Configure an event source of EC2 and an event typ e that indicates instance maintenance. Target a new ly"
+        ],
+        "correct": "A. Configure an event source of AWS Health, a servic e of EC2. and an event type that indicates instance",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company has containerized all of its in-house qua lity control applications. The company is running J enkins on Amazon EC2 instances, which require patching and up grading. The compliance officer has requested a DevOps engineer begin encrypting build artifacts si nce they contain company intellectual property. Wha t should the DevOps engineer do to accomplish this in the MO ST maintainable manner?",
+        "options": [
+            "A. Automate patching and upgrading using AWS Systems  Manager on EC2 instances and encrypt Amazon",
+            "B. Deploy Jenkins to an Amazon ECS cluster and copy build artifacts to an Amazon S3 bucket with default",
+            "C. Leverage AWS CodePipeline with a build action and  encrypt the artifacts using AWS Secrets Manager.",
+            "D. Use AWS CodeBuild with artifact encryption to rep lace the Jenkins instance running on EC2 instances."
+        ],
+        "correct": "D. Use AWS CodeBuild with artifact encryption to rep lace the Jenkins instance running on EC2 instances.",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "An IT team has built an AWS CloudFormation template  so others in the company can quickly and reliably deploy and terminate an application. The template c reates an Amazon EC2 instance with a user data scri pt to install the application and an Amazon S3 bucket tha t the application uses to serve static webpages whi le it is running. All resources should be removed when the CloudForma tion stack is deleted. However, the team observes t hat CloudFormation reports an error during stack deleti on, and the S3 bucket created by the stack is not d eleted. How can the team resolve the error in the MOST effi cient manner to ensure that all resources are delet ed without errors?",
+        "options": [
+            "A. Add a DelelionPolicy attribute to the S3 bucket r esource, with the value Delete forcing the bucket t o be",
+            "B. Add a custom resource with an AWS Lambda function  with the DependsOn attribute specifying the S3",
+            "C. Identify the resource that was not deleted. Manua lly empty the S3 bucket and then delete it.",
+            "D. Replace the EC2 and S3 bucket resources with a si ngle AWS OpsWorks Stacks resource. Define a custom"
+        ],
+        "correct": "B. Add a custom resource with an AWS Lambda function  with the DependsOn attribute specifying the S3",
+        "explanation": "Explanation Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company has an AWS CodePipeline pipeline that is configured with an Amazon S3 bucket in the euwest- 1 Region. The pipeline deploys an AWS Lambda applicat ion to the same Region. The pipeline consists of an AWS CodeBuild project build action and an AWS Cloud Formation deploy action. The CodeBuild project uses the aws cloudformation package AWS CLI command to b uild an artifact CloudFormation deploy action references the CloudFo rmation template from the output artifact of The company wants to also deploy the Lambda applica tion to the us-east-1 Region by using the pipeline in eu- west-1. A DevOps engineer has already updated the C odeBuild project to use the aws cloudformation pack age command to produce an additional output artifact fo r us-east-1. Which combination of additional steps should the DevOps engineer take to meet these requirements ? (Choose two.) file location. Create a new CloudFormation deploy a ction for us-east-1 in the pipeline. Configure the new deploy action to pass in the us-east-1 artifact location a s a parameter override.",
+        "options": [
+            "A. Modify the CloudFormation template to include a p arameter for the Lambda function code\u2019s zip file lo cation.",
+            "B. Create a new CloudFormation deploy action for us- east-1 in the pipeline. Configure the new deploy ac tion to",
+            "C. Create an S3 bucket in us-east-1. Configure the S 3 bucket policy to allow CodePipeline to have read and",
+            "D. Create an S3 bucket in us-east-1. Configure S3 Cr oss-Region Replication (CRR) from the S3 bucket in eu-"
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company runs an application on one Amazon EC2 ins tance. Application metadata is stored in Amazon S3 and must be retrieved if the instance is restarted.  The instance must restart or relaunch automaticall y if the instance becomes unresponsive. Which solution will meet these requirements?",
+        "options": [
+            "A. Create an Amazon CloudWatch alarm for the StatusC heckFailed metric. Use the recover action to stop a nd",
+            "B. Configure AWS OpsWorks, and use the auto healing feature to stop and start the instance. Use a lifec ycle",
+            "C. Use EC2 Auto Recovery to automatically stop and s tart the instance in case of a failure. Use an S3 e vent",
+            "D. Use AWS CloudFormation to create an EC2 instance that includes the UserData property for the EC2"
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company has multiple AWS accounts. The company us es AWS IAM Identity Center (AWS Single Sign-On) that is integrated with AWS Toolkit for Microsoft A zure DevOps. The attributes for access control feat ure is enabled in IAM Identity Center. The attribute mapping list contains two entries. Th e department key is mapped to ${path:enterprise.department}. The costCenter key i s mapped to ${path:enterprise.costCenter}. All exis ting Amazon EC2 instances have a department tag that cor responds to three company departments (d1, d2, d3).  A DevOps engineer must create policies based on the m atching attributes. The policies must minimize administrative effort and must grant each Azure AD user access to only Which condition key should the DevOps engineer incl ude in the custom permissions policies to meet thes e requirements?",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "C.",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company hosts a security auditing application in an AWS account. The auditing application uses an IA M role to access other AWS accounts. All the accounts are in the same organization in AWS Organizations. A recent security audit revealed that users in the audited AWS accounts could modify or delete the aud iting application's IAM role. The company needs to preven t any modification to the auditing application's IA M role by any entity other than a trusted administrator IAM r ole. Which solution will meet these requirements?",
+        "options": [
+            "A. Create an SCP that includes a Deny statement for changes to the auditing application's IAM role.",
+            "B. Create an SCP that includes an Allow statement fo r changes to the auditing application's IAM role by  the",
+            "C. Create an IAM permissions boundary that includes a Deny statement for changes to the auditing",
+            "D. Create an IAM permissions boundary that includes a Deny statement for changes to the auditing change s."
+        ],
+        "correct": "A. Create an SCP that includes a Deny statement for changes to the auditing application's IAM role.",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company has an on-premises application that is wr itten in Go. A DevOps engineer must move the applic ation to AWS. The company's development team wants to ena ble blue/green deployments and perform A/B testing. Which solution will meet these requirements?",
+        "options": [
+            "A. Deploy the application on an Amazon EC2 instance,  and create an AMI of the instance. Use the AMI to",
+            "B. Use Amazon Lightsail to deploy the application. S tore the application in a zipped format in an Amazo n S3",
+            "D. Use AWS Elastic Beanstalk to host the application . Store a zipped version of the application in Amaz on S3."
+        ],
+        "correct": "D. Use AWS Elastic Beanstalk to host the application . Store a zipped version of the application in Amaz on S3.",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A developer is maintaining a fleet of 50 Amazon EC2  Linux servers. The servers are part of an Amazon E C2 Auto Scaling group, and also use Elastic Load Balan cing for load balancing. Occasionally, some applica tion servers are being terminated after failing ELB HTTP  health checks. The developer would like to perform  a root cause analysis on the issue, but before being able to access application logs, the server is terminate d. How can log collection be automated?",
+        "options": [
+            "A. Use Auto Scaling lifecycle hooks to put instances  in a Pending:Wait state. Create an Amazon CloudWat ch",
+            "B. Use Auto Scaling lifecycle hooks to put instances  in a Terminating:Wait state. Create an AWS Config rule",
+            "C. Use Auto Scaling lifecycle hooks to put instances  in a Terminating:Wait state. Create an Amazon",
+            "D. Use Auto Scaling lifecycle hooks to put instances  in a Terminating:Wait state. Create an Amazon"
+        ],
+        "correct": "D. Use Auto Scaling lifecycle hooks to put instances  in a Terminating:Wait state. Create an Amazon",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company has an organization in AWS Organizations.  The organization includes workload accounts that contain enterprise applications. The company centra lly manages users from an operations account. No us ers can be created in the workload accounts. The compan y recently added an operations team and must provid e the operations team members with administrator acce ss to each workload account. Which combination of actions will provide this acce ss? (Choose three.)",
+        "options": [
+            "A. Create a SysAdmin role in the operations account.  Attach the AdministratorAccess policy to the role.  Modify",
+            "B. Create a SysAdmin role in each workload account. Attach the AdministratorAccess policy to the role. Modify",
+            "C. Create an Amazon Cognito identity pool in the ope rations account. Attach the SysAdmin role as an authenticated role.",
+            "D. In the operations account, create an IAM user for  each operations team member."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company has multiple accounts in an organization in AWS Organizations. The company's SecOps team needs to receive an Amazon Simple Notification Serv ice (Amazon SNS) notification if any account in the organization turns off the Block Public Access feat ure on an Amazon S3 bucket. A DevOps engineer must implement this change without affecting the operati on of any AWS accounts. The implementation must ens ure that individual member accounts in the organization  cannot turn off the notification. Which solution will meet these requirements?",
+        "options": [
+            "A. Designate an account to be the delegated Amazon G uardDuty administrator account. Turn on GuardDuty",
+            "B. Create an AWS CloudFormation template that create s an SNS topic and subscribes the SecOps uses an",
+            "C. Turn on AWS Config across the organization. In th e delegated administrator account, create an SNS to pic.",
+            "D. Turn on Amazon Inspector across the organization.  In the Amazon Inspector delegated topic. In the sa me"
+        ],
+        "correct": "C. Turn on AWS Config across the organization. In th e delegated administrator account, create an SNS to pic.",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company has migrated its container-based applicat ions to Amazon EKS and want to establish automated email notifications. The notifications sent to each  email address are for specific activities related to EKS components. The solution will include Amazon SNS to pics and an AWS Lambda function to evaluate incomin g log events and publish messages to the correct SNS topic. Which logging solution will support these requireme nts?",
+        "options": [
+            "A. Enable Amazon CloudWatch Logs to log the EKS comp onents. Create a CloudWatch subscription filter for",
+            "B. Enable Amazon CloudWatch Logs to log the EKS comp onents. Create CloudWatch Logs Insights queries",
+            "C. Enable Amazon S3 logging for the EKS components. Configure an Amazon CloudWatch subscription filter for each component with Lambda as the subscription feed destination.",
+            "D. Enable Amazon S3 logging for the EKS components. Configure S3 PUT Object event notifications with"
+        ],
+        "correct": "A. Enable Amazon CloudWatch Logs to log the EKS comp onents. Create a CloudWatch subscription filter for",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company is implementing an Amazon Elastic Contain er Service (Amazon ECS) cluster to run its workload . The company architecture will run multiple ECS serv ices on the cluster. The architecture includes an Application Load Balancer on the front end and uses  multiple target groups to route traffic. A DevOps engineer must collect application and acce ss logs. The DevOps engineer then needs to send the logs to an Amazon S3 bucket for near-real-time anal ysis. Which combination of steps must the DevOps engineer take to meet these requirements? (Choose t hree.)",
+        "options": [
+            "A. Download the Amazon CloudWatch Logs container ins tance from AWS. Configure this instance as a task.",
+            "B. Install the Amazon CloudWatch Logs agent on the E CS instances. Change the logging driver in the ECS",
+            "C. Use Amazon EventBridge to schedule an AWS Lambda function that will run every 60 seconds and will ru n",
+            "D. Activate access logging on the ALB. Then point th e ALB directly to the logging S3 bucket."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company that uses electronic health records is ru nning a fleet of Amazon EC2 instances with an Amazo n Linux operating system. As part of patient privacy requirements, the company must ensure continuous compliance for patches for operating system and app lications running on the EC2 instances. How can the deployments of the operating system and application  patches be automated using a default and custom repository?",
+        "options": [
+            "A. Use AWS Systems Manager to create a new patch bas eline including the custom repository. Run the AWS-",
+            "B. Use AWS Direct Connect to integrate the corporate  repository and deploy the patches using Amazon",
+            "C. Use yum-config-manager to add the custom reposito ry under /etc/yum.repos.d and run yum- config-",
+            "D. Use AWS Systems Manager to create a new patch bas eline including the corporate repository. Run the"
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company is using AWS CodePipeline to automate its  release pipeline. AWS CodeDeploy is being used in the pipeline to deploy an application to Amazon Elastic  Container Service (Amazon ECS) using the blue/gree n deployment model. The company wants to implement sc ripts to test the green version of the application before shifting traffic. These scripts will complete in 5 minutes or less. If errors are discovered during th ese tests, the application must be rolled back. Which strategy will meet these requirements?",
+        "options": [
+            "A. Add a stage to the CodePipeline pipeline between the source and deploy stages. Use AWS CodeBuild to",
+            "B. Add a stage to the CodePipeline pipeline between the source and deploy stages. Use this stage to inv oke",
+            "C. Add a hooks section to the CodeDeploy AppSpec fil e. Use the AfterAllowTestTraffic lifecycle event to  invoke",
+            "D. Add a hooks section to the CodeDeploy AppSpec fil e. Use the AfterAllowTraffic lifecycle event to inv oke the"
+        ],
+        "correct": "C. Add a hooks section to the CodeDeploy AppSpec fil e. Use the AfterAllowTestTraffic lifecycle event to  invoke",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company uses AWS Storage Gateway in file gateway mode in front of an Amazon S3 bucket that is used b y multiple resources. In the morning when business be gins, users do not see the objects processed by a t hird party the previous evening. When a DevOps engineer looks directly at the S3 bucket, the data is there,  but it is missing in Storage Gateway. Which solution ensures that all the updated third-party files are availabl e in the morning?",
+        "options": [
+            "A. Configure a nightly Amazon EventBridge event to i nvoke an AWS Lambda function to run the",
+            "B. Instruct the third party to put data into the S3 bucket using AWS Transfer for SFTP.",
+            "C. Modify Storage Gateway to run in volume gateway m ode.",
+            "D. Use S3 Same-Region Replication to replicate any c hanges made directly in the S3 bucket to Storage"
+        ],
+        "correct": "A. Configure a nightly Amazon EventBridge event to i nvoke an AWS Lambda function to run the",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A DevOps engineer needs to back up sensitive Amazon  S3 objects that are stored within an S3 bucket wit h a private bucket policy using S3 cross-Region replica tion functionality. The objects need to be copied t o a target bucket in a different AWS Region and account. Which  combination of actions should be performed to enab le this replication? (Choose three.)",
+        "options": [
+            "A. Create a replication IAM role in the source accou nt",
+            "B. Create a replication I AM role in the target acco unt.",
+            "C. Add statements to the source bucket policy allowi ng the replication IAM role to replicate objects.",
+            "D. Add statements to the target bucket policy allowi ng the replication IAM role to replicate objects."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company has multiple member accounts that are par t of an organization in AWS Organizations. The secu rity team needs to review every Amazon EC2 security grou p and their inbound and outbound rules. The securit y team wants to programmatically retrieve this inform ation from the member accounts using an AWS Lambda function in the management account of the organizat ion. Which combination of access changes will meet these requirements? (Choose three.)",
+        "options": [
+            "A. Create a trust relationship that allows users in the member accounts to assume the management accoun t",
+            "B. Create a trust relationship that allows users in the management account to assume the IAM roles of t he",
+            "C. Create an IAM role in each member account that ha s access to the AmazonEC2ReadOnlyAccess managed",
+            "D. Create an I AM role in each member account to all ow the sts:AssumeRole action against the management"
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A space exploration company receives telemetry data  from multiple satellites. Small packets of data ar e received through Amazon API Gateway and are placed directly into an Amazon Simple Queue Service (Amazon SQS) standard queue. A custom application i s subscribed to the queue and transforms the data i nto a standard format. Because of inconsistencies in the data that the sat ellites produce, the application is occasionally un able to transform the data. In these cases, the messages remain in the SQS que ue. A DevOps engineer must develop a solution that retains the failed messages and makes them availabl e to scientists for review and future processing. Which solution will meet these requirements?",
+        "options": [
+            "A. Configure AWS Lambda to poll the SQS queue and in voke a Lambda function to check whether the queue messages are valid. If validation fails, send a cop y of the data that is not valid to an Amazon S3 buc ket so",
+            "B. Convert the SQS standard queue to an SQS FIFO que ue. Configure AWS Lambda to poll the SQS queue",
+            "C. Create an SQS dead-letter queue. Modify the exist ing queue by including a redrive policy that sets t he",
+            "D. Configure API Gateway to send messages to differe nt SQS virtual queues that are named for each of th e"
+        ],
+        "correct": "C. Create an SQS dead-letter queue. Modify the exist ing queue by including a redrive policy that sets t he",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company wants to use AWS CloudFormation for infra structure deployment. The company has strict taggin g and resource requirements and wants to limit the de ployment to two Regions. Developers will need to de ploy multiple versions of the same application. Which so lution ensures resources are deployed in accordance  with company policy?",
+        "options": [
+            "A. Create AWS Trusted Advisor checks to find and rem ediate unapproved CloudFormation StackSets.",
+            "B. Create a Cloud Formation drift detection operatio n to find and remediate unapproved CloudFormation",
+            "C. Create CloudFormation StackSets with approved Clo udFormation templates.",
+            "D. Create AWS Service Catalog products with approved  CloudFormation templates."
+        ],
+        "correct": "D. Create AWS Service Catalog products with approved  CloudFormation templates.",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company requires that its internally facing web a pplication be highly available. The architecture is  made up of one Amazon EC2 web server instance and one NAT inst ance that provides outbound internet access for updates and accessing public data. Which combination of architecture adjustments shoul d the company implement to achieve high availabilit y? (Choose two.)",
+        "options": [
+            "A. Add the NAT instance to an EC2 Auto Scaling group  that spans multiple Availability Zones. Update the  route",
+            "B. Create additional EC2 instances spanning multiple  Availability Zones. Add an Application Load Balanc er to",
+            "C. Configure an Application Load Balancer in front o f the EC2 instance. Configure Amazon CloudWatch",
+            "D. Replace the NAT instance with a NAT gateway in each  Availability Zone. Update the route tables. E. Replace the NAT instance with a NAT gateway that spans multiple Availability Zones. Update the route"
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A DevOps engineer is building a multistage pipeline  with AWS CodePipeline to build, verify, stage, tes t, and deploy an application. A manual approval stage is r equired between the test stage and the deploy stage . The development team uses a custom chat tool with webho ok support that requires near-real-time notificatio ns. How should the DevOps engineer configure status upd ates for pipeline activity and approval requests to  post to the chat tool?",
+        "options": [
+            "A. Create an Amazon CloudWatch Logs subscription tha t filters on CodePipeline Pipeline Execution State",
+            "B. Create an AWS Lambda function that is invoked by AWS CloudTrail events. When a CodePipeline Pipeline",
+            "C. Create an Amazon EventBridge rule that filters on  CodePipeline Pipeline Execution State Change.",
+            "D. Modify the pipeline code to send the event detail s to the chat webhook URL at the end of each stage."
+        ],
+        "correct": "C. Create an Amazon EventBridge rule that filters on  CodePipeline Pipeline Execution State Change.",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company's application development team uses Linux -based Amazon EC2 instances as bastion hosts. Inbound SSH access to the bastion hosts is restrict ed to specific IP addresses, as defined in the asso ciated security groups. The company's security team wants to receive a notification if the security group rul es are modified to allow SSH access from any IP address. What should a DevOps engineer do to meet this requi rement?",
+        "options": [
+            "A. Create an Amazon EventBridge rule with a source o f aws.cloudtrail and the event name",
+            "B. Enable Amazon GuardDuty and check the findings fo r security groups in AWS Security Hub.",
+            "C. Create an AWS Config rule by using the restricted -ssh managed rule to check whether security groups",
+            "D. Enable Amazon Inspector. Include the Common Vulne rabilities and Exposures-1.1 rules package to check"
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A DevOps team manages an API running on-premises th at serves as a backend for an Amazon API Gateway endpoint. Customers have been complaining about hig h response latencies, which the development team ha s verified using the API Gateway latency metrics in A mazon CloudWatch. To identify the cause, the team n eeds to collect relevant data without introducing additi onal latency. Which actions should be taken to acco mplish this? (Choose two.)",
+        "options": [
+            "A. Install the CloudWatch agent server side and conf igure the agent to upload relevant logs to CloudWat ch.",
+            "B. Enable AWS X-Ray tracing in API Gateway, modify t he application to capture request segments, and",
+            "C. Enable AWS X-Ray tracing in API Gateway, modify t he application to capture request segments, and use",
+            "D. Modify the on-premises application to send log in formation back to API Gateway with each request."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company has an application that is using a MySQL- compatible Amazon Aurora Multi-AZ DB cluster as the database. A cross-Region read replica has been crea ted for disaster recovery purposes. A DevOps engine er wants to automate the promotion of the replica so i t becomes the primary database instance in the even t of a failure. Which solution will accomplish this?",
+        "options": [
+            "A. Configure a latency-based Amazon Route 53 CNAME w ith health checks so it points to both the primary",
+            "B. Create an Aurora custom endpoint to point to the primary database instance. Configure the applicatio n to",
+            "C. Create an AWS Lambda function to modify the appli cation's AWS CloudFormation template to promote the",
+            "D. Store the Aurora endpoint in AWS Systems Manager Parameter Store. Create an Amazon EventBridge",
+            "A. Add the instance to an EC2 Auto Scaling group wit h the minimum, maximum, and desired capacity set to  1.",
+            "B. Add the instance to an EC2 Auto Scaling group wit h a lifecycle hook to detach the EBS volume when th e",
+            "C. Create an Amazon CloudWatch alarm for the StatusC heckFailed System metric and select the EC2 action",
+            "D. Create an Amazon CloudWatch alarm for the StatusC heckFailed Instance metric and select the EC2 actio n"
+        ],
+        "correct": "C. Create an Amazon CloudWatch alarm for the StatusC heckFailed System metric and select the EC2 action",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company wants to use AWS development tools to rep lace its current bash deployment scripts. The compa ny currently deploys a LAMP application to a group of Amazon EC2 instances behind an Application Load Balancer (ALB). During the deployments, the company  unit tests the committed application, stops and st arts services, unregisters and re-registers instances wi th the load balancer, and updates file permissions.  The company wants to maintain the same deployment funct ionality through the shift to using AWS services. Which solution will meet these requirements?",
+        "options": [
+            "A. Use AWS CodeBuild to test the application. Use ba sh scripts invoked by AWS CodeDeploy's appspec.yml",
+            "B. Use AWS CodePipeline to move the application from  the AWS CodeCommit repository to AWS",
+            "C. Use AWS CodePipeline to move the application sour ce code from the AWS CodeCommit repository to",
+            "D. Use AWS CodePipeline to trigger AWS CodeBuild to test the application. Use bash scripts invoked by A WS"
+        ],
+        "correct": "D. Use AWS CodePipeline to trigger AWS CodeBuild to test the application. Use bash scripts invoked by A WS",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company runs an application with an Amazon EC2 an d on-premises configuration. A DevOps engineer need s to standardize patching across both environments. C ompany policy dictates that patching only happens d uring non-business hours. Which combination of actions will meet these requir ements? (Choose three.)",
+        "options": [
+            "A. Add the physical machines into AWS Systems Manage r using Systems Manager Hybrid Activations.",
+            "B. Attach an IAM role to the EC2 instances, allowing  them to be managed by AWS Systems Manager.",
+            "C. Create IAM access keys for the on-premises machin es to interact with AWS Systems Manager.",
+            "D. Run an AWS Systems Manager Automation document to  patch the systems every hour."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company has chosen AWS to host a new application.  The company needs to implement a multiaccount strategy. A DevOps engineer creates a new AWS accou nt and an organization in AWS Organizations. The DevOps engineer also creates the OU structure for t he organization and sets up a landing zone by using  AWS Control Tower. The DevOps engineer must implement a solution that automatically deploys resources for new accounts th at users create through AWS Control Tower Account Fact ory. When a user creates a new account, the solutio n must apply AWS CloudFormation templates and SCPs th at are customized for the OU or the account to automatically deploy all the resources that are att ached to the account. All the OUs are enrolled in A WS Control Tower. Which solution will meet these requirements in the MOST automated way?",
+        "options": [
+            "A. Use AWS Service Catalog with AWS Control Tower. C reate portfolios and products in AWS Service",
+            "B. Deploy CloudFormation stack sets by using the req uired templates. Enable automatic deployment.",
+            "C. Create an Amazon EventBridge rule to detect the C reateManagedAccount event. Configure AWS Service",
+            "D. Deploy the Customizations for AWS Control Tower ( CfCT) solution. Use an AWS CodeCommit repository"
+        ],
+        "correct": "D. Deploy the Customizations for AWS Control Tower ( CfCT) solution. Use an AWS CodeCommit repository",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "An online retail company based in the United States  plans to expand its operations to Europe and Asia in the next six months. Its product currently runs on Amaz on EC2 instances behind an Application Load Balance r. The instances run in an Amazon EC2 Auto Scaling gro up across multiple Availability Zones. All data is stored in an Amazon Aurora database instance. When the produc t is deployed in multiple regions, the company want s a single product catalog across all regions, but for compliance purposes, its customer information and p urchases must be kept in each region. How should the company meet these requirements with  the LEAST amount of application changes?",
+        "options": [
+            "A. Use Amazon Redshift for the product catalog and A mazon DynamoDB tables for the customer information and purchases.",
+            "B. Use Amazon DynamoDB global tables for the product  catalog and regional tables for the customer",
+            "C. Use Aurora with read replicas for the product cat alog and additional local Aurora instances in each region",
+            "D. Use Aurora for the product catalog and Amazon Dyn amoDB global tables for the customer information an d"
+        ],
+        "correct": "C. Use Aurora with read replicas for the product cat alog and additional local Aurora instances in each region",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company is implementing a well-architected design  for its globally accessible API stack. The design needs to ensure both high reliability and fast response time s for users located in North America and Europe. The API stack contains the following three tiers: Amazon API Gateway AWS Lambda Amazon DynamoDB Which solution will meet the requirements?",
+        "options": [
+            "A. Configure Amazon Route 53 to point to API Gateway  APIs in North America and Europe using health",
+            "B. Configure Amazon Route 53 to point to API Gateway  APIs in North America and Europe using latency-",
+            "C. Configure Amazon Route 53 to point to API Gateway  in North America, create a disaster recovery API i n",
+            "D. Configure Amazon Route 53 to point to API Gateway  API in North America using latency-based routing."
+        ],
+        "correct": "B. Configure Amazon Route 53 to point to API Gateway  APIs in North America and Europe using latency-",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A rapidly growing company wants to scale for develo per demand for AWS development environments. Development environments are created manually in th e AWS Management Console. The networking team uses AWS CloudFormation to manage the networking in frastructure, exporting stack output values for the Amazon VPC and all subnets. The development environ ments have common standards, such as Application Load Balancers, Amazon EC2 Auto Scaling groups, sec urity groups, and Amazon DynamoDB tables. To keep up with demand, the DevOps engineer wants t o automate the creation of development environments . Because the infrastructure required to support the application is expected to grow, there must be a wa y to easily update the deployed infrastructure. CloudFor mation will be used to create a template for the de velopment environments. Which approach will meet these requirements and qui ckly provide consistent AWS environments for developers? A. Use Fn::ImportValue intrinsic functions in the Re sources section of the template to retrieve Virtual  Private Cloud (VPC) and subnet values. Use CloudFormation S tackSets for the development environments, using the Count input parameter to indicate the number of  environments needed. Use the UpdateStackSet command to update existing d evelopment environments.",
+        "options": [
+            "B. Use nested stacks to define common infrastructure  components. To access the exported values, (VPC) a nd",
+            "C. Use nested stacks to define common infrastructure  components. Use Fn::ImportValue intrinsic function s",
+            "D. Use Fn::ImportValue intrinsic functions in the Pa rameters section of the root template to retrieve V irtual"
+        ],
+        "correct": "C. Use nested stacks to define common infrastructure  components. Use Fn::ImportValue intrinsic function s",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company uses AWS Organizations to manage multiple  accounts. Information security policies require th at all unencrypted Amazon EBS volumes be marked as non-com pliant. A DevOps engineer needs to automatically deploy the solution and ensure that this compliance  check is always present. Which solution will accomplish this?",
+        "options": [
+            "A. Create an AWS CloudFormation template that define s an AWS Inspector rule to check whether EBS",
+            "B. Create an AWS Config organizational rule to check  whether EBS encryption is enabled and deploy the r ule",
+            "C. Create an SCP in Organizations. Set the policy to  prevent the launch of Amazon EC2 instances without",
+            "D. Deploy an IAM role to all accounts from a single trusted account. Build a pipeline with AWS CodePipe line"
+        ],
+        "correct": "B. Create an AWS Config organizational rule to check  whether EBS encryption is enabled and deploy the r ule",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company is performing vulnerability scanning for all Amazon EC2 instances across many accounts. The accounts are in an organization in AWS Organization s. Each account's VPCs are attached to a shared tra nsit gateway. The VPCs send traffic to the internet thro ugh a central egress VPC. The company has enabled Amazon Inspector in a delegated administrator accou nt and has enabled scanning for all member accounts . A DevOps engineer discovers that some EC2 instances  are listed in the \"not scanning\" tab in Amazon Inspector. Which combination of actions should the DevOps engi neer take to resolve this issue? (Choose three.) A. Verify that AWS Systems Manager Agent is installed and is running on the EC2 instances that Amazon Inspector is not scanning.",
+        "options": [
+            "B. Associate the target EC2 instances with security groups that allow outbound communication on port 44 3 to",
+            "C. Grant inspector:StartAssessmentRun permissions to  the IAM role that the DevOps engineer is using.",
+            "D. Configure EC2 Instance Connect for the EC2 instan ces that Amazon Inspector is not scanning."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A development team uses AWS CodeCommit for version control for applications. The development team uses AWS CodePipeline, AWS CodeBuild. and AWS CodeDeploy  for CI/CD infrastructure. In CodeCommit, the development team recently merged pull requests that  did not pass long-running tests in the code base. The development team needed to perform rollbacks to bra nches in the codebase, resulting in lost time and w asted effort. A DevOps engineer must automate testing of pull req uests in CodeCommit to ensure that reviewers more easily see the results of automated tests as part o f the pull request review. What should the DevOps e ngineer do to meet this requirement?",
+        "options": [
+            "A. Create an Amazon EventBridge rule that reacts to the pullRequestStatusChanged event. Create an AWS",
+            "B. Create an Amazon EventBridge rule that reacts to the pullRequestCreated event. Create an AWS Lambda",
+            "C. Create an Amazon EventBridge rule that reacts to pullRequestCreated and",
+            "D. Create an Amazon EventBridge rule that reacts to the pullRequestStatusChanged event. Create an AWS"
+        ],
+        "correct": "C. Create an Amazon EventBridge rule that reacts to pullRequestCreated and",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company has deployed an application in a producti on VPC in a single AWS account. The application sec urity, such as AWS WAF, to the application deployment. How ever, the application's product manager is concerne d about cost and does not want to approve the change unless the security team can prove that additional security is necessary. The security team believes that some of the applica tion's demand might come from users that have IP addresses that are on a deny list. The security tea m provides the deny list to a DevOps engineer. If a ny of the IP addresses on the deny list access the applicatio n, the security team wants to receive automated not ification in near real time so that the security team can doc ument that the application needs additional securit y. The DevOps engineer creates a VPC flow log for the prod uction VPC. Which set of additional steps should th e DevOps engineer take to meet these requirements MOS T cost-effectively?",
+        "options": [
+            "A. Create a log group in Amazon CloudWatch Logs. Con figure the VPC flow log to capture accepted traffic  and",
+            "B. Create an Amazon S3 bucket for log files. Configu re the VPC flow log to capture all traffic and to s end the",
+            "C. Create an Amazon S3 bucket for log files. Configu re the VPC flow log to capture accepted traffic and  to",
+            "D. Create a log group in Amazon CloudWatch Logs. Cre ate an Amazon S3 bucket to hold query results."
+        ],
+        "correct": "A. Create a log group in Amazon CloudWatch Logs. Con figure the VPC flow log to capture accepted traffic  and",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A DevOps engineer has automated a web service deplo yment by using AWS CodePipeline with the following steps: 1) An AWS CodeBuild project compiles the deployment  artifact and runs unit tests. 2) An AWS CodeDeploy deployment group deploys the w eb service to Amazon EC2 instances in the staging environment. 3) A CodeDeploy deployment group deploys the web se rvice to EC2 instances in the production environmen t. The quality assurance (QA) team requests permission  to inspect the build artifact before the deploymen t to the production environment occurs. The QA team wants to  run an internal penetration testing tool to conduc t manual tests. The tool will be invoked by a REST AP I call. Which combination of actions should the Dev Ops engineer take to fulfill this request? (Choose two. )",
+        "options": [
+            "A. Insert a manual approval action between the test actions and deployment actions of the pipeline.",
+            "B. Modify the buildspec.yml file for the compilation  stage to require manual approval before completion .",
+            "C. Update the CodeDeploy deployment groups so that t hey require manual approval to proceed.",
+            "D. Update the pipeline to directly call the REST API  for the penetration testing tool."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company is hosting a web application in an AWS Re gion. For disaster recovery purposes, a second regi on is being used as a standby. Disaster recovery requirem ents state that session data must be replicated bet ween regions in near-real time and 1% of requests should  route to the secondary region to continuously veri fy system functionality. Additionally, if there is a disrupti on in service in the main region, traffic should be  automatically routed to the secondary region, and the secondary r egion must be able to scale up to handle all traffi c. How should a DevOps engineer meet these requirement s?",
+        "options": [
+            "A. In both regions, deploy the application on AWS El astic Beanstalk and use Amazon DynamoDB global tabl es",
+            "B. In both regions, launch the application in Auto S caling groups and use DynamoDB for session data.",
+            "C. In both regions, deploy the application in AWS La mbda, exposed by Amazon API Gateway, and use",
+            "D. In both regions, launch the application in Auto S caling groups and use DynamoDB global tables for se ssion"
+        ],
+        "correct": "A. In both regions, deploy the application on AWS El astic Beanstalk and use Amazon DynamoDB global tabl es",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company runs an application on Amazon EC2 instanc es. The company uses a series of AWS CloudFormation stacks to define the application res ources. A developer performs updates by building an d testing the application on a laptop and then upload ing the build output and CloudFormation stack templ ates to Amazon S3. The developer's peers review the changes  before the developer performs the CloudFormation stack update and installs a new version of the appl ication onto the EC2 instances. The deployment process is prone to errors and is ti me-consuming when the developer updates each EC2 instance with the new application. The company want s to automate as much of the application deployment process as possible while retaining a final manual approval step before the modification of the applic ation or resources. The company already has moved the source code for t he application and the CloudFormation templates to AWS CodeCommit. The company also has created an AWS  CodeBuild project to build and test the applicatio n.",
+        "options": [
+            "A. Create an application group and a deployment grou p in AWS CodeDeploy. Install the CodeDeploy agent o n",
+            "B. Create an application revision and a deployment g roup in AWS CodeDeploy. Create an environment in",
+            "C. Use AWS CodePipeline to invoke the CodeBuild job,  run the CloudFormation update, and pause for a",
+            "D. Use AWS CodePipeline to invoke the CodeBuild job,  create CloudFormation change sets for each of the"
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A DevOps engineer manages a web application that ru ns on Amazon EC2 instances behind an Application Load Balancer (ALB). The instances run in an EC2 Au to Scaling group across multiple Availability Zones . The engineer needs to implement a deployment strategy t hat: Launches a second fleet of instances with the same capacity as the original fleet. Maintains the origi nal fleet unchanged while the second fleet is launched. Trans itions traffic to the second fleet when the second fleet is fully deployed. Terminates the original fleet autom atically 1 hour after transition. Which solution will satisfy these requirements?",
+        "options": [
+            "A. Use an AWS CloudFormation template with a retenti on policy for the ALB set to 1 hour. Update the Ama zon",
+            "B. Use two AWS Elastic Beanstalk environments to per form a blue/green deployment from the original",
+            "C. Use AWS CodeDeploy with a deployment group config ured with a blue/green deployment configuration",
+            "D. Use AWS Elastic Beanstalk with the configuration set to Immutable. Create an .ebextension using the"
+        ],
+        "correct": "C. Use AWS CodeDeploy with a deployment group config ured with a blue/green deployment configuration",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A video-sharing company stores its videos in Amazon  S3. The company has observed a sudden increase in video access requests, but the company does not kno w which videos are most popular. The company needs to identify the general access pattern for the video f iles. This pattern includes the number of users who  access a certain file on a given day, as well as the number of pull requests for certain files. How can the company meet these requirements with th e LEAST amount of effort?",
+        "options": [
+            "A. Activate S3 server access logging. Import the acc ess logs into an Amazon Aurora database. Use an Aur ora",
+            "B. Activate S3 server access logging. Use Amazon Ath ena to create an external table with the log files.  Use",
+            "C. Invoke an AWS Lambda function for every S3 object  access event. Configure the Lambda function to wri te",
+            "D. Record an Amazon CloudWatch Logs log message for every S3 object access event. Configure a"
+        ],
+        "correct": "B. Activate S3 server access logging. Use Amazon Ath ena to create an external table with the log files.  Use",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A development team wants to use AWS CloudFormation stacks to deploy an application. However, the developer IAM role does not have the required permi ssions to provision the resources that are specifie d in the AWS CloudFormation template. A DevOps engineer need s to implement a solution that allows the developer s to deploy the stacks. The solution must follow the principle of least privilege. Which solution will meet these requirements?",
+        "options": [
+            "A. Create an IAM policy that allows the developers t o provision the required resources. Attach the poli cy to the",
+            "B. Create an IAM policy that allows full access to A WS CloudFormation. Attach the policy to the develop er IAM",
+            "C. Create an AWS CloudFormation service role that ha s the required permissions. Grant the developer IAM",
+            "D. Create an AWS CloudFormation service role that ha s the required permissions. Grant the developer IAM"
+        ],
+        "correct": "D. Create an AWS CloudFormation service role that ha s the required permissions. Grant the developer IAM",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A production account has a requirement that any Ama zon EC2 instance that has been logged in to manuall y must be terminated within 24 hours. All application s in the production account are using Auto Scaling groups with the Amazon CloudWatch Logs agent configured. How can this process be automated?",
+        "options": [
+            "A. Create a CloudWatch Logs subscription to an AWS S tep Functions application. Configure an AWS Lambda",
+            "B. Create an Amazon CloudWatch alarm that will be in voked by the login event. Send the notification to an",
+            "C. Create an Amazon CloudWatch alarm that will be in voked by the login event. Configure the alarm to se nd to",
+            "D. Create a CloudWatch Logs subscription to an AWS L ambda function. Configure the function to add a tag  to"
+        ],
+        "correct": "D. Create a CloudWatch Logs subscription to an AWS L ambda function. Configure the function to add a tag  to",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company has enabled all features for its organiza tion in AWS Organizations. The organization contain s 10 AWS accounts. The company has turned on AWS CloudTr ail in all the accounts. The company expects the number of AWS accounts in the organization to incre ase to 500 during the next year. The company plans to use multiple OUs for these accounts. The company ha s enabled AWS Config in each existing AWS account i n the organization. A DevOps engineer must implement a solution that enables AWS Config automatically fo r all future AWS accounts that are created in the organiz ation. Which solution will meet this requirement?",
+        "options": [
+            "A. In the organization's management account, create an Amazon EventBridge rule that reacts to a",
+            "B. In the organization's management account, create an AWS CloudFormation stack set to enable AWS",
+            "C. In the organization's management account, create an SCP that allows the appropriate AWS Config API c alls",
+            "D. In the organization's management account, create an Amazon EventBridge rule that reacts to a"
+        ],
+        "correct": "B. In the organization's management account, create an AWS CloudFormation stack set to enable AWS",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company has many applications. Different teams in  the company developed the applications by using mu ltiple languages and frameworks. The applications run on p remises and on different servers with different ope rating systems. Each team has its own release protocol and  process. The company wants to reduce the complexit y of the release and maintenance of these applications. The company is migrating its technology stacks, inc luding these applications, to AWS. The company wants centr alized control of source code, a consistent and aut omatic delivery pipeline, and as few maintenance tasks as possible on the underlying infrastructure. What sho uld a DevOps engineer do to meet these requirements?",
+        "options": [
+            "A. Create one AWS CodeCommit repository for all appl ications. Put each application's code in a differen t",
+            "B. Create one AWS CodeCommit repository for each of the applications. Use AWS CodeBuild to build the",
+            "C. Create one AWS CodeCommit repository for each of the applications. Use AWS CodeBuild to build the",
+            "D. Create one AWS CodeCommit repository for each of the applications. Use AWS CodeBuild to build one"
+        ],
+        "correct": "D. Create one AWS CodeCommit repository for each of the applications. Use AWS CodeBuild to build one",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company's application is currently deployed to a single AWS Region. Recently, the company opened a n ew office on a different continent. The users in the n ew office are experiencing high latency. The compan y's application runs on Amazon EC2 instances behind an Application Load Balancer (ALB) and uses Amazon DynamoDB as the database layer. The instances run i n an EC2 Auto Scaling group across multiple Availab ility Zones. A DevOps engineer is tasked with minimizing application response times and improving availabili ty for users in both Regions. Which combination of actions  should be taken to address the latency issues? (Ch oose three.)",
+        "options": [
+            "A. Create a new DynamoDB table in the new Region wit h cross-Region replication enabled.",
+            "B. Create new ALB and Auto Scaling group global reso urces and configure the new ALB to direct traffic t o the",
+            "C. Create new ALB and Auto Scaling group resources i n the new Region and configure the new ALB to direc t",
+            "D. Create Amazon Route 53 records, health checks, an d latency-based routing policies to route to the AL B."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A DevOps engineer needs to apply a core set of secu rity controls to an existing set of AWS accounts. T he accounts are in an organization in AWS Organization s. Individual teams will administer individual acco unts by using the AdministratorAccess AWS managed policy. F or all accounts. AWS CloudTrail and AWS Config must be turned on in all available AWS Regions. Individu al account administrators must not be able to edit or delete any of the baseline resources. However, individual account administrators must be able to edit or dele te their own CloudTrail trails and AWS Config rules. Which s olution will meet these requirements in the MOST operationally efficient way?",
+        "options": [
+            "A. Create an AWS CloudFormation template that define s the standard account resources. Deploy the templa te",
+            "B. Enable AWS Control Tower. Enroll the existing acc ounts in AWS Control Tower. Grant the individual",
+            "C. Designate an AWS Config management account. Creat e AWS Config recorders in all accounts by using",
+            "D. Create an AWS CloudFormation template that define s the standard account resources. Deploy the templa te"
+        ],
+        "correct": "C. Designate an AWS Config management account. Creat e AWS Config recorders in all accounts by using",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company has its AWS accounts in an organization i n AWS Organizations. AWS Config is manually configured in each AWS account. The company needs t o implement a solution to centrally configure AWS Config for all accounts in the organization The sol ution also must record resource changes to a centra l account. Which combination of actions should a DevOps engine er perform to meet these requirements? (Choose two. ) A. Configure a delegated administrator account for A WS Config. Enable trusted access for AWS Config in the organization.",
+        "options": [
+            "B. Configure a delegated administrator account for A WS Config. Create a service-linked role for AWS",
+            "C. Create an AWS CloudFormation template to create a n AWS Config aggregator. Configure a",
+            "D. Create an AWS Config organization aggregator in t he organization's management account. Configure dat a"
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company wants to migrate its content sharing web application hosted on Amazon EC2 to a serverless architecture. The company currently deploys changes  to its application by creating a new Auto Scaling group of EC2 instances and a new Elastic Load Balancer, and then shifting the traffic away using an Amazon Rout e 53 weighted routing policy. For its new serverless application, the company is planning to use Amazon API Gateway and AWS Lambd",
+        "options": [
+            "A. The company will need to update its deployment pr ocesses to work with the new application. It will a lso",
+            "B. Use AWS CDK to deploy API Gateway and Lambda func tions. When code needs to be changed, update",
+            "C. Use AWS CloudFormation to deploy API Gateway and Lambda functions using Lambda function versions.",
+            "D. Use AWS Elastic Beanstalk to deploy API Gateway a nd Lambda functions. When code needs to be"
+        ],
+        "correct": "B. Use AWS CDK to deploy API Gateway and Lambda func tions. When code needs to be changed, update",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A development team uses AWS CodeCommit, AWS CodePip eline, and AWS CodeBuild to develop and deploy an application. Changes to the code are submitted b y pull requests. The development team reviews and merges the pull requests, and then the pipeline bui lds and tests the application. Over time, the numbe r of pull requests has increased. The pipeline is frequently blocked because of failing tests. To prevent this b lockage, the development team wants to run the unit and inte gration tests on each pull request before it is mer ged. Which solution will meet these requirements?",
+        "options": [
+            "A. Create a CodeBuild project to run the unit and in tegration tests. Create a CodeCommit approval rule template. Configure the template to require the suc cessful invocation of the CodeBuild project.",
+            "B. Create an Amazon EventBridge rule to match pullRe questCreated events from CodeCommit Create a",
+            "C. Create an Amazon EventBridge rule to match pullRe questCreated events from CodeCommit.",
+            "D. Create a CodeBuild project to run the unit and in tegration tests. Create a CodeCommit notification r ule that"
+        ],
+        "correct": "B. Create an Amazon EventBridge rule to match pullRe questCreated events from CodeCommit Create a",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company has an application that runs on a fleet o f Amazon EC2 instances. The application requires fr equent restarts. The application logs contain error messag es when a restart is required. The application logs  are published to a log group in Amazon CloudWatch Logs.  An Amazon CloudWatch alarm notifies an application engineer through an Amazon Simple Notification Serv ice (Amazon SNS) topic when the logs contain a larg e number of restart-related error messages. The appli cation engineer manually restarts the application o n the instances after the application engineer receives a  notification from the SNS topic. A DevOps engineer  needs to implement a solution to automate the application re start on the instances without restarting the insta nces. Which solution will meet these requirements in the MOST operationally efficient manner?",
+        "options": [
+            "A. Configure an AWS Systems Manager Automation runbo ok that runs a script to restart the application on  the",
+            "B. Create an AWS Lambda function that restarts the a pplication on the instances. Configure the Lambda",
+            "C. Configure an AWS Systems Manager Automation runbo ok that runs a script to restart the application on  the",
+            "D. Configure an AWS Systems Manager Automation runbo ok that runs a script to restart the application on  the"
+        ],
+        "correct": "B. Create an AWS Lambda function that restarts the a pplication on the instances. Configure the Lambda",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A DevOps engineer at a company is supporting an AWS  environment in which all users use AWS IAM Identit y Center (AWS Single Sign-On). The company wants to i mmediately disable credentials of any new IAM user and wants the security team to receive a notification. Which combination of steps should the DevOps engine er take to meet these requirements? (Choose three.)",
+        "options": [
+            "A. Create an Amazon EventBridge rule that reacts to an IAM CreateUser API call in AWS CloudTrail.",
+            "B. Create an Amazon EventBridge rule that reacts to an  IAM GetLoginProfile API call in AWS CloudTrail. C. Create an AWS Lambda function that is a target of  the EventBridge rule. Configure the Lambda functio n to",
+            "D. Create an AWS Lambda function that is a target of  the EventBridge rule. Configure the Lambda functio n to"
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company wants to set up a continuous delivery pip eline. The company stores application code in a pri vate GitHub repository. The company needs to deploy the application components to Amazon Elastic Container Service (Amazon ECS). Amazon EC2, and AWS Lambd",
+        "options": [
+            "A. The pipeline must support manual approval actions .",
+            "B. Use AWS CodePipeline with Amazon ECS. Amazon EC2,  and Lambda as deploy providers.",
+            "C. Use AWS CodePipeline with AWS CodeDeploy as the d eploy provider.",
+            "D. Use AWS CodePipeline with AWS Elastic Beanstalk a s the deploy provider."
+        ],
+        "correct": "B. Use AWS CodePipeline with Amazon ECS. Amazon EC2,  and Lambda as deploy providers.",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company has an application that runs on Amazon EC 2 instances that are in an Auto Scaling group. When  the application starts up. the application needs to pro cess data from an Amazon S3 bucket before the appli cation can start to serve requests. The size of the data that is stored in the S3 bucke t is growing. When the Auto Scaling group adds new instances, the application now takes several minute s to download and process the data before the appli cation can serve requests. The company must reduce the tim e that elapses before new EC2 instances are ready t o serve requests. Which solution is the MOST cost-effective way to re duce the application startup time?",
+        "options": [
+            "A. Configure a warm pool for the Auto Scaling group with warmed EC2 instances in the Stopped state.",
+            "B. Increase the maximum instance count of the Auto S caling group. Configure an",
+            "C. Configure a warm pool for the Auto Scaling group with warmed EC2 instances in the Running state.",
+            "D. Increase the maximum instance count of the Auto S caling group. Configure an"
+        ],
+        "correct": "A. Configure a warm pool for the Auto Scaling group with warmed EC2 instances in the Stopped state.",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company is using an AWS CodeBuild project to buil d and package an application. The packages are copi ed to a shared Amazon S3 bucket before being deployed across multiple AWS accounts. The buildspec.yml file contains the following: The DevOps engineer has noticed that anybody with a n AWS account is able to download the artifacts. What steps should the DevOps engineer take to stop this?",
+        "options": [
+            "A. Modify the post_build command to use --acl public -read and configure a bucket policy that grants rea d",
+            "B. Configure a default ACL for the S3 bucket that de fines the set of authenticated users as the relevan t AWS",
+            "C. Create an S3 bucket policy that grants read acces s to the relevant AWS accounts and denies read acce ss",
+            "D. Modify the post_build command to remove --acl aut henticated-read and configure a bucket policy that"
+        ],
+        "correct": "D. Modify the post_build command to remove --acl aut henticated-read and configure a bucket policy that",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company has developed a serverless web applicatio n that is hosted on AWS. The application consists o f Amazon S3. Amazon API Gateway, several AWS Lambda f unctions, and an Amazon RDS for MySQL database. The company is using AWS CodeCommit to st ore the source code. The source code is a combination of AWS Serverless Application Model (AW S SAM) templates and Python code. A security audit and penetration test reveal that user names and pas swords for authentication to the database are hardc oded within CodeCommit repositories. A DevOps engineer m ust implement a solution to automatically detect an d prevent hardcoded secrets. What is the MOST secure solution that meets these requirements? A. Enable Amazon CodeGuru Profiler. Decorate the han dler function with @with_lambda_profiler(). Manually review the recommendation report. Write th e secret to AWS Systems Manager Parameter Store as a secure string. Update the SAM templates and th e Python code to pull the secret from Parameter Sto re.",
+        "options": [
+            "B. Associate the CodeCommit repository with Amazon C odeGuru Reviewer. Manually check the code review",
+            "C. Enable Amazon CodeGuru Profiler. Decorate the han dler function with @with_lambda_profiler().",
+            "D. Associate the CodeCommit repository with Amazon C odeGuru Reviewer. Manually check the code review"
+        ],
+        "correct": "B. Associate the CodeCommit repository with Amazon C odeGuru Reviewer. Manually check the code review",
+        "explanation": "Explanation/Reference: Exam B",
+        "references": ""
+    },
+    {
+        "question": "A company is using Amazon S3 buckets to store impor tant documents. The company discovers that some S3 buckets are not encrypted. Currently, the company\u2019s  IAM users can create new S3 buckets without encryp tion. The company is implementing a new requirement that all S3 buckets must be encrypted. A DevOps engineer must implement a solution to ensu re that server-side encryption is enabled on all ex isting S3 buckets and all new S3 buckets. The encryption m ust be enabled on new S3 buckets as soon as the S3 buckets are created. The default encryption type mu st be 256-bit Advanced Encryption Standard (AES-256 ). Which solution will meet these requirements?",
+        "options": [
+            "A. Create an AWS Lambda function that is invoked per iodically by an Amazon EventBridge scheduled rule.",
+            "B. Set up and activate the s3-bucket-server-side-enc ryption-enabled AWS Config managed rule. Configure the",
+            "C.  Create an AWS Lambda function that is invoked by  an Amazon EventBridge event rule. Define the rule with",
+            "D. Configure an IAM policy that denies the s3:Create Bucket action if the s3:x-amz-server-side-encryptio n"
+        ],
+        "correct": "D. Configure an IAM policy that denies the s3:Create Bucket action if the s3:x-amz-server-side-encryptio n",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A DevOps engineer is architecting a continuous deve lopment strategy for a company\u2019s software as a serv ice (SaaS) web application running on AWS. For applicat ion and security reasons, users subscribing to this application are distributed across multiple Applica tion Load Balancers (ALBs), each of which has a ded icated Auto Scaling group and fleet of Amazon EC2 instance s. The application does not require a build stage, and when it is committed to AWS CodeCommit, the applica tion must trigger a simultaneous deployment to all ALBs, Auto Scaling groups, and EC2 fleets. Which architecture will meet these requirements wit h the LEAST amount of configuration?",
+        "options": [
+            "A. Create a single AWS CodePipeline pipeline that de ploys the application in parallel using unique AWS",
+            "B.  Create a single AWS CodePipeline pipeline that d eploys the application using a single AWS CodeDeplo y",
+            "C.  Create a single AWS CodePipeline pipeline that d eploys the application in parallel using a single A WS",
+            "D. Create an AWS CodePipeline pipeline for each ALB- Auto Scaling group pair that deploys the applicatio n"
+        ],
+        "correct": "C.  Create a single AWS CodePipeline pipeline that d eploys the application in parallel using a single A WS",
+        "explanation": "Explanation Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company is hosting a static website from an Amazo n S3 bucket. The website is available to customers at example.com. The company uses an Amazon Route 53 we ighted routing policy with a TTL of 1 day. The company has decided to replace the existing static website with a dynamic web application. The dynamic  web application uses an Application Load Balancer (ALB)  in front of a fleet of Amazon EC2 instances. On the day of production launch to customers, the c ompany creates an additional Route 53 weighted DNS record entry that points to the ALB with a weight o f 255 and a TTL of 1 hour. Two days later, a DevOps engineer notices that the previous static website i s displayed sometimes when customers navigate to example.com. How can the DevOps engineer ensure that the company  serves only dynamic content for example.com?",
+        "options": [
+            "A. Delete all objects, including previous versions, from the S3 bucket that contains the static website  content.",
+            "B. Update the weighted DNS record entry that points to the S3 bucket. Apply a weight of 0. Specify the domain",
+            "C. Configure webpage redirect requests on the S3 buc ket with a hostname that redirects to the ALB.",
+            "D. Remove the weighted DNS record entry that points to the S3 bucket from the example.com hosted zone."
+        ],
+        "correct": "D. Remove the weighted DNS record entry that points to the S3 bucket from the example.com hosted zone.",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company is implementing AWS CodePipeline to autom ate its testing process. The company wants to be notified when the execution state fails and used th e following custom event pattern in Amazon EventBri dge: Which type of events will match this event pattern?",
+        "options": [
+            "A. Failed deploy and build actions across all the pi pelines",
+            "B. All rejected or failed approval actions across al l the pipelines",
+            "C.  All the events across all pipelines",
+            "D. Approval actions across all the pipelines"
+        ],
+        "correct": "B. All rejected or failed approval actions across al l the pipelines",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "An application running on a set of Amazon EC2 insta nces in an Auto Scaling group requires a configurat ion file to operate. The instances are created and maintaine d with AWS CloudFormation. A DevOps engineer wants the instances to have the latest configuration file  when launched, and wants changes to the configurat ion file to be reflected on all the instances with a minimal de lay when the CloudFormation template is updated. Co mpany policy requires that application configuration file s be maintained along with AWS infrastructure confi guration files in source control. Which solution will accomplish this?",
+        "options": [
+            "A.  In the CloudFormation template, add an AWS Confi g rule. Place the configuration file content in the  rule\u2019s",
+            "B. In the CloudFormation template, add an EC2 launch  template resource. Place the configuration file co ntent",
+            "C.  In the CloudFormation template, add an EC2 launc h template resource. Place the configuration file c ontent",
+            "D. In the CloudFormation template, add CloudFormatio n init metadata. Place the configuration file conte nt in"
+        ],
+        "correct": "D. In the CloudFormation template, add CloudFormatio n init metadata. Place the configuration file conte nt in",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company manages an application that stores logs i n Amazon CloudWatch Logs. The company wants to archive the logs to an Amazon S3 bucket. Logs are r arely accessed after 90 days and must be retained f or 10 years. Which combination of steps should a DevOps engineer  take to meet these requirements? (Choose two.)",
+        "options": [
+            "A. Configure a CloudWatch Logs subscription filter t o use AWS Glue to transfer all logs to an S3 bucket .",
+            "B. Configure a CloudWatch Logs subscription filter t o use Amazon Kinesis Data Firehose to stream all lo gs to",
+            "C. Configure a CloudWatch Logs subscription filter t o stream all logs to an S3 bucket.",
+            "D. Configure the S3 bucket lifecycle policy to trans ition logs to S3 Glacier after 90 days and to expir e logs after"
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company is developing a new application. The appl ication uses AWS Lambda functions for its compute t ier. The company must use a canary deployment for any ch anges to the Lambda functions. Automated rollback must occur if any failures are reported. The company\u2019s DevOps team needs to create the infra structure as code (IaC) and the CI/CD pipeline for this solution. Which combination of steps will meet these requirem ents? (Choose three.)",
+        "options": [
+            "A.  Create an AWS CloudFormation template for the ap plication. Define each Lambda function in the templ ate by using the AWS::Lambda::Function resource type. I n the template, include a version for the Lambda",
+            "B. Create an AWS Serverless Application Model (AWS S AM) template for the application. Define each",
+            "C. Create an AWS CodeCommit repository. Create an AW S CodePipeline pipeline. Use the CodeCommit",
+            "D. Create an AWS CodeCommit repository. Create an AW S CodePipeline pipeline. Use the CodeCommit"
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company has a guideline that every Amazon EC2 ins tance must be launched from an AMI that the company \u2019s security team produces. Every month, the security t eam sends an email message with the latest approved AMIs to all the development teams. The development teams use AWS CloudFormation to dep loy their applications. When developers launch a ne w service, they have to search their email for the la test AMIs that the security department sent. A DevO ps engineer wants to automate the process that the sec urity team uses to provide the AMI IDs to the devel opment teams. What is the MOST scalable solution that meets these  requirements?",
+        "options": [
+            "A.  Direct the security team to use CloudFormation t o create new versions of the AMIs and to list the A MI",
+            "B. Direct the security team to use a CloudFormation stack to create an AWS CodePipeline pipeline that b uilds",
+            "C. Direct the security team to use Amazon EC2 Image Builder to create new AMIs and to place the AMI ARN s",
+            "D.  Direct the security team to use Amazon EC2 Image  Builder to create new AMIs and to create an Amazon"
+        ],
+        "correct": "C. Direct the security team to use Amazon EC2 Image Builder to create new AMIs and to place the AMI ARN s",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "An application runs on Amazon EC2 instances behind an Application Load Balancer (ALB). A DevOps engine er is using AWS CodeDeploy to release a new version. T he deployment fails during the AllowTraffic lifecyc le event, but a cause for the failure is not indicated  in the deployment logs. What would cause this?",
+        "options": [
+            "A. The appspec.yml file contains an invalid script t hat runs in the AllowTraffic lifecycle hook.",
+            "B.  The user who initiated the deployment does not h ave the necessary permissions to interact with the ALB.",
+            "C. The health checks specified for the ALB target gr oup are misconfigured.",
+            "D. The CodeDeploy agent was not installed in the EC2  instances that are part of the ALB target group."
+        ],
+        "correct": "C. The health checks specified for the ALB target gr oup are misconfigured.",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company has 20 service teams. Each service team i s responsible for its own microservice. Each servic e team uses a separate AWS account for its microservi ce and a VPC with the 192.168.0.0/22 CIDR block. Th e company manages the AWS accounts with AWS Organizat ions. Each service team hosts its microservice on multipl e Amazon EC2 instances behind an Application Load Balancer. The microservices communicate with each o ther across the public internet. The company\u2019s secu rity team has issued a new guideline that all communicat ion between microservices must use HTTPS over priva te network connections and cannot traverse the public internet. A DevOps engineer must implement a solution that fu lfills these obligations and minimizes the number o f changes for each service team. Which solution will meet these requirements?",
+        "options": [
+            "A. Create a new AWS account in AWS Organizations. Cr eate a VPC in this account, and use AWS Resource",
+            "B. Create a Network Load Balancer (NLB) in each of t he microservice VPCs. Use AWS PrivateLink to create",
+            "C. Create a Network Load Balancer (NLB) in each of t he microservice VPCs. Create VPC peering connection s",
+            "D. Create a new AWS account in AWS Organizations. Cr eate a transit gateway in this account, and use AWSResource Access Manager to share the transit gatewa y with the organization. In each of the microservic e"
+        ],
+        "correct": "B. Create a Network Load Balancer (NLB) in each of t he microservice VPCs. Use AWS PrivateLink to create",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "An Amazon EC2 instance is running in a VPC and need s to download an object from a restricted Amazon S3 bucket. When the DevOps engineer tries to download the object, an AccessDenied error is received. What are the possible causes for this error? (Choos e two.)",
+        "options": [
+            "A.  The S3 bucket default encryption is enabled.",
+            "B.  There is an error in the S3 bucket policy.",
+            "C. The object has been moved to S3 Glacier.",
+            "D. There is an error in the IAM role configuration."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company wants to use a grid system for a propriet ary enterprise in-memory data store on top of AWS. This system can run in multiple server nodes in any Linu x-based distribution. The system must be able to reconfigure the entire cluster every time a node is  added or removed. When adding or removing nodes, a n /etc/ cluster/nodes.config file must be updated, listing the IP addresses of the current node members of tha t cluster. The company wants to automate the task of adding ne w nodes to a cluster. What can a DevOps engineer do to meet these require ments?",
+        "options": [
+            "A. Use AWS OpsWorks Stacks to layer the server nodes  of that cluster. Create a Chef recipe that populat es",
+            "B. Put the file nodes.config in version control. Cr eate an AWS CodeDeploy deployment configuration and",
+            "B. Put the file nodes.config in version control. Cre ate an AWS CodeDeploy deployment configuration and",
+            "C. Create an Amazon S3 bucket and upload a version o f the /etc/cluster/nodes.config file. Create a cron tab",
+            "D. Create a user data script that lists all members of the current security group of the cluster and au tomatically updates the /etc/cluster/nodes.config file whenever  a new instance is added to the cluster."
+        ],
+        "correct": "A. Use AWS OpsWorks Stacks to layer the server nodes  of that cluster. Create a Chef recipe that populat es",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A DevOps engineer is working on a data archival pro ject that requires the migration of on-premises dat a to an Amazon S3 bucket. The DevOps engineer develops a sc ript that incrementally archives on-premises data t hat is older than 1 month to Amazon S3. Data that is tr ansferred to Amazon S3 is deleted from the on-premi ses location. The script uses the S3 PutObject operatio n. During a code review, the DevOps engineer notices t hat the script does not verify whether the data was successfully copied to Amazon S3. The DevOps engine er must update the script to ensure that data is no t corrupted during transmission. The script must use MD5 checksums to verify data integrity before the o n- premises data is deleted. Which solutions for the script will meet these requ irements? (Choose two.)",
+        "options": [
+            "A. Check the returned response for the VersionId. Co mpare the returned VersionId against the MD5",
+            "B.  Include the MD5 checksum within the Content-MD5 parameter. Check the operation call\u2019s return status  to",
+            "C. Include the checksum digest within the tagging pa rameter as a URL query parameter.",
+            "D. Check the returned response for the ETag. Compare  the returned ETag against the MD5 checksum."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company deploys updates to its Amazon API Gateway  API several times a week by using an AWS CodePipeline pipeline. As part of the update proces s, the company exports the JavaScript SDK for the A PI from the API Gateway console and uploads the SDK to an A mazon S3 bucket. The company has configured an Amazon CloudFront dis tribution that uses the S3 bucket as an origin. Web clients then download the SDK by using the CloudFro nt distribution\u2019s endpoint. A DevOps engineer needs  to implement a solution to make the new SDK available automatically during new API deployments. Which solution will meet these requirements?",
+        "options": [
+            "A. Create a CodePipeline action immediately after th e deployment stage of the API. Configure the action  to",
+            "B. Create a CodePipeline action immediately after th e deployment stage of the API. Configure the action  to",
+            "C. Create an Amazon EventBridge rule that reacts to UpdateStage events from aws.apigateway. Configure t he",
+            "D. Create an Amazon EventBridge rule that reacts to CreateDeployment events from aws.apigateway."
+        ],
+        "correct": "A. Create a CodePipeline action immediately after th e deployment stage of the API. Configure the action  to",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company has developed an AWS Lambda function that  handles orders received through an API. The company is using AWS CodeDeploy to deploy the Lambd a function as the final stage of a CI/CD pipeline. A DevOps engineer has noticed there are intermitten t failures of the ordering API for a few seconds af ter deployment. After some investigation, the DevOps en gineer believes the failures are due to database ch anges not having fully propagated before the Lambda funct ion is invoked. How should the DevOps engineer overcome this?",
+        "options": [
+            "A. Add a BeforeAllowTraffic hook to the AppSpec file  that tests and waits for any necessary database ch anges",
+            "B.  Add an AfterAllowTraffic hook to the AppSpec fil e that forces traffic to wait for any pending datab ase",
+            "C. Add a BeforeInstall hook to the AppSpec file that  tests and waits for any necessary database changes",
+            "D.  Add a ValidateService hook to the AppSpec file t hat inspects incoming traffic and rejects the paylo ad if"
+        ],
+        "correct": "A. Add a BeforeAllowTraffic hook to the AppSpec file  that tests and waits for any necessary database ch anges",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company uses a single AWS account to test applica tions on Amazon EC2 instances. The company has turned on AWS Config in the AWS account and has act ivated the restricted-ssh AWS Config managed rule. The company needs an automated monitoring solution that will provide a customized notification in real  time if any security group in the account is not compliant with the restricted-ssh rule. The customized notifi cation must contain the name and ID of the noncompliant securit y group. A DevOps engineer creates an Amazon Simple Notifica tion Service (Amazon SNS) topic in the account and subscribes the appropriate personnel to the topic. What should the DevOps engineer do next to meet the se requirements?",
+        "options": [
+            "A.  Create an Amazon EventBridge rule that matches a n AWS Config evaluation result of NON_COMPLIANT",
+            "B. Configure AWS Config to send all evaluation resul ts for the restricted-ssh rule to the SNS topic. Co nfigure a",
+            "C.  Create an Amazon EventBridge rule that matches a n AWS Config evaluation result of NON_COMPLIANT",
+            "D. Create an Amazon EventBridge rule that matches al l AWS Config evaluation results of NON_COMPLIANT."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company requires an RPO of 2 hours and an RTO of 10 minutes for its data and application at all time s. An application uses a MySQL database and Amazon EC2 we b servers. The development team needs a strategy for failover and disaster recovery. Which combination of deployment strategies will mee t these requirements? (Choose two.)",
+        "options": [
+            "A. Create an Amazon Aurora cluster in one Availabili ty Zone across multiple Regions as the data store. Use",
+            "B.  Create an Amazon Aurora global database in two R egions as the data store. In the event of a failure ,",
+            "C.  Create an Amazon Aurora multi-master cluster acr oss multiple Regions as the data store. Use a Netwo rk",
+            "D. Set up the application in two Regions and use Ama zon Route 53 failover-based routing that points to the"
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A business has an application that consists of five  independent AWS Lambda functions. The DevOps engineer has built a CI/CD pipeline usin g AWS CodePipeline and AWS CodeBuild that builds, tests, packages, and deploys each Lambda function i n sequence. The pipeline uses an Amazon EventBridge rule to ensure the pipeline starts as quickly as po ssible after a change is made to the application so urce code. After working with the pipeline for a few months, t he DevOps engineer has noticed the pipeline takes t oo long to complete. What should the DevOps engineer implement to BEST i mprove the speed of the pipeline? A. Modify the CodeBuild projects within the pipeline  to use a compute type with more available network throughput.",
+        "options": [
+            "B. Create a custom CodeBuild execution environment t hat includes a symmetric multiprocessing configurat ion",
+            "C. Modify the CodePipeline configuration to run acti ons for each Lambda function in parallel by specify ing the",
+            "D. Modify each CodeBuild project to run within a VPC  and use dedicated instances to increase throughput ."
+        ],
+        "correct": "C. Modify the CodePipeline configuration to run acti ons for each Lambda function in parallel by specify ing the",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company uses AWS CloudFormation stacks to deploy updates to its application. The stacks consist of different resources. The resources include AWS Auto  Scaling groups, Amazon EC2 instances, Application Load Balancers (ALBs), and other resources that are  necessary to launch and maintain independent stack s. Changes to application resources outside of CloudFo rmation stack updates are not allowed. The company recently attempted to update the applic ation stack by using the AWS CLI. The stack failed to update and produced the following error message: \u201cE RROR: both the deployment and the CloudFormation stack rollback failed. The deployment failed becaus e the following resource(s) failed to update: [AutoScalingGroup].\u201d The stack remains in a status of UPDATE_ROLLBACK_FA ILED. Which solution will resolve this issue?",
+        "options": [
+            "A.  Update the subnet mappings that are configured f or the ALBs. Run the aws cloudformation update-stac k-",
+            "B.  Update the IAM role by providing the necessary p ermissions to update the stack. Run the aws",
+            "C. Submit a request for a quota increase for the num ber of EC2 instances for the account. Run the aws",
+            "D.  Delete the Auto Scaling group resource. Run the aws cloudformation rollback-stack AWS CLI command."
+        ],
+        "correct": "B.  Update the IAM role by providing the necessary p ermissions to update the stack. Run the aws",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company is deploying a new application that uses Amazon EC2 instances. The company needs a solution to query application logs and AWS account API activity . Which solution will meet these requirements?",
+        "options": [
+            "A. Use the Amazon CloudWatch agent to send logs from  the EC2 instances to Amazon CloudWatch Logs.",
+            "B. Use the Amazon CloudWatch agent to send logs from  the EC2 instances to Amazon CloudWatch Logs. Configure AWS CloudTrail to deliver the API logs to  CloudWatch Logs. Use CloudWatch Logs Insights to",
+            "C. Use the Amazon CloudWatch agent to send logs from  the EC2 instances to Amazon Kinesis. Configure",
+            "D. Use the Amazon CloudWatch agent to send logs from  the EC2 instances to Amazon S3. Use AWS"
+        ],
+        "correct": "B. Use the Amazon CloudWatch agent to send logs from  the EC2 instances to Amazon CloudWatch Logs. Configure AWS CloudTrail to deliver the API logs to  CloudWatch Logs. Use CloudWatch Logs Insights to",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company wants to ensure that their EC2 instances are secure. They want to be notified if any new vulnerabilities are discovered on their instances, and they also want an audit trail of all login acti vities on the instances. Which solution will meet these requirements?",
+        "options": [
+            "A. Use AWS Systems Manager to detect vulnerabilities  on the EC2 instances. Install the Amazon Kinesis",
+            "B.  Use AWS Systems Manager to detect vulnerabilitie s on the EC2 instances. Install the Systems Manager",
+            "C.  Configure Amazon CloudWatch to detect vulnerabil ities on the EC2 instances. Install the AWS Config",
+            "D. Configure Amazon Inspector to detect vulnerabilit ies on the EC2 instances. Install the Amazon CloudW atch"
+        ],
+        "correct": "D. Configure Amazon Inspector to detect vulnerabilit ies on the EC2 instances. Install the Amazon CloudW atch",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company is running an application on Amazon EC2 i nstances in an Auto Scaling group. Recently, an iss ue occurred that prevented EC2 instances from launchin g successfully, and it took several hours for the s upport team to discover the issue. The support team wants to be notified by email whenever an EC2 instance do es not start successfully. Which action will accomplish this?",
+        "options": [
+            "A. Add a health check to the Auto Scaling group to i nvoke an AWS Lambda function whenever an instance",
+            "B.  Configure the Auto Scaling group to send a notif ication to an Amazon SNS topic whenever a failed in stance",
+            "C.  Create an Amazon CloudWatch alarm that invokes a n AWS Lambda function when a failed",
+            "D.  Create a status check alarm on Amazon EC2 to sen d a notification to an Amazon SNS topic whenever a"
+        ],
+        "correct": "B.  Configure the Auto Scaling group to send a notif ication to an Amazon SNS topic whenever a failed in stance",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company is running an application on Amazon EC2 i nstances in an Auto Scaling group. Recently, an iss ue occurred that prevented EC2 instances from launchin g successfully, and it took several hours for the s upport team to discover the issue. The support team wants to be notified by email whenever an EC2 instance do es not start successfully. Which action will accomplish this?",
+        "options": [
+            "A.  Add a health check to the Auto Scaling group to invoke an AWS Lambda function whenever an instance",
+            "B. Configure the Auto Scaling group to send a notifi cation to an Amazon SNS topic whenever a failed ins tance",
+            "C. Create an Amazon CloudWatch alarm that invokes an  AWS Lambda function when a failed AttachInstances",
+            "D. Create a status check alarm on Amazon EC2 to send  a notification to an Amazon SNS topic whenever a"
+        ],
+        "correct": "B. Configure the Auto Scaling group to send a notifi cation to an Amazon SNS topic whenever a failed ins tance",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company is using AWS Organizations to centrally m anage its AWS accounts. The company has turned on AWS Config in each member account by using AWS Clou dFormation StackSets. The company has configured trusted access in Organizations for AWS Config and has configured a member account as a delegated administrator account for AWS Config. A DevOps engineer needs to implement a new security  policy. The policy must require all current and fu ture AWS member accounts to use a common baseline of AWS  Config rules that contain remediation actions that are managed from a central account. Non-administrat or users who can access member accounts must not be able to modify this common baseline of AWS Config r ules that are deployed into each member account. Which solution will meet these requirements?",
+        "options": [
+            "A. Create a CloudFormation template that contains th e AWS Config rules and remediation actions. Deploy the",
+            "B.  Create an AWS Config conformance pack that conta ins the AWS Config rules and remediation actions.",
+            "C.  Create a CloudFormation template that contains t he AWS Config rules and remediation actions. Deploy  the",
+            "D. Create an AWS Config conformance pack that contai ns the AWS Config rules and remediation actions."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "Create an AWS Config conformance pack that contains  the AWS Config rules and remediation actions. Depl oy the pack from the delegated administrator account b y using AWS Config.",
+        "options": [
+            "A. Modify the Kinesis consumer application to store the logs durably in Amazon S3. Use Amazon EMR to",
+            "B.  Horizontally scale the Kinesis consumer applicat ion by adding more EC2 instances based on the Amazo n",
+            "C. Convert the Kinesis consumer application to run a s an AWS Lambda function. Configure the Kinesis dat a",
+            "D. Increase the number of shards in the Kinesis data  streams to increase the overall throughput so that  the"
+        ],
+        "correct": "C. Convert the Kinesis consumer application to run a s an AWS Lambda function. Configure the Kinesis dat a",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company recently created a new AWS Control Tower landing zone in a new organization in AWS Organizations. The landing zone must be able to dem onstrate compliance with the Center for Internet Se curity (CIS) Benchmarks for AWS Foundations. The company\u2019s security team wants to use AWS Securi ty Hub to view compliance across all accounts. Only  the security team can be allowed to view aggregated Sec urity Hub findings. In addition, specific users mus t be able to view findings from their own accounts within the  organization. All accounts must be enrolled in Sec urity Hub after the accounts are created. Which combination of steps will meet these requirem ents in the MOST automated way? (Choose three.)",
+        "options": [
+            "A.  Turn on trusted access for Security Hub in the o rganization\u2019s management account. Create a new secu rity",
+            "B.  Turn on trusted access for Security Hub in the o rganization\u2019s management account. From the manageme nt",
+            "C. Create an AWS IAM Identity Center (AWS Single Sig n-On) permission set that includes the required",
+            "D. Create an SCP that explicitly denies any user who  is not on the security team from accessing Securit y Hub."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company runs applications in AWS accounts that ar e in an organization in AWS Organizations. The applications use Amazon EC2 instances and Amazon S3 . The company wants to detect potentially compromised  EC2 instances, suspicious network activity, and un usual API activity in its existing AWS accounts and in an y AWS accounts that the company creates in the futu re. When the company detects one of these events, the c ompany wants to use an existing Amazon Simple Notification Service (Amazon SNS) topic to send a n otification to its operational support team for inv estigation and remediation. Which solution will meet these requirements in acco rdance with AWS best practices?",
+        "options": [
+            "A.  In the organization\u2019s management account, config ure an AWS account as the Amazon GuardDuty",
+            "B. In the organization\u2019s management account, configu re Amazon GuardDuty to add newly created AWS",
+            "C. In the organization\u2019s management account, create an AWS CloudTrail organization trail. Activate the",
+            "D.  In the organization\u2019s management account, config ure an AWS account as the AWS CloudTrail"
+        ],
+        "correct": "A.  In the organization\u2019s management account, config ure an AWS account as the Amazon GuardDuty",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company\u2019s DevOps engineer is working in a multi-a ccount environment. The company uses AWS Transit Gateway to route all outbound traffic through a net work operations account. In the network operations account, all account traffic passes through a firewall appli ance for inspection before the traffic goes to an i nternet gateway. The firewall appliance sends logs to Amazon CloudWa tch Logs and includes event severities of CRITICAL, HIGH, MEDIUM, LOW, and INFO. The security team want s to receive an alert if any CRITICAL events occur. What should the DevOps engineer do to meet these re quirements?",
+        "options": [
+            "A.  Create an Amazon CloudWatch Synthetics canary to  monitor the firewall state. If the firewall reache s a",
+            "B.  Create an Amazon CloudWatch metric filter by usi ng a search for CRITICAL events. Publish a custom",
+            "C. Enable Amazon GuardDuty in the network operations  account. Configure GuardDuty to monitor flow logs.",
+            "D.  Use AWS Firewall Manager to apply consistent pol icies across all accounts. Create an Amazon"
+        ],
+        "correct": "B.  Create an Amazon CloudWatch metric filter by usi ng a search for CRITICAL events. Publish a custom",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company is divided into teams. Each team has an A WS account, and all the accounts are in an organiza tion in AWS Organizations. Each team must retain full ad ministrative rights to its AWS account. Each team a lso must be allowed to access only AWS services that th e company approves for use. AWS services must gain approval through a request and approval process. How should a DevOps engineer configure the accounts  to meet these requirements?",
+        "options": [
+            "A.  Use AWS CloudFormation StackSets to provision IA M policies in each account to deny access to restri cted",
+            "B. Use AWS Control Tower to provision the accounts i nto OUs within the organization. Configure AWS Cont rol",
+            "C.  Place all the accounts under a new top-level OU within the organization. Create an SCP that denies access",
+            "D. Create an SCP that allows access to only approved  AWS services. Attach the SCP to the root OU of the"
+        ],
+        "correct": "D. Create an SCP that allows access to only approved  AWS services. Attach the SCP to the root OU of the",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A DevOps engineer used an AWS CloudFormation custom  resource to set up AD Connector. The AWS Lambda function ran and created AD Connector, but C loudFormation is not transitioning from CREATE_IN_PROGRESS to CREATE_COMPLETE. Which action should the engineer take to resolve th is issue?",
+        "options": [
+            "A.  Ensure the Lambda function code has exited succe ssfully.",
+            "B.  Ensure the Lambda function code returns a respon se to the pre-signed URL",
+            "C.  Ensure the Lambda function IAM role has cloudforma tion:UpdateStack permissions for the stack ARN D. Ensure the Lambda function IAM role has ds:ConnectD irectory permissions for the AWS account."
+        ],
+        "correct": "B.  Ensure the Lambda function code returns a respon se to the pre-signed URL",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company uses AWS CodeCommit for source code contr ol. Developers apply their changes to various featu re branches and create pull requests to move those cha nges to the main branch when the changes are ready for production. The developers should not be able to push changes d irectly to the main branch. The company applied the AWSCodeCommitPowerUser managed policy to the develo pers\u2019 IAM role, and now these developers can push changes to the main branch directly on every reposi tory in the AWS account. What should the company do to restrict the develope rs\u2019 ability to push changes to the main branch dire ctly?",
+        "options": [
+            "A. Create an additional policy to include a Deny rul e for the GitPush and PutFile actions. Include a re striction",
+            "B. Remove the IAM policy, and add an AWSCodeCommitRe adOnly managed policy. Add an Allow rule for the",
+            "C. Modify the IAM policy. Include a Deny rule for th e GitPush and PutFile actions for the specific repo sitories in",
+            "D. Create an additional policy to include an Allow r ule for the GitPush and PutFile actions. Include a restriction"
+        ],
+        "correct": "A. Create an additional policy to include a Deny rul e for the GitPush and PutFile actions. Include a re striction",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company manages a web application that runs on Am azon EC2 instances behind an Application Load Balancer (ALB). The EC2 instances run in an Auto Sc aling group across multiple Availability Zones. The application uses an Amazon RDS for MySQL DB instanc e to store the data. The company has configured Amazon Route 53 with an alias record that points to  the ALB. A new company guideline requires a geographically i solated disaster recovery (DR) site with an RTO of 4 hours and an RPO of 15 minutes. Which DR strategy will meet these requirements with  the LEAST change to the application stack?",
+        "options": [
+            "A. Launch a replica environment of everything except  Amazon RDS in a different Availability Zone. Creat e an",
+            "B. Launch a replica environment of everything except  Amazon RDS in a different AWS Region. Create an",
+            "C.  Launch a replica environment of everything excep t Amazon RDS in a different AWS Region. In the even t of"
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A large enterprise is deploying a web application o n AWS. The application runs on Amazon EC2 instances behind an Application Load Balancer. The instances run in an Auto Scaling group across multiple Availa bility Zones. The application stores data in an Amazon RDS  for Oracle DB instance and Amazon DynamoDB. There are separate environments for development, testing,  and production. What is the MOST secure and flexible way to obtain password credentials during deployment?",
+        "options": [
+            "A. Retrieve an access key from an AWS Systems Manage r SecureString parameter to access AWS services.",
+            "B.  Launch the EC2 instances with an EC2 IAM role to  access AWS services. Retrieve the database",
+            "C.  Retrieve an access key from an AWS Systems Manag er plaintext parameter to access AWS services.",
+            "D. Launch the EC2 instances with an EC2 IAM role to access AWS services. Store the database passwords i n"
+        ],
+        "correct": "B.  Launch the EC2 instances with an EC2 IAM role to  access AWS services. Retrieve the database",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "The security team depends on AWS CloudTrail to dete ct sensitive security issues in the company\u2019s AWS account. The DevOps engineer needs a solution to au to-remediate CloudTrail being turned off in an AWS account. What solution ensures the LEAST amount of downtime for the CloudTrail log deliveries?",
+        "options": [
+            "A. Create an Amazon EventBridge rule for the CloudTr ail StopLogging event. Create an AWS Lambda functio n",
+            "B. . Deploy the AWS-managed CloudTrail-enabled AWS C onfig rule, set with a periodic interval of 1 hour.",
+            "C.  Create an Amazon EventBridge rule for a schedule d event every 5 minutes. Create an AWS Lambda"
+        ],
+        "correct": "A. Create an Amazon EventBridge rule for the CloudTr ail StopLogging event. Create an AWS Lambda functio n",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company uses AWS CodeArtifact to centrally store Python packages. The CodeArtifact repository is configured with the following repository policy: A development team is building a new project in an account that is in an organization in AWS Organizat ions. The development team wants to use a Python library that has already been stored in the CodeArtifact re pository in the organization. The development team uses AWS CodePipeline and AWS CodeBuild to build the new application. The CodeBuild job that the development  team uses to build the application is configured t o run in a VPC. Because of compliance requirements, the VPC ha s no internet connectivity. The development team creates the VPC endpoints for CodeArtifact and updates the CodeBuild buildspec.ya ml file. However, the development team cannot download  the Python library from the repository. Which combination of steps should a DevOps engineer  take so that the development team can use CodeArtifact? (Choose two.)",
+        "options": [
+            "A.  Create an Amazon S3 gateway endpoint. Update the  route tables for the subnets that are running the",
+            "B.  Update the repository policy\u2019s Principal stateme nt to include the ARN of the role that the CodeBuil d project",
+            "C. Share the CodeArtifact repository with the organi zation by using AWS Resource Access Manager (AWS",
+            "D. . Update the role that the CodeBuild project uses  so that the role has sufficient permissions to use  the"
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company uses a series of individual Amazon CloudF ormation templates to deploy its multi-Region applications. These templates must be deployed in a  specific order. The company is making more changes  to the templates than previously expected and wants to  deploy new templates more efficiently. Additionall y, the data engineering team must be notified of all chang es to the templates. What should the company do to accomplish these goal s?",
+        "options": [
+            "A.  Create an AWS Lambda function to deploy the Clou dFormation templates in the required order. Use sta ck",
+            "B. Host the CloudFormation templates in Amazon S3. U se Amazon S3 events to directly trigger",
+            "C. Implement CloudFormation StackSets and use drift detection to trigger update alerts to the data engi neering",
+            "D.  Leverage CloudFormation nested stacks and stack sets for deployments. Use Amazon SNS to notify the"
+        ],
+        "correct": "B. Host the CloudFormation templates in Amazon S3. U se Amazon S3 events to directly trigger",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A DevOps engineer has implemented a CI/CD pipeline to deploy an AWS CloudFormation template that provisions a web application. The web application c onsists of an Application Load Balancer (ALB), a ta rget group, a launch template that uses an Amazon Linux 2 AMI, an Auto Scaling group of Amazon EC2 instance s, a security group, and an Amazon RDS for MySQL datab ase. The launch template includes user data that specifies a script to install and start the applica tion. The initial deployment of the application was succe ssful. The DevOps engineer made changes to update t he version of the application with the user data. The CI/CD pipeline has deployed a new version of the te mplate. However, the health checks on the ALB are now faili ng. The health checks have marked all targets as unhealthy. During investigation, the DevOps engineer notices t hat the CloudFormation stack has a status of UPDATE_COMPLETE. However, when the DevOps engineer connects to one of the EC2 instances and checks /var/log/messages, the DevOps engineer notic es that the Apache web server failed to start succe ssfully because of a configuration error. How can the DevOps engineer ensure that the CloudFo rmation deployment will fail if the user data fails  to successfully finish running?",
+        "options": [
+            "A.  Use the cfn-signal helper script to signal succe ss or failure to CloudFormation. Use the",
+            "B. Create an Amazon CloudWatch alarm for the Unhealt hyHostCount metric. Include an appropriate alarm",
+            "C. Create a lifecycle hook on the Auto Scaling group  by using the AWS::AutoScaling::LifecycleHook resou rce.",
+            "D.  Use the Amazon CloudWatch agent to stream the cl oud-init logs. Create a subscription filter that in cludes"
+        ],
+        "correct": "A.  Use the cfn-signal helper script to signal succe ss or failure to CloudFormation. Use the",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company has a data ingestion application that run s across multiple AWS accounts. The accounts are in  an organization in AWS Organizations. The company need s to monitor the application and consolidate access  to the application. Currently, the company is running the application on Amazon EC2 instances from severa l Auto Scaling groups. The EC2 instances have no access to  the internet because the data is sensitive. Engine ers have deployed the necessary VPC endpoints. The EC2 instances run a custom AMI that is built specifical ly for the application. To maintain and troubleshoot the application, syste m administrators need the ability to log in to the EC2 instances. This access must be automated and contro lled centrally. The company\u2019s security team must re ceive a notification whenever the instances are accessed. Which solution will meet these requirements?",
+        "options": [
+            "A. Create an Amazon EventBridge rule to send notific ations to the security team whenever a user logs in  to an",
+            "B. Deploy a NAT gateway and a bastion host that has internet access. Create a security group that allow s",
+            "C. Use EC2 Image Builder to rebuild the custom AMI. Include the most recent version of AWS Systems",
+            "D. Use AWS Systems Manager Automation to build Syste ms Manager Agent into the custom AMI. Configure"
+        ],
+        "correct": "C. Use EC2 Image Builder to rebuild the custom AMI. Include the most recent version of AWS Systems",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company uses Amazon S3 to store proprietary infor mation. The development team creates buckets for ne w projects on a daily basis. The security team wants to ensure that all existing and future buckets have encryption, logging, and versioning enabled. Additi onally, no buckets should ever be publicly read or write accessible. What should a DevOps engineer do to meet these requ irements?",
+        "options": [
+            "A. Enable AWS CloudTrail and configure automatic rem ediation using AWS Lambda.",
+            "B.  Enable AWS Config rules and configure automatic remediation using AWS Systems Manager documents.",
+            "C.  Enable AWS Trusted Advisor and configure automat ic remediation using Amazon EventBridge.",
+            "D.  Enable AWS Systems Manager and configure automat ic remediation using Systems Manager documents"
+        ],
+        "correct": "B.  Enable AWS Config rules and configure automatic remediation using AWS Systems Manager documents.",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A DevOps engineer is researching the least expensiv e way to implement an image batch processing cluste r on AWS. The application cannot run in Docker container s and must run on Amazon EC2. The batch job stores checkpoint data on an NFS volume and can tolerate i nterruptions. Configuring the cluster software from  a generic EC2 Linux image takes 30 minutes. What is the MOST cost-effective solution?",
+        "options": [
+            "A. Use Amazon EFS for checkpoint data. To complete t he job, use an EC2 Auto Scaling group and an On-",
+            "B.  Use GlusterFS on EC2 instances for checkpoint da ta. To run the batch job, configure EC2 instances",
+            "C. Use Amazon EFS for checkpoint data. Use EC2 Fleet  to launch EC2 Spot Instances, and utilize user dat a to",
+            "D. Use Amazon EFS for checkpoint data. Use EC2 Fleet  to launch EC2 Spot Instances. Create a custom AMI"
+        ],
+        "correct": "D. Use Amazon EFS for checkpoint data. Use EC2 Fleet  to launch EC2 Spot Instances. Create a custom AMI",
+        "explanation": "Explanation Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company recently migrated its legacy application from on-premises to AWS. The application is hosted on Amazon EC2 instances behind an Application Load Bal ancer, which is behind Amazon API Gateway. The company wants to ensure users experience minimal di sruptions during any deployment of a new version of  the application. The company also wants to ensure it ca n quickly roll back updates if there is an issue. Which solution will meet these requirements with MI NIMAL changes to the application?",
+        "options": [
+            "A. . Introduce changes as a separate environment par allel to the existing one. Configure API Gateway to  use a",
+            "B. Introduce changes as a separate environment paral lel to the existing one. Update the application\u2019s D NS",
+            "C.  Introduce changes as a separate target group beh ind the existing Application Load Balancer. Configu re API",
+            "D.  Introduce changes as a separate target group beh ind the existing Application Load Balancer. Configu re API"
+        ],
+        "correct": "C.  Introduce changes as a separate target group beh ind the existing Application Load Balancer. Configu re API",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company is storing 100 GB of log data in .csv for mat in an Amazon S3 bucket. SQL developers want to query this data and generate graphs to visualize it. The SQL developers also need an efficient, automated wa y to store metadata from the .csv file. Which combination of steps will meet these requirem ents with the LEAST amount of effort? (Choose three .)",
+        "options": [
+            "A. Filter the data through AWS X-Ray to visualize th e data.",
+            "B. Filter the data through Amazon QuickSight to visu alize the data.",
+            "C. Query the data with Amazon Athena.",
+            "D. Query the data with Amazon Redshift."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company deploys its corporate infrastructure on A WS across multiple AWS Regions and Availability Zon es. The infrastructure is deployed on Amazon EC2 instan ces and connects with AWS IoT Greengrass devices. T he company deploys additional resources on on-premises  servers that are located in the corporate headquar ters. The company wants to reduce the overhead involved i n maintaining and updating its resources. The compa ny\u2019s DevOps team plans to use AWS Systems Manager to imp lement automated management and application of patches. The DevOps team confirms that Systems Mana ger is available in the Regions that the resources are deployed in. Systems Manager also is available in a  Region near the corporate headquarters. Which combination of steps must the DevOps team tak e to implement automated patch and configuration management across the company\u2019s EC2 instances, IoT devices, and on-premises infrastructure? (Choose three.)",
+        "options": [
+            "A. Apply tags to all the EC2 instances, AWS IoT Gree ngrass devices, and on-premises servers. Use System s",
+            "B. Use Systems Manager Run Command to schedule patch ing for the EC2 instances, AWS IoT Greengrass",
+            "C.  Use Systems Manager Patch Manager to schedule pa tching for the EC2 instances, AWS IoT Greengrass",
+            "D. Configure Amazon EventBridge to monitor Systems M anager Patch Manager for updates to patch"
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company is testing a web application that runs on  Amazon EC2 instances behind an Application Load Balancer. The instances run in an Auto Scaling grou p across multiple Availability Zones. The company u ses a blue/green deployment process with immutable instan ces when deploying new software. During testing, users are being automatically logge d out of the application at random times. Testers a lso report that, when a new version of the application is depl oyed, all users are logged out. The development tea m needs a solution to ensure users remain logged in across scaling events and application deployments. What is the MOST operationally efficient way to ens ure users remain logged in?",
+        "options": [
+            "A. Enable smart sessions on the load balancer and mo dify the application to check for an existing sessi on.",
+            "B. Enable session sharing on the load balancer and m odify the application to read from the session stor e.",
+            "C.  Store user session information in an Amazon S3 b ucket and modify the application to read session",
+            "D.  Modify the application to store user session inf ormation in an Amazon ElastiCache cluster."
+        ],
+        "correct": "D.  Modify the application to store user session inf ormation in an Amazon ElastiCache cluster.",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A DevOps engineer needs to configure a blue/green d eployment for an existing three-tier application. T he application runs on Amazon EC2 instances and uses a n Amazon RDS database. The EC2 instances run behind an Application Load Balancer (ALB) and are i n an Auto Scaling group. The DevOps engineer has created a launch template a nd an Auto Scaling group for the blue environment. The DevOps engineer also has created a launch template and an Auto Scaling group for the green environment . Each Auto Scaling group deploys to a matching blue or green target group. The target group also specif ies which software, blue or green, gets loaded on the E C2 instances. The ALB can be configured to send tra ffic to the blue environment\u2019s target group or the green en vironment\u2019s target group. An Amazon Route 53 record  for www.example.com points to the ALB. The deployment must move traffic all at once betwee n the software on the blue environment\u2019s EC2 instan ces to the newly deployed software on the green environmen t\u2019s EC2 instances. What should the DevOps engineer do to meet these re quirements?",
+        "options": [
+            "A.  Start a rolling restart of the Auto Scaling grou p for the green environment to deploy the new softw are on the",
+            "B.  Use an AWS CLI command to update the ALB to send  traffic to the green environment\u2019s target group.",
+            "C.  Update the launch template to deploy the green e nvironment\u2019s software on the blue environment\u2019s EC2",
+            "D. Start a rolling restart of the Auto Scaling group  for the green environment to deploy the new softwa re on the"
+        ],
+        "correct": "A.  Start a rolling restart of the Auto Scaling grou p for the green environment to deploy the new softw are on the",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company is building a new pipeline by using AWS C odePipeline and AWS CodeBuild in a build account. T he pipeline consists of two stages. The first stage is  a CodeBuild job to build and package an AWS Lambda function. The second stage consists of deployment a ctions that operate on two different AWS accounts: a development environment account and a production en vironment account. The deployment stages use the AWS CloudFormation action that CodePipeline invokes  to deploy the infrastructure that the Lambda funct ion requires. A DevOps engineer creates the CodePipeline pipeline  and configures the pipeline to encrypt build artif acts by using the AWS Key Management Service (AWS KMS) AWS managed key for Amazon S3 (the aws/s3 key). The artifacts are stored in an S3 bucket. When the pipeline runs, the CloudFormation actions fail with  an access denied error. Which combination of actions must the DevOps engine er perform to resolve this error? (Choose two.)",
+        "options": [
+            "A. Create an S3 bucket in each AWS account for the a rtifacts. Allow the pipeline to write to the S3 buc kets.",
+            "B. Create a customer managed KMS key. Configure the KMS key policy to allow the IAM roles used by the",
+            "C.  Create an AWS managed KMS key. Configure the KMS  key policy to allow the development account and",
+            "D.  In the development account and in the production  account, create an IAM role for CodePipeline. Conf igure the roles with permissions to perform CloudFormatio n operations and with permissions to retrieve and"
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company is using an organization in AWS Organizat ions to manage multiple AWS accounts. The company\u2019s development team wants to use AWS Lambda functions to meet resiliency requirements and is rewriting al l applications to work with Lambda functions that are  deployed in a VPC. The development team is using Amazon Elastic File System (Amazon EFS) as shared s torage in Account A in the organization. The company wants to continue to use Amazon EFS wit h Lambda. Company policy requires all serverless projects to be deployed in Account B. A DevOps engineer needs to reconfigure an existing EFS file system to allow Lambda functions to access  the data through an existing EFS access point. Which combination of steps should the DevOps engine er take to meet these requirements? (Choose three.)",
+        "options": [
+            "A.  Update the EFS file system policy to provide Acc ount B with access to mount and write to the EFS fi le",
+            "B.  Create SCPs to set permission guardrails with fi ne-grained control for Amazon EFS.",
+            "C.  Create a new EFS file system in Account B. Use A WS Database Migration Service (AWS DMS) to keep",
+            "D.  Update the Lambda execution roles with permissio n to access the VPC and the EFS file system."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A media company has several thousand Amazon EC2 ins tances in an AWS account. The company is using Slack and a shared email inbox for team communicati ons and important updates. A DevOps engineer needs to send all AWS-scheduled EC2 maintenance notification s to the Slack channel and the shared inbox. The solution must include the instances\u2019 Name and Owner  tags. Which solution will meet these requirements?",
+        "options": [
+            "A.  Integrate AWS Trusted Advisor with AWS Config. C onfigure a custom AWS Config rule to invoke an AWS",
+            "B. Use Amazon EventBridge to monitor for AWS Health events. Configure the maintenance events to target an Amazon Simple Notification Service (Amazon SNS) top ic. Subscribe an AWS Lambda function to the SNS",
+            "C.  Create an AWS Lambda function that sends EC2 mai ntenance notifications to the Slack channel and the",
+            "D. Configure AWS Support integration with AWS CloudT rail. Create a CloudTrail lookup event to invoke an"
+        ],
+        "correct": "B. Use Amazon EventBridge to monitor for AWS Health events. Configure the maintenance events to target an Amazon Simple Notification Service (Amazon SNS) top ic. Subscribe an AWS Lambda function to the SNS",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "An AWS CodePipeline pipeline has implemented a code  release process. The pipeline is integrated with A WS CodeDeploy to deploy versions of an application to multiple Amazon EC2 instances for each CodePipeline stage. During a recent deployment, the pipeline failed due  to a CodeDeploy issue. The DevOps team wants to im prove monitoring and notifications during deployment to d ecrease resolution times. What should the DevOps engineer do to create notifi cations when issues are discovered?",
+        "options": [
+            "A. Implement Amazon CloudWatch Logs for CodePipeline  and CodeDeploy, create an AWS Config rule to",
+            "B. Implement Amazon EventBridge for CodePipeline and  CodeDeploy, create an AWS Lambda function to",
+            "C. Implement AWS CloudTrail to record CodePipeline a nd CodeDeploy API call information, create an AWS",
+            "D.  Implement Amazon EventBridge for CodePipeline an d CodeDeploy, create an Amazon Inspector"
+        ],
+        "correct": "B. Implement Amazon EventBridge for CodePipeline and  CodeDeploy, create an AWS Lambda function to",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A global company manages multiple AWS accounts by u sing AWS Control Tower. The company hosts internal applications and public applications. Each application team in the company has its own AW S account for application hosting. The accounts are consolidated in an organization in AWS Organization s. One of the AWS Control Tower member accounts serves as a centralized DevOps account with CI/CD p ipelines that application teams use to deploy appli cations to their respective target AWS accounts. An IAM rol e for deployment exists in the centralized DevOps a ccount. An application team is attempting to deploy its app lication to an Amazon Elastic Kubernetes Service (A mazon EKS) cluster in an application AWS account. An IAM role for deployment exists in the application AWS a ccount. The deployment is through an AWS CodeBuild project that is set up in the centralized DevOps account. T he CodeBuild project uses an IAM service role for Code Build. The deployment is failing with an Unauthoriz ed error during attempts to connect to the cross-account EKS  cluster from CodeBuild. Which solution will resolve this error?",
+        "options": [
+            "A. Configure the application account\u2019s deployment IA M role to have a trust relationship with the centra lized",
+            "B.  Configure the centralized DevOps account\u2019s deplo yment IAM role to have a trust relationship with th e",
+            "C. Configure the centralized DevOps account\u2019s deploy ment IAM role to have a trust relationship with the",
+            "D. Configure the application account\u2019s deployment IA M role to have a trust relationship with the AWS Co ntrol"
+        ],
+        "correct": "B.  Configure the centralized DevOps account\u2019s deplo yment IAM role to have a trust relationship with th e",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A highly regulated company has a policy that DevOps  engineers should not log in to their Amazon EC2 instances except in emergencies. If a DevOps engine er does log in, the security team must be notified within 15 minutes of the occurrence. Which solution will meet these requirements?",
+        "options": [
+            "A. Install the Amazon Inspector agent on each EC2 in stance. Subscribe to Amazon EventBridge notificatio ns.",
+            "B. Install the Amazon CloudWatch agent on each EC2 i nstance. Configure the agent to push all logs to",
+            "C. Set up AWS CloudTrail with Amazon CloudWatch Logs . Subscribe CloudWatch Logs to Amazon Kinesis.",
+            "D. Set up a script on each Amazon EC2 instance to pu sh all logs to Amazon S3. Set up an S3 event to inv oke"
+        ],
+        "correct": "B. Install the Amazon CloudWatch agent on each EC2 i nstance. Configure the agent to push all logs to",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company updated the AWS CloudFormation template f or a critical business application. The stack updat e process failed due to an error in the updated templ ate, and AWS CloudFormation automatically began thestack rollback process. Later, a DevOps engineer di scovered that the application was still unavailable  and that the stack was in the UPDATE_ROLLBACK_FAILED state. Which combination of actions should the DevOps engi neer perform so that the stack rollback can complet e successfully? (Choose two.)",
+        "options": [
+            "A. Attach the AWSCloudFormationFullAccess IAM policy  to the AWS CloudFormation role.",
+            "B. Automatically recover the stack resources by usin g AWS CloudFormation drift detection.",
+            "C. Issue a ContinueUpdateRollback command from the A WS CloudFormation console or the AWS CLI.",
+            "D. Manually adjust the resources to match the expect ations of the stack."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A development team manually builds an artifact loca lly and then places it in an Amazon S3 bucket. The application has a local cache that must be cleared when a deployment occurs. The team runs a command t o do this, downloads the artifact from Amazon S3, and un zips the artifact to complete the deployment. A DevOps team wants to migrate to a CI/CD process a nd build in checks to stop and roll back the deploy ment when a failure occurs. This requires the team to tr ack the progression of the deployment. Which combination of actions will accomplish this? (Choose three.)",
+        "options": [
+            "A. Allow developers to check the code into a code re pository. Using Amazon EventBridge, on every pull i nto",
+            "B. Create a custom script to clear the cache. Specif y the script in the BeforeInstall lifecycle hook in  the",
+            "C. Create user data for each Amazon EC2 instance tha t contains the clear cache script. Once deployed, t est",
+            "D. Set up AWS CodePipeline to deploy the application . Allow developers to check the code into a code"
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A DevOps engineer is working on a project that is h osted on Amazon Linux and has failed a security rev iew. The DevOps manager has been asked to review the com pany buildspec.yaml file for an AWS CodeBuild project and provide recommendations. The buildspec. yaml file is configured as follows: What changes should be recommended to comply with A WS security best practices? (Choose three.)",
+        "options": [
+            "A. Add a post-build command to remove the temporary files from the container before termination to ensu re",
+            "B.  Update the CodeBuild project role with the neces sary permissions and then remove the AWS credential s",
+            "C. Store the DB_PASSWORD as a SecureString value in AWS Systems Manager Parameter Store and then",
+            "D. Move the environment variables to the \u2018db-deploy- bucket\u2019 Amazon S3 bucket, add a prebuild stage to"
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company has a legacy application. A DevOps engine er needs to automate the process of building the deployable artifact for the legacy application. The  solution must store the deployable artifact in an existing Amazon S3 bucket for future deployments to referenc e. Which solution will meet these requirements in the MOST operationally efficient way?",
+        "options": [
+            "A. Create a custom Docker image that contains all th e dependencies for the legacy application. Store th e",
+            "B. Launch a new Amazon EC2 instance. Install all the  dependencies for the legacy application on the EC2",
+            "C. Create a custom EC2 Image Builder image. Install all the dependencies for the legacy application on the",
+            "D.  Create an Amazon Elastic Kubernetes Service (Ama zon EKS) cluster with an AWS Fargate profile that"
+        ],
+        "correct": "A. Create a custom Docker image that contains all th e dependencies for the legacy application. Store th e",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company builds a container image in an AWS CodeBu ild project by running Docker commands. After the container image is built, the CodeBuild project upl oads the container image to an Amazon S3 bucket. Th e CodeBuild project has an IAM service role that has permissions to access the S3 bucket. A DevOps engineer needs to replace the S3 bucket wi th an Amazon Elastic Container Registry (Amazon ECR ) repository to store the container images. The DevOp s engineer creates an ECR private image repository in the same AWS Region of the CodeBuild project. The DevOp s engineer adjusts the IAM service role with the permissions that are necessary to work with the new  ECR repository. The DevOps engineer also places ne w repository information into the docker build comman d and the docker push command that are used in the buildspec.yml file. When the CodeBuild project runs a build job, the jo b fails when the job tries to access the ECR reposi tory. Which solution will resolve the issue of failed acc ess to the ECR repository?",
+        "options": [
+            "A. Update the buildspec.yml file to log in to the EC R repository by using the aws ecr get-login-passwor d AWS",
+            "B. Add an environment variable of type SECRETS_MANAG ER to the CodeBuild project. In the environment",
+            "C.  Update the ECR repository to be a public image r epository. Add an ECR repository policy that allows  the",
+            "D. Update the buildspec.yml file to use the AWS CLI to assume the IAM service role for ECR operations. Add"
+        ],
+        "correct": "A. Update the buildspec.yml file to log in to the EC R repository by using the aws ecr get-login-passwor d AWS",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company manually provisions IAM access for its em ployees. The company wants to replace the manual process with an automated process. The company has an existing Active Directory system configured with  an external SAML 2.0 identity provider (IdP). The company wants employees to use their existing c orporate credentials to access AWS. The groups from  the existing Active Directory system must be available for permission management in AWS Identity and Acces s Management (IAM). A DevOps engineer has completed t he initial configuration of AWS IAM Identity Center (AWS Single Sign-On) in the company\u2019s AWS account. What should the DevOps engineer do next to meet the  requirements?",
+        "options": [
+            "A. Configure an external IdP as an identity source. Configure automatic provisioning of users and group s by",
+            "C.  Configure an AD Connector as an identity source.  Configure automatic provisioning of users and grou ps by",
+            "D. Configure an external IdP as an identity source C onfigure automatic provisioning of users and groups  by"
+        ],
+        "correct": "A. Configure an external IdP as an identity source. Configure automatic provisioning of users and group s by",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company is using AWS to run digital workloads. Ea ch application team in the company has its own AWS account for application hosting. The accounts are c onsolidated in an organization in AWS Organizations . The company wants to enforce security standards acr oss the entire organization. To avoid noncompliance because of security misconfiguration, the company h as enforced the use of AWS CloudFormation. A production support team can modify resources in the  production environment by using the AWS Management Console to troubleshoot and resolve application-rel ated issues. A DevOps engineer must implement a solution to iden tify in near real time any AWS service misconfigura tion that results in noncompliance. The solution must au tomatically remediate the issue within 15 minutes o f identification. The solution also must track noncom pliant resources and events in a centralized dashbo ard with accurate timestamps. Which solution will meet these requirements with th e LEAST development overhead?",
+        "options": [
+            "A.  Use CloudFormation drift detection to identify n oncompliant resources. Use drift detection events f rom",
+            "B. Turn on AWS CloudTrail in the AWS accounts. Analy ze CloudTrail logs by using Amazon Athena to identi fy",
+            "C. Turn on the configuration recorder in AWS Config in all the AWS accounts to identify noncompliant",
+            "D. Turn on AWS CloudTrail in the AWS accounts. Analy ze CloudTrail logs by using Amazon CloudWatch Logs"
+        ],
+        "correct": "C. Turn on the configuration recorder in AWS Config in all the AWS accounts to identify noncompliant",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company uses AWS Organizations to manage its AWS accounts. The organization root has an OU that is named Environments. The Environments OU has two chi ld OUs that are named Development and Production, respectively. The Environments OU and the child OUs have the defa ult FullAWSAccess policy in place. A DevOps enginee r plans to remove the FullAWSAccess policy from the D evelopment OU and replace the policy with a policy that allows all actions on Amazon EC2 resources. What will be the outcome of this policy replacement ?",
+        "options": [
+            "A. All users in the Development OU will be allowed a ll API actions on all resources.",
+            "B. All users in the Development OU will be allowed a ll API actions on EC2 resources. All other API acti ons will",
+            "C. All users in the Development OU will be denied al l API actions on all resources.",
+            "D. All users in the Development OU will be denied al l API actions on EC2 resources. All other API actio ns will"
+        ],
+        "correct": "B. All users in the Development OU will be allowed a ll API actions on EC2 resources. All other API acti ons will",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company is examining its disaster recovery capabi lity and wants the ability to switch over its daily  operations to a secondary AWS Region. The company uses AWS Cod eCommit as a source control tool in the primary Region. A DevOps engineer must provide the capability for t he company to develop code in the secondary Region.  If the company needs to use the secondary Region, deve lopers can add an additional remote URL to their lo cal Git configuration. Which solution will meet these requirements?",
+        "options": [
+            "A. Create a CodeCommit repository in the secondary R egion. Create an AWS CodeBuild project to perform a",
+            "B. Create an Amazon S3 bucket in the secondary Regio n. Create an AWS Fargate task to perform a Git mirr or",
+            "C.  Create an AWS CodeArtifact repository in the sec ondary Region. Create an AWS CodePipeline pipeline",
+            "D.  Create an AWS Cloud9 environment and a CodeCommi t repository in the secondary Region. Configure the"
+        ],
+        "correct": "B. Create an Amazon S3 bucket in the secondary Regio n. Create an AWS Fargate task to perform a Git mirr or",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "its production database. The DevOps team uses conti nuous integration to periodically verify that the a pplication works. The DevOps team needs to test the changes be fore the changes are deployed to the production database. Which solution will meet these requirements?",
+        "options": [
+            "A. A. Use a buildspec file in AWS CodeBuild to resto re the DB cluster from a snapshot of the production",
+            "B. Deploy the application to production. Configure a n audit log of data control language (DCL) operatio ns to",
+            "C. Create a snapshot of the DB cluster before deploy ing the application. Use the Update requires:Replac ement",
+            "D. Ensure that the DB cluster is a Multi-AZ deployme nt. Deploy the application with the updates. Fail o ver to"
+        ],
+        "correct": "A. A. Use a buildspec file in AWS CodeBuild to resto re the DB cluster from a snapshot of the production",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "A company manages a multi-tenant environment in its  VPC and has configured Amazon GuardDuty for the corresponding AWS account. The company sends all Gu ardDuty findings to AWS Security Hub. Traffic from suspicious sources is generating a lar ge number of findings. A DevOps engineer needs to implement a solution to automatically deny traffic across the entire VPC when GuardDuty discovers a ne w suspicious source. Which solution will meet these requirements?",
+        "options": [
+            "A.  Create a GuardDuty threat list. Configure GuardD uty to reference the list. Create an AWS Lambda fun ction",
+            "B. Configure an AWS WAF web ACL that includes a cust om rule group. Create an AWS Lambda function that",
+            "C. Configure a firewall in AWS Network Firewall. Cre ate an AWS Lambda function that will create a Drop",
+            "D. Create an AWS Lambda function that will create a GuardDuty suppression rule. Configure the Lambda"
+        ],
+        "correct": "B. Configure an AWS WAF web ACL that includes a cust om rule group. Create an AWS Lambda function that",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    }
+]
