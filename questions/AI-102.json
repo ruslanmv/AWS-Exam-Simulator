@@ -1,0 +1,2346 @@
+[
+    {
+        "question": "DRAG DROP You are developing the smart e-commerce project. You need to design the skillset to include the cont ents of PDFs in searches. How should you complete the skillset design diagram ? To answer, drag the appropriate services to the correct stages. Each service may be used once, more than once, or not at all. You may need to drag the split bar between panes or scroll to view content. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Box 1: Azure Blob storage At the start of the pipeline, you have unstructured  text or non-text content (such as images, scanned documents, or JPEG files). Data must exist in an Az ure data storage service that can be accessed by an indexer. Box 2: Computer Vision API Scenario: Provide users with the ability to search insight gained from the images, manuals, and videos associated with the products. The Computer Vision Read API is Azure's latest OCR technology (learn what's new) that extracts printed text (in several languages), handwritten te xt (English only), digits, and currency symbols fro m images and multi-page PDF documents. Box 3: Translator API Scenario: Product descriptions, transcripts, and al l text must be available in English, Spanish, and Portuguese. Box 4: Azure Files Scenario: Store all raw insight data that was gener ated, so the data can be processed later. Incorrect Answers: The custom vision API from Microsoft Azure learns t o recognize specific content in imagery and becomes smarter with training and time.",
+        "references": "https://docs.microsoft.com/en-us/azure/search/cogni tive-search-concept-intro https://docs.microsoft.com/en-us/azure/cognitive-se rvices/computer-vision/overview-ocr"
+    },
+    {
+        "question": "DRAG DROP You are planning the product creation project. You need to recommend a process for analyzing video s. Which four actions should you perform in sequence? To answer, move the appropriate actions from the list of actions to the answer area and arrange them in the correct order. (Choose four.) A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference: Scenario: All videos must have transcripts that are  associated to the video and included in product descriptions. Product descriptions, transcripts, and all text mus t be available in English, Spanish, and Portuguese. Step 1: Upload the video to blob storage Given a video or audio file, the file is first drop ped into a Blob Storage. T Step 2: Index the video by using the Video Indexer API. When a video is indexed, Video Indexer produces the  JSON content that contains details of the specified video insights. The insights include: tra nscripts, OCRs, faces, topics, blocks, etc. Step 3: Extract the transcript from the Video Index er API. Step 4: Translate the transcript by using the Trans lator API.",
+        "references": "https://azure.microsoft.com/en-us/blog/get-video-in sights-in-even-more-languages/ https://docs.microsoft.com/en-us/azure/media-servic es/video-indexer/video-indexer-output-jsonv2"
+    },
+    {
+        "question": "HOTSPOT You are planning the product creation project. You need to build the REST endpoint to create the m ultilingual product descriptions. How should you complete the URI? To answer, select the appropriate options in the answer area. NOTE: Each correct selection is worth one point. A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Box 1: api-nam.cognitive.microsofttranslator.com https://docs.microsoft.com/en-us/azure/cognitive-se rvices/translator/reference/v3-0-reference Box 2: /translate",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/translator/reference/v3-0-translate"
+    },
+    {
+        "question": "You are developing the smart e-commerce project. You need to implement autocompletion as part of the  Cognitive Search solution. Which three actions should you perform? Each correc t answer presents part of the solution. (Choose three.) NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A. Make API queries to the autocomplete endpoint and  include suggesterName in the body.",
+            "B. Add a suggester that has the three product name f ields as source fields.",
+            "C. Make API queries to the search endpoint and inclu de the product name fields in the searchFields",
+            "D. Add a suggester for each of the three product nam e fields."
+        ],
+        "correct": "",
+        "explanation": "Scenario: Support autocompletion and autosuggestion  based on all product name variants. A: Call a suggester-enabled query, in the form of a  Suggestion request or Autocomplete request, using an API. API usage is illustrated in the follo wing call to the Autocomplete REST API. POST /indexes/myxboxgames/docs/autocomplete?search& api-version=2020-06-30 { \"search\": \"minecraf\", \"suggesterName\": \"sg\" } B: In Azure Cognitive Search, typeahead or \"search- as-you-type\" is enabled through a suggester. A suggester provides a list of fields that undergo ad ditional tokenization, generating prefix sequences to support matches on partial terms. For example, a  suggester that includes a City field with a value for \"Seattle\" will have prefix combinations of \"sea \", \"seat\", \"seatt\", and \"seattl\" to support typeahead. F. Use the default standard Lucene analyzer (\"analy zer\": null) or a language analyzer (for example, \"analyzer\": \"en.Microsoft\") on the field.",
+        "references": "https://docs.microsoft.com/en-us/azure/search/index -add-suggesters"
+    },
+    {
+        "question": "HOTSPOT You are developing the shopping on-the-go project. You are configuring access to the QnA Maker resourc es. Which role should you assign to AllUsers and Leader shipTeam? To answer, select the appropriate options in the answer area. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D. Correct Answer:"
+        ],
+        "correct": "",
+        "explanation": "Box 1: QnA Maker Editor Scenario: Provide all employees with the ability to  edit Q&As. The QnA Maker Editor (read/write) has the following  permissions: Create KB API Update KB API Replace KB API Replace Alterations \"Train API\" [in new service model v5] Box 2: Contributor Scenario: Only senior managers must be able to publ ish updates. Contributor permission: All except ability to add n ew members to roles",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/qnamaker/reference-role-based-accesscontrol"
+    },
+    {
+        "question": "HOTSPOT You need to develop code to upload images for the p roduct creation project. The solution must meet the accessibility requirements. How should you complete the code? To answer, select  the appropriate options in the answer area. NOTE: Each correct selection is worth one point. A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": "https://github.com/Azure-Samples/cognitive-services -dotnet-sdksamples/ blob/master/documentation-samples/quickstarts/Compu terVision/Program.cs"
+    },
+    {
+        "question": "HOTSPOT You are developing the shopping on-the-go project. You need to build the Adaptive Card for the chatbot . How should you complete the code? To answer, select  the appropriate options in the answer area. NOTE: Each correct selection is worth one point. A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Box 1: name.en Box 2: \"$when\": \"${stockLevel != 'OK'}\" Product displays must include images and warnings w hen stock levels are low or out of stock. Box 3:image.altText.en New Topic: Topic 2, Contoso, Ltd. Case Study This is a case study Case studies are not timed sep arately. You can use as much exam time as you would like to complete each case. However, there ma y be additional case studies and sections on this exam. You must manage your time to ensure that  you are able to complete all questions included on this exam in the time provided. To answer the questions included in a case study, y ou will need to reference information that is provided in the case study. Case studies might cont ain exhibits and other resources that provide more information about the scenario that is describ ed in the case study. Each question is independent of the other questions in this case stu dy. At the end of this case study, a review screen will  appear. This screen allows you to review your answers and to make changes before you move to the next section of the exam. After you begin a new section, you cannot return to this section. To start the case study To display the first question in this case study, c lick the Next button. Use the buttons in the left p ane to explore the content of the case study before you  answer the questions. Clicking these buttons displays information such as business requirements,  existing environment, and problem statements. If the case study has an All Information tab. note that the information displayed is identical to the information displayed on the subsequent tabs. When you are ready to answer a question, click the Question button to return to the question. General Overview Contoso, Ltd. is an international accounting compan y that has offices in France. Portugal, and the United Kingdom. Contoso has a professional services  department that contains the roles shown in the following table. Infrastructure Contoso has the following subscriptions: Azure Microsoft 365 Microsoft Dynamics 365 Azure Active (Azure AD) Directory Contoso has Azure Active Directory groups for secur ing role-based access. The company uses the following group naming conventions: ICountryJ-[Levell-[Role] [Level]-[Role] Intellectual Property Contoso has the intellectual property shown in the following table. Text-based content is provided only in one language  and is not translated. Planned Projects Contoso plans to develop the following: A document processing workflow to extract informati on automatically from PDFs and images of financial documents A customer-support chatbot that will answer questio ns by using FAQs A searchable knowledgebase of all the intellectual property Technical Requirements Contoso identifies the following technical requirem ents: All content must be approved before being published . All planned projects must support English, French, and Portuguese. All content must be secured by using role-based acc ess control (RBAC). RBAC role assignments must use the principle of lea st privilege. RBAC roles must be assigned only to Azure Active Di rectory groups. Al solution responses must have a confidence score that is equal to or greater than 70 percent. When the response confidence score of an Al respons e is lower than 70 percent, the response must be improved by human input. Chatbot Requirements Contoso identifies the following requirements for t he chatbot: Provide customers with answers to the FAQs. Ensure that the customers can chat to a customer se rvice agent. Ensure that the members of a group named Management -Accountants can approve the FAQs. Ensure that the members of a group named Consultant -Accountants can create and amend the FAQs. Ensure that the members of a group named the Agent- CustomerServices can browse the FAQs. Ensure that access to the customer service agents i s managed by using Omnichannel for Customer Service. When the response confidence score is low. ensure t hat the chatbot can provide other response options to the customers. Document Processing Requirements Contoso identifies the following requirements for d ocument processing: The document processing solution must be able to pr ocess standardized financial documents that have the following characteristics: Contain fewer than 20 pages. Be formatted as PDF or JPEG files. Have a distinct standard for each office. The document processing solution must be able to ex tract tables and text from the financial documents. The document processing solution must be able to ex tract information from receipt images. Members of a group named Management-Bookkeeper must  define how to extract tables from the financial documents. Members of a group named Consultant-Bookkeeper must  be able to process the financial documents. Knowledgebase Requirements Contoso identifies the following requirements for t he knowledgebase: Supports searches for equivalent terms Can transcribe jargon with high accuracy Can search content in different formats, including video Provides relevant links to external resources for f urther research",
+        "references": ""
+    },
+    {
+        "question": "You need to develop an extract solution for the rec eipt images. The solution must meet the document processing requirements and the technical requirements. You upload the receipt images to the From Recognize r API for analysis, and the API returns the following JSON. Which expression should you use to trigger a manual  review of the extracted information by a member of the Consultant-Bookkeeper group?",
+        "options": [
+            "A. documentResults.docType == \"prebuilt:receipt\"",
+            "B. documentResults.fields.\".confidence < 0.7 C. documentResults.fields.ReceiptType.confidence > 0.7",
+            "D. documentResults.fields.MerchantName.confidence < 0.7"
+        ],
+        "correct": "",
+        "explanation": "Need to specify the field name, and then use < 0.7 to handle trigger if confidence score is less than 70%.",
+        "references": "https://docs.microsoft.com/en-us/azure/applied-ai-s ervices/form-recognizer/api-v2-0/referencesdk- api-v2-0"
+    },
+    {
+        "question": "HOTSPOT You are developing the knowledgebase by using Azure  Cognitive Search. You need to build a skill that will be used by inde xers. How should you complete the code? To answer, select  the appropriate options in the answer area. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Box 1: \"categories\": [\"Locations\", \"Persons\", \"Orga nizations\"], Locations, Persons, Organizations are in the output s. Scenario: Contoso plans to develop a searchable kno wledgebase of all the intellectual property Note: The categories parameter is an array of categ ories that should be extracted. Possible category types: \"Person\", \"Location\", \"Organization\", \"Quant ity\", \"Datetime\", \"URL\", \"Email\". If no category is provided, all types are returned. Box 2: {\"name\": \" entities\"} The include wikis, so should include entities in th e outputs. Note: entities is an array of complex types that co ntains rich information about the entities extracte d from text, with the following fields name (the actual entity name. This represents a \"no rmalized\" form) wikipediaId wikipediaLanguage wikipediaUrl (a link to Wikipedia page for the enti ty) etc.",
+        "references": "https://docs.microsoft.com/en-us/azure/search/cogni tive-search-skill-entity-recognition"
+    },
+    {
+        "question": "You are developing the chatbot. You create the following components: A QnA Maker resource A chatbot by using the Azure Bot Framework SDK You need to add an additional component to meet the  technical requirements and the chatbot requirements. What should you add?",
+        "options": [
+            "A. Dispatch",
+            "B. chatdown",
+            "C. Language Understanding",
+            "D. Microsoft Translator"
+        ],
+        "correct": "A. Dispatch",
+        "explanation": "Scenario: All planned projects must support English , French, and Portuguese. If a bot uses multiple LUIS models and QnA Maker kn owledge bases (knowledge bases), you can use the Dispatch tool to determine which LUIS model or QnA Maker knowledge base best matches the user input. The dispatch tool does this by creating  a single LUIS app to route user input to the corre ct model.",
+        "references": "https://docs.microsoft.com/en-us/azure/bot-service/ bot-builder-tutorial-dispatch"
+    },
+    {
+        "question": "You are developing the document processing workflow . You need to identify which API endpoints to use to extract text from the financial documents. The solution must meet the document processing requirem ents. Which two API endpoints should you identify? Each c orrect answer presents part of the solution. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A. /vision/v3.2/read/analyzeResults",
+            "B. /formrecognizer/v2.0/prebuilt/receipt/analyze C. /vision/v3.2/read/analyze",
+            "D. /vision/v3.2/describe"
+        ],
+        "correct": "",
+        "explanation": "C: Analyze Receipt - Get Analyze Receipt Result. Query the status and retrieve the result of an Anal yze Receipt operation. Request URL: https://{endpoint}/formrecognizer/v2.0 - preview/prebuilt/receipt/analyzeResults/{resultId} E: POST {Endpoint}/vision/v3.2/read/analyze Use this interface to get the result of a Read oper ation, employing the state-of-the-art Optical Character Recognition (OCR) algorithms optimized fo r text-heavy documents. Scenario: Contoso plans to develop a document proce ssing workflow to extract information automatically from PDFs and images of financial doc uments The document processing solution must be able to pr ocess standardized financial documents that have the following characteristics: - Contain fewer than 20 pages. - Be formatted as PDF or JPEG files. - Have a distinct standard for each office. *The document processing solution must be able to e xtract tables and text from the financial documents. The document processing solution must be able to ex tract information from receipt images.",
+        "references": "https://westus2.dev.cognitive.microsoft.com/docs/se rvices/form-recognizer-api-v2- preview/operations/GetAnalyzeReceiptResult https://docs.microsoft.com/en-us/rest/api/computerv ision.1/read/read"
+    },
+    {
+        "question": "You are developing the chatbot. You create the following components: * A QnA Maker resource * A chatbot by using the Azure Bot Framework SDK. You need to integrate the components to meet the ch atbot requirements. Which property should you use?",
+        "options": [
+            "A. QnADialogResponseOptions.CardNoMatchText",
+            "B. Qna MakerOptions-ScoreThreshold",
+            "C. Qna Maker Op t ions StrickFilters",
+            "D. QnaMakerOptions.RankerType"
+        ],
+        "correct": "D. QnaMakerOptions.RankerType",
+        "explanation": "Scenario: When the response confidence score is low , ensure that the chatbot can provide other response options to the customers. When no good match is found by the ranker, the conf idence score of 0.0 or \"None\" is returned and the default response is \"No good match found in the  KB\". You can override this default response in the bot or application code calling the endpoint. A lternately, you can also set the override response in Azure and this changes the default for all knowl edge bases deployed in a particular QnA Maker service. Choosing Ranker type: By default, QnA Maker searche s through questions and answers. If you want to search through questions only, to generate an an swer, use the RankerType=QuestionOnly in the POST body of the GenerateAnswer request.",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/qnamaker/concepts/best-practices"
+    },
+    {
+        "question": "HOTSPOT You build a QnA Maker resource to meet the chatbot requirements. Which RBAC role should you assign to each group? To  answer, select the appropriate options in the answer area. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Box 1: Cognitive Service User Ensure that the members of a group named Management -Accountants can approve the FAQs. Approve=publish. Cognitive Service User (read/write/publish): API pe rmissions: All access to Cognitive Services resource except for ability to: 1. Add new members to roles. 2. Create new resources. Box 2: Cognitive Services QnA Maker Editor Ensure that the members of a group named Consultant -Accountants can create and amend the FAQs. QnA Maker Editor: API permissions: 1. Create KB API 2. Update KB API 3. Replace KB API 4. Replace Alterations 5. \"Train API\" [in new service model v5] Box 3: Cognitive Services QnA Maker Read Ensure that the members of a group named the Agent- CustomerServices can browse the FAQs. QnA Maker Read: API Permissions: 1. Download KB API 2. List KBs for user API 3. Get Knowledge base details 4. Download Alterations Generate Answer",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/qnamaker/concepts/role-based-accesscontrol"
+    },
+    {
+        "question": "DRAG DROP You are developing a solution for the Management-Bo okkeepers group to meet the document processing requirements. The solution must contain the following components: A From Recognizer resource An Azure web app that hosts the Form Recognizer sam ple labeling tool The Management-Bookkeepers group needs to create a custom table extractor by using the sample labeling tool. Which three actions should the Management-Bookkeepe rs group perform in sequence? To answer, move the appropriate cmdlets from the list of cmdle ts to the answer area and arrange them in the correct order.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Step 1: Create a new project and load sample docume nts Create a new project. Projects store your configura tions and settings. Step 2: Label the sample documents When you create or open a project, the main tag edi tor window opens. Step 3: Train a custom model. Finally, train a custom model.",
+        "references": "https://docs.microsoft.com/en-us/azure/applied-ai-s ervices/form-recognizer/label-tool"
+    },
+    {
+        "question": "You are developing the knowledgebase. You use Azure Video Analyzer for Media (previously Video indexer) to obtain transcripts of webinars. You need to ensure that the solution meets the know ledgebase requirements. What should you do?",
+        "options": [
+            "A. Create a custom language model",
+            "B. Configure audio indexing for videos only",
+            "C. Enable multi-language detection for videos",
+            "D. Build a custom Person model for webinar presenter s"
+        ],
+        "correct": "B. Configure audio indexing for videos only",
+        "explanation": "Can search content in different formats, including video Audio and video insights (multi-channels). When ind exing by one channel, partial result for those models will be available. Keywords extraction: Extracts keywords from speech and visual text. Named entities extraction: Extracts brands, locatio ns, and people from speech and visual text via natural language processing (NLP). Topic inference: Makes inference of main topics fro m transcripts. The 2nd-level IPTC taxonomy is included. Artifacts: Extracts rich set of \"next level of deta ils\" artifacts for each of the models. Sentiment analysis: Identifies positive, negative, and neutral sentiments from speech and visual text.",
+        "references": "https://docs.microsoft.com/en-us/azure/azure-video- analyzer/video-analyzer-for-media-docs/videoindexer - overview"
+    },
+    {
+        "question": "You are developing the knowledgebase by using Azure  Cognitive Search. You need to process wiki content to meet the techni cal requirements. What should you include in the solution?",
+        "options": [
+            "A. an indexer for Azure Blob storage attached to a s killset that contains the language detection skill and the",
+            "B. an indexer for Azure Blob storage attached to a s killset that contains the language detection skill",
+            "C. an indexer for Azure Cosmos DB attached to a skil lset that contains the document extraction skill an d the",
+            "D. an indexer for Azure Cosmos DB attached to a skil lset that contains the language detection skill and  the text"
+        ],
+        "correct": "C. an indexer for Azure Cosmos DB attached to a skil lset that contains the document extraction skill an d the",
+        "explanation": "The wiki contains text in English, French and Portu guese. Scenario: All planned projects must support English , French, and Portuguese. The Document Extraction skill extracts content from  a file within the enrichment pipeline. This allows you to take advantage of the document extraction st ep that normally happens before the skillset execution with files that may be generated by other  skills. Note: The Translator Text API will be used to deter mine the from language. The Language detection skill is not required.",
+        "references": "https://docs.microsoft.com/en-us/azure/search/cogni tive-search-skill-document-extraction https://docs.microsoft.com/en-us/azure/search/cogni tive-search-skill-text-translation"
+    },
+    {
+        "question": "You are developing the knowledgebase by using Azure  Cognitive Search. You need to meet the knowledgebase requirements for  searching equivalent terms. What should you include in the solution?",
+        "options": [
+            "A. synonym map",
+            "B. a suggester",
+            "C. a custom analyzer",
+            "D. a built-in key phrase extraction skill"
+        ],
+        "correct": "A. synonym map",
+        "explanation": "Within a search service, synonym maps are a global resource that associate equivalent terms, expanding the scope of a query without the user hav ing to actually provide the term. For example, assuming \"dog\", \"canine\", and \"puppy\" are mapped sy nonyms, a query on \"canine\" will match on a document containing \"dog\". Create synonyms: A synonym map is an asset that can  be created once and used by many indexes.",
+        "references": "https://docs.microsoft.com/en-us/azure/search/searc h-synonyms New Topic: Topic 3, Misc. Questions"
+    },
+    {
+        "question": "DRAG DROP You have 100 chatbots that each has its own Languag e Understanding model. Frequently, you must add the same phrases to each m odel. You need to programmatically update the Language Un derstanding models to include the new phrases. How should you complete the code? To answer, drag t he appropriate values to the correct targets. Each value may be used once, more than once, or not  at all. You may need to drag the split bar between panes or scroll to view content. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference: Box 1: AddPhraseListAsync Example: Add phraselist feature var phraselistId = await client.Features.AddPhraseL istAsync(appId, versionId, new PhraselistCreateObject { EnabledForAllModels = false, IsExchangeable = true, Name = \"QuantityPhraselist\", Phrases = \"few,more,extra\" }); Box 2: PhraselistCreateObject",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/luis/client-libraries-rest-api"
+    },
+    {
+        "question": "DRAG DROP You plan to use a Language Understanding applicatio n named app1 that is deployed to a container. App1 was developed by using a Language Understandin g authoring resource named lu1. App1 has the versions shown in the following table. You need to create a container that uses the latest  deployable version of app1. Which three actions should you perform in sequence?  To answer, move the appropriate actions from the list of actions to the answer area and arrange them in the correct order. (Choose three.) A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference: Step 1: Export the model using the Export for conta iners (GZIP) option. Export versioned app's package from LUIS portal The versioned app's package is available from the V ersions list page. Sign on to the LUIS portal. Select the app in the list. Select Manage in the app's navigation bar. Select Versions in the left navigation bar. Select the checkbox to the left of the version name  in the list. Select the Export item from the contextual toolbar above the list. Select Export for container (GZIP). The package is downloaded from the browser. Step 2: Select v1.1 of app1. A trained or published app packaged as a mounted in put to the container with its associated App ID. Step 3: Run a contain and mount the model file. Run the container, with the required input mount an d billing settings.",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/luis/luis-container-howto"
+    },
+    {
+        "question": "You need to build a chatbot that meets the followin g requirements: Supports chit-chat, knowledge base, and multilingua l models Performs sentiment analysis on user messages Selects the best language model automatically What should you integrate into the chatbot?",
+        "options": [
+            "A. QnA Maker, Language Understanding, and Dispatch",
+            "B. Translator, Speech, and Dispatch",
+            "C. Language Understanding, Text Analytics, and QnA M aker",
+            "D. Text Analytics, Translator, and Dispatch",
+            "A. Custom Vision",
+            "B. Personalizer",
+            "C. Form Recognizer",
+            "D. Computer Vision"
+        ],
+        "correct": "C. Form Recognizer",
+        "explanation": "Azure Form Recognizer is a cognitive service that l ets you build automated data processing software using machine learning technology. Identify and ext ract text, key/value pairs, selection marks, tables , relationships in the original file, bounding boxes,  confidence and more. Form Recognizer is composed of custom document proc essing models, prebuilt models for invoices, receipts, IDs and business cards, and the layout mo del.",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/form-recognizer"
+    },
+    {
+        "question": "HOTSPOT You need to create a new resource that will be used  to perform sentiment analysis and optical character recognition (OCR). The solution must meet  the following requirements: Use a single key and endpoint to access multiple se rvices. Consolidate billing for future services that you mi ght use. Support the use of Computer Vision in the future. How should you complete the HTTP request to create the new resource? To answer, select the appropriate options in the answer area. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Box 1: PUT Sample Request: PUT https://management.azure.com/su bscriptions/00000000-0000-0000-0000- 000000000000/resourceGroups/test-rg/providers/Micro soft.DeviceUpdate/accounts/contoso?apiversion= 2020-03-01-preview Incorrect Answers: PATCH is for updates. Box 2: CognitiveServices Microsoft Azure Cognitive Services provide us to us e its pre-trained models for various Business Problems related to Machine Learning. List of Different Services are: Decision Language (includes sentiment analysis) Speech Vision (includes OCR) Web Search",
+        "references": "https://docs.microsoft.com/en-us/rest/api/deviceupd ate/resourcemanager/accounts/create https://www.analyticsvidhya.com/blog0/microsoft-azu re-cognitive-services-api-for-aidevelopment/"
+    },
+    {
+        "question": "You are developing a new sales system that will pro cess the video and text from a public-facing website. You plan to monitor the sales system to ensure that  it provides equitable results regardless of the user's location or background. Which two responsible AI principles provide guidanc e to meet the monitoring requirements? Each correct answer presents part of the solution. (Choo se two.) NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A. transparency",
+            "B. fairness",
+            "C. inclusiveness",
+            "D. reliability and safety"
+        ],
+        "correct": "",
+        "explanation": "https://docs.microsoft.com/en-us/learn/modules/get- started-ai-fundamentals-understandresponsible- ai",
+        "references": ""
+    },
+    {
+        "question": "DRAG DROP You plan to use containerized versions of the Anoma ly Detector API on local devices for testing and in on-premises datacenters. You need to ensure that the containerized deploymen ts meet the following requirements: Prevent billing and API information from being stor ed in the command-line histories of the devices that run the container. Control access to the container images by using Azu re role-based access control (Azure RBAC). Which four actions should you perform in sequence? To answer, move the appropriate actions from the list of actions to the answer area and arrange them in the correct order. (Choose four.) NOTE: More than one order of answer choices is corr ect. You will receive credit for any of the correct orders you select. A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Step 1: Pull the Anomaly Detector container image. Step 2: Create a custom Dockerfile Step 3: Build the image Step 4: Push the image to an Azure container regist ry. https://docs.microsoft.com/en-us/azure/cognitive-se rvices/containers/container-reuse-recipe",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT You plan to deploy a containerized version of an Az ure Cognitive Services service that will be used fo r text analysis. You configure https://contoso.cognitiveservices.azu re.com as the endpoint URI for the service, and you pull the latest version of the Text Analytics S entiment Analysis container. You need to run the container on an Azure virtual m achine by using Docker. How should you complete the command? To answer, sel ect the appropriate options in the answer area. NOTE: Each correct selection is worth one point. A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference: Box 1: mcr.microsoft.com/azure-cognitive-services/t extanalytics/sentiment To run the Sentiment Analysis v3 container, execute  the following docker run command. docker run --rm -it -p 5000:5000 --memory 8g --cpus  1 \\ mcr.microsoft.com/azure-cognitive-services/textanal ytics/sentiment \\ Eula=accept \\ Billing={ENDPOINT_URI} \\ ApiKey={API_KEY} is the endpoint for accessing the Text Analytics API. https://<your-customsubdomain>. cognitiveservices.azure.com Box 2: https://contoso.cognitiveservices.azure.com {ENDPOINT_URI} is the endpoint for accessing the Te xt Analytics API: https://<your-customsubdomain>. cognitiveservices.a The endpoint for accessing the Text Analytics API. zure.com",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/text-analytics/how-tos/text-analyticshow- to-install-containers?tabs=sentiment"
+    },
+    {
+        "question": "You have the following C# method for creating Azure  Cognitive Services resources programmatically. You need to call the method to create a free Azure resource in the West US Azure region. The resource will be used to generate captions of image s automatically. Which code should you use?",
+        "options": [
+            "A. create_resource(client, \"res1\", \"ComputerVision\",  \"F0\", \"westus\")",
+            "B. create_resource(client, \"res1\", \"CustomVision.Pre diction\", \"F0\", \"westus\")",
+            "C. create_resource(client, \"res1\", \"ComputerVision\",  \"S0\", \"westus\")",
+            "D. create_resource(client, \"res1\", \"CustomVision.Pre diction\", \"S0\", \"westus\")"
+        ],
+        "correct": "A. create_resource(client, \"res1\", \"ComputerVision\",  \"F0\", \"westus\")",
+        "explanation": "https://azure.microsoft.com/en-us/pricing/details/c ognitive-services/computer-vision/",
+        "references": ""
+    },
+    {
+        "question": "You successfully run the following HTTP request. POST https://management.azure.com/subscriptionsc51a 87-3a69-47a8-aedca54745f708a1/ resourceGroups/RG1/providers/Microsoft.CognitiveSer vices/accounts/contosol/rege nerateKey?api-version=2017-04-18 Body{\"keyName\": \"Key2\"} What is the result of the request?",
+        "options": [
+            "A. A key for Azure Cognitive Services was generated in Azure Key Vault.",
+            "B. A new query key was generated.",
+            "C. The primary subscription key and the secondary su bscription key were rotated.",
+            "D. The secondary subscription key was reset."
+        ],
+        "correct": "B. A new query key was generated.",
+        "explanation": "https://docs.microsoft.com/en-us/rest/api/searchman agement1-04-01-preview/querykeys/ create",
+        "references": ""
+    },
+    {
+        "question": "You build a custom Form Recognizer model. You receive sample files to use for training the mo del as shown in the following table. Which three files can you use to train the model? E ach correct answer presents a complete solution. (Choose three.) NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A. File1",
+            "B. File2",
+            "C. File3",
+            "D. File4"
+        ],
+        "correct": "",
+        "explanation": "Input requirements Form Recognizer works on input documents that meet these requirements: Format must be JPG, PNG, PDF (text or scanned), or TIFF. Text-embedded PDFs are best because there's no possibility of error in character extrac tion and location. File size must be less than 50 MB.",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/form-recognizer/overview"
+    },
+    {
+        "question": "You have a Video Indexer service that is used to pr ovide a search interface over company videos on your company's website. You need to be able to search for videos based on w ho is present in the video. What should you do?",
+        "options": [
+            "A. Create a person model and associate the model to the videos.",
+            "B. Create person objects and provide face images for  each object.",
+            "C. Invite the entire staff of the company to Video I ndexer.",
+            "D. Edit the faces in the videos."
+        ],
+        "correct": "A. Create a person model and associate the model to the videos.",
+        "explanation": "Video Indexer supports multiple Person models per a ccount. Once a model is created, you can use it by providing the model ID of a specific Person mode l when uploading/indexing or reindexing a video. Training a new face for a video updates the specifi c custom model that the video was associated with. Note: Video Indexer supports face detection and cel ebrity recognition for video content. The celebrity recognition feature covers about one mill ion faces based on commonly requested data source such as IMDB, Wikipedia, and top LinkedIn in fluencers. Faces that aren't recognized by the celebrity recognition feature are detected but left  unnamed. Once you label a face with a name, the face and name get added to your account's Person mo del. Video Indexer will then recognize this face in your future videos and past videos.",
+        "references": "https://docs.microsoft.com/en-us/azure/media-servic es/video-indexer/customize-person-modelwith-api"
+    },
+    {
+        "question": "You use the Custom Vision service to build a classi fier. After training is complete, you need to evaluate th e classifier. Which two metrics are available for review? Each co rrect answer presents a complete solution. (Choose two.) NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A. recall",
+            "B. F-score",
+            "C. weighted accuracy",
+            "D. precision"
+        ],
+        "correct": "",
+        "explanation": "Custom Vision provides three metrics regarding the performance of your model: precision, recall, and AP.",
+        "references": "https://www.tallan.com/blog0/05/azure-custom-vision /"
+    },
+    {
+        "question": "DRAG DROP You are developing a call to the Face API. The call  must find similar faces from an existing list name d employeefaces. The employeefaces list contains 60,0 00 images. How should you complete the body of the HTTP reques t? To answer, drag the appropriate values to the correct targets. Each value may be used once, m ore than once, or not at all. You may need to drag the split bar between panes or scroll to view content. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference: Box 1: LargeFaceListID LargeFaceList: Add a face to a specified large face  list, up to 1,000,000 faces. Note: Given query face's faceId, to search the simi lar-looking faces from a faceId array, a face list or a large face list. A \"faceListId\" is created by FaceL ist - Create containing persistedFaceIds that will not expire. And a \"largeFaceListId\" is created by Large FaceList - Create containing persistedFaceIds that will also not expire. Incorrect Answers: Not \"faceListId\": Add a face to a specified face li st, up to 1,000 faces. Box 2: matchFace Find similar has two working modes, \"matchPerson\" a nd \"matchFace\". \"matchPerson\" is the default mode that it tries to find faces of the same person  as possible by using internal same-person thresholds. It is useful to find a known person's o ther photos. Note that an empty list will be returned if no faces pass the internal thresholds. \"matchFace\" mode ignores same-person thresholds and returns ranked similar faces anyway, even the s imilarity is low. It can be used in the cases like searching celebrity-looking faces.",
+        "references": "https://docs.microsoft.com/en-us/rest/api/faceapi/f ace/findsimilar"
+    },
+    {
+        "question": "DRAG DROP You are developing a photo application that will fi nd photos of a person based on a sample image by using the Face API. You need to create a POST request to find the photo s. How should you complete the request? To answer, dra g the appropriate values to the correct targets. Each value may be used once, more than once, or not  at all. You may need to drag the split bar between panes or scroll to view content. NOTE: Each correct selection is worth one point. A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Box 1: findsimilars https://docs.microsoft.com/en-us/rest/api/faceapi/f ace/find-similar Box 2: matchPerson Find similar has two working modes, \"matchPerson\" a nd \"matchFace\". \"matchPerson\" is the default mode that it tries to find faces of the same person  as possible by using internal same-person thresholds. It is useful to find a known person's o ther photos. Note that an empty list will be returned if no faces pass the internal thresholds. \"matchFace\" mode ignores same-person thresholds and returns ranked similar faces anyway, even the s imilarity is low. It can be used in the cases like searching celebrity-looking faces.",
+        "references": "https://docs.microsoft.com/en-us/rest/api/faceapi/f ace/detectwithurl https://docs.microsoft.com/en-us/rest/api/faceapi/f ace/findsimilar"
+    },
+    {
+        "question": "HOTSPOT You develop a test method to verify the results ret rieved from a call to the Computer Vision API. The call is used to analyze the existence of company lo gos in images. The call returns a collection of brands named brands. You have the following code segment. For each of the following statements, select Yes if  the statement is true. Otherwise, select No. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Box 1: Yes Box 2: No Box 3: No",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/computer-vision/concept-detectingfaces"
+    },
+    {
+        "question": "HOTSPOT You develop an application that uses the Face API. You need to add multiple images to a person group. How should you complete the code? To answer, select  the appropriate options in the answer area. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A.",
+            "B.",
+            "C. D."
+        ],
+        "correct": "",
+        "explanation": "Box 1: Stream The File.OpenRead(String) method opens an existing file for reading. Example: Open the stream and read it back. using (FileStream fs = File.OpenRead(path)) Box 2: AddFaceFromStreamAsync Step 5 on https://docs.microsoft.com/en-us/azure/co gnitive-services/face/face-api-how-totopics/ how-to-add-faces",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT You are developing an application that will use the  Computer Vision client library. The application ha s the following code. For each of the following statements, select Yes if  the statement is true. Otherwise, select No. NOTE: Each correct selection is worth one point. A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Box 1: No Box 2: Yes Box 3: Yes",
+        "references": ""
+    },
+    {
+        "question": "You are developing a method that uses the Computer Vision client library. The method will perform optical character recognition (OCR) in images. The method has the following code. During testing, you discover that the call to the G etReadResultAsync method occurs before the read operation is complete. You need to prevent the GetReadResultAsync method f rom proceeding until the read operation is complete. Which two actions should you perform? Each correct answer presents part of the solution. (Choose two.) NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A. Remove the Guid.Parse(operationId) parameter.",
+            "B. Add code to verify the results.Status value.",
+            "C. Add code to verify the status of the txtHeaders.S tatus value.",
+            "D. Wrap the call to GetReadResultAsync within a loop  that contains a delay.",
+            "A. machine learned",
+            "B. Regex",
+            "C. geographyV2",
+            "D. Pattern.any"
+        ],
+        "correct": "A. machine learned",
+        "explanation": "An ML entity can be composed of smaller sub-entitie s, each of which can have its own properties. For example, Address could have the following struc ture: Address: 4567 Main Street, NY, 98052, USA Building Number: 4567 Street Name: Main Street State: NY Zip Code: 98052 Country: USA https://docs.microsoft.com/en-us/azure/cognitive-se rvices/luis/luis-concept-entity-types",
+        "references": "https://github.com/Azure-Samples/cognitive-services -quickstartcode/ blob/master/dotnet/ComputerVision/ComputerVisionQui ckstart.cs QUESTION 37 You are building a Language Understanding model for an e-commerce platform. You need to construct an entity to capture billing addresses. Which entity type should you use for the billing ad dress?"
+    },
+    {
+        "question": "You need to upload speech samples to a Speech Studi o project. How should you upload the samples?",
+        "options": [
+            "A. Combine the speech samples into a single audio fi le in the .wma format and upload the file.",
+            "B. Upload a .zip file that contains a collection of audio files in the .wav format and a corresponding",
+            "C. Upload individual audio files in the FLAC format and manually upload a corresponding transcript in",
+            "D. Upload individual audio files in the .wma format."
+        ],
+        "correct": "B. Upload a .zip file that contains a collection of audio files in the .wav format and a corresponding",
+        "explanation": "To upload your data, navigate to the Speech Studio . From the portal, click Upload data to launch the wizard and create your first dataset. You'll be ask ed to select a speech data type for your dataset, before allowing you to upload your data. The default audio streaming format is WAV Use this table to ensure that your audio files are formatted correctly for use with Custom Speech: Reference: https://docs.microsoft.com/en-us/azure/cognitive-se rvices/speech-service/how-to-custom-speechtest- and-train",
+        "references": ""
+    },
+    {
+        "question": "You are developing a method for an application that  uses the Translator API. The method will receive the content of a webpage, a nd then translate the content into Greek (el). The result will also contain a transliteration that  uses the Roman alphabet. You need to create the URI for the call to the Tran slator API. You have the following URI. https://api.cognitive.microsofttranslator.com/trans late?api-version=3.0 Which three additional query parameters should you include in the URI? Each correct answer presents part of the solution. (Choose three.) NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A. toScript=Cyrl",
+            "B. from=el",
+            "C. textType=html",
+            "D. to=el"
+        ],
+        "correct": "",
+        "explanation": "C: textType is an optional parameter. It defines wh ether the text being translated is plain text or HTML text (used for web pages). D: to is a required parameter. It specifies the lan guage of the output text. The target language must be one of the supported languages included in the t ranslation scope. F: toScript is an optional parameter. It specifies the script of the translated text. We use Latin (Ro man alphabet) script.",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/translator/reference/v3-0-translate"
+    },
+    {
+        "question": "You have a chatbot that was built by using the Micr osoft Bot Framework. You need to debug the chatbot endpoint remotely. Which two tools should you install on a local compu ter? Each correct answer presents part of the solution. (Choose two.) NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A. Fiddler",
+            "B. Bot Framework Composer",
+            "C. Bot Framework Emulator",
+            "D. Bot Framework CLI"
+        ],
+        "correct": "",
+        "explanation": "Bot Framework Emulator is a desktop application tha t allows bot developers to test and debug bots, either locally or remotely. ngrok is a cross-platform application that \"allows you to expose a web server running on your local machine to the internet.\" Essentially, what we'll b e doing is using ngrok to forward messages from external channels on the web directly to our local machine to allow debugging, as opposed to the standard messaging endpoint configured in the Azure  portal.",
+        "references": "https://docs.microsoft.com/en-us/azure/bot-service/ bot-service-debug-emulator"
+    },
+    {
+        "question": "DRAG DROP You are building a retail chatbot that will use a Q nA Maker service. You upload an internal support document to train th e model. The document contains the following question: \"What is your warranty period?\" Users report that the chatbot returns the default Q nA Maker answer when they ask the following question: \"How long is the warranty coverage?\" The chatbot returns the correct answer when the use rs ask the following question: 'What is your warranty period?\" Both questions should return the same answer. You need to increase the accuracy of the chatbot re sponses. Which three actions should you perform in sequence?  To answer, move the appropriate actions from the list of actions to the answer area and arrange them in the correct order. (Choose three.) A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Step 1: Add alternative phrasing to the question an d answer (QnA) pair. Add alternate questions to an existing QnA pair to improve the likelihood of a match to a user query. Step 2: Retrain the model. Periodically select Save and train after making edi ts to avoid losing changes. Step 3: Republish the model Note: A knowledge base consists of question and ans wer (QnA) pairs. Each pair has one answer and a pair contains all the information associated with t hat answer.",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/qnamaker/how-to/edit-knowledge-base"
+    },
+    {
+        "question": "You need to measure the public perception of your b rand on social media messages. Which Azure Cognitive Services service should you use?",
+        "options": [
+            "A. Text Analytics",
+            "B. Content Moderator",
+            "C. Computer Vision",
+            "D. Form Recognizer"
+        ],
+        "correct": "A. Text Analytics",
+        "explanation": "Text Analytics Cognitive Service could be used to q uickly determine the public perception for a specific topic, event or brand. Example: A NodeJS app which pulls Tweets from Twitt er using the Twitter API based on a specified search term. Then pass these onto Text Analytics fo r sentiment scoring before storing the data and building a visualisation in PowerBI. The Architectu re looked something like this:",
+        "references": "https://www.linkedin.com/pulse/measuring-public-per ception-azure-cognitive-services-steve-dalai"
+    },
+    {
+        "question": "Note: This question is part of a series of question s that present the same scenario. Each question in the series contains a unique solution that might me et the stated goals. Some question sets might have more than one correct solution, while others m ight not have a correct solution. After you answer a question in this section, you wi ll NOT be able to return to it. As a result, these questions will not appear in the review screen. You build a language model by using a Language Unde rstanding service. The language model is used to search for information on a contact list by usin g an intent named FindContact. A conversational expert provides you with the follo wing list of phrases to use for training. Find contacts in London. Who do I know in Seattle? Search for contacts in Ukraine. You need to implement the phrase list in Language U nderstanding. Solution: You create a new intent for location. Does this meet the goal?",
+        "options": [
+            "A. Yes",
+            "B. No"
+        ],
+        "correct": "B. No",
+        "explanation": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/luis/luis-concept-intent",
+        "references": ""
+    },
+    {
+        "question": "Note: This question is part of a series of question s that present the same scenario. Each question in the series contains a unique solution that might me et the stated goals. Some question sets might have more than one correct solution, while others m ight not have a correct solution. After you answer a question in this section, you wi ll NOT be able to return to it. As a result, these questions will not appear in the review screen. You build a language model by using a Language Unde rstanding service. The language model is used to search for information on a contact list by usin g an intent named FindContact. A conversational expert provides you with the follo wing list of phrases to use for training. Find contacts in London. Who do I know in Seattle? Search for contacts in Uk raine. You need to implement the phrase list in Language U nderstanding. Solution: You create a new entity for the domain. Does this meet the goal?",
+        "options": [
+            "A. Yes",
+            "B. No"
+        ],
+        "correct": "B. No",
+        "explanation": "Instead use a new intent for location. Note: An intent represents a task or action the use r wants to perform. It is a purpose or goal expressed in a user's utterance. Define a set of intents that corresponds to actions  users want to take in your application. Reference: https://docs.microsoft.com/en-us/azure/cognitive-se rvices/luis/luis-concept-intent",
+        "references": ""
+    },
+    {
+        "question": "Note: This question is part of a series of question s that present the same scenario. Each question in the series contains a unique solution that might me et the stated goals. Some question sets might have more than one correct solution, while others m ight not have a correct solution. After you answer a question in this section, you wi ll NOT be able to return to it. As a result, these questions will not appear in the review screen. You build a language model by using a Language Unde rstanding service. The language model is used to search for information on a contact list by usin g an intent named FindContact. A conversational expert provides you with the follo wing list of phrases to use for training. Find contacts in London. Who do I know in Seattle? Search for contacts in Ukraine. You need to implement the phrase list in Language U nderstanding. Solution: You create a new pattern in the FindConta ct intent. Does this meet the goal?",
+        "options": [
+            "A. Yes",
+            "B. No"
+        ],
+        "correct": "B. No",
+        "explanation": "Instead use a new intent for location. Note: An intent represents a task or action the use r wants to perform. It is a purpose or goal expressed in a user's utterance. Define a set of intents that corresponds to actions  users want to take in your application. Reference: https://docs.microsoft.com/en-us/azure/cognitive-se rvices/luis/luis-concept-intent",
+        "references": ""
+    },
+    {
+        "question": "Note: This question is part of a series of question s that present the same scenario. Each question in the series contains a unique solution that might me et the stated goals. Some question sets might have more than one correct solution, while others m ight not have a correct solution. After you answer a question in this section, you wi ll NOT be able to return to it. As a result, these questions will not appear in the review screen. You develop an application to identify species of f lowers by training a Custom Vision model. You receive images of new flower species. You need to add the new images to the classifier. Solution: You add the new images, and then use the Smart Labeler tool. Does this meet the goal?",
+        "options": [
+            "A. Yes",
+            "B. No"
+        ],
+        "correct": "B. No",
+        "explanation": "The model need to be extended and retrained. Note: Smart Labeler to generate suggested tags for images. This lets you label a large number of images more quickly when training a Custom Vision m odel.",
+        "references": ""
+    },
+    {
+        "question": "Note: This question is part of a series of question s that present the same scenario. Each question in the series contains a unique solution that might me et the stated goals. Some question sets might have more than one correct solution, while others m ight not have a correct solution. After you answer a question in this section, you wi ll NOT be able to return to it. As a result, these questions will not appear in the review screen. You develop an application to identify species of f lowers by training a Custom Vision model. You receive images of new flower species. You need to add the new images to the classifier. Solution: You add the new images and labels to the existing model. You retrain the model, and then publish the model. Does this meet the goal? A. Yes",
+        "options": [
+            "B. No"
+        ],
+        "correct": "",
+        "explanation": "The model needs to be extended and retrained.",
+        "references": ""
+    },
+    {
+        "question": "Note: This question is part of a series of question s that present the same scenario. Each question in the series contains a unique solution that might me et the stated goals. Some question sets might have more than one correct solution, while others m ight not have a correct solution. After you answer a question in this section, you wi ll NOT be able to return to it. As a result, these questions will not appear in the review screen. You develop an application to identify species of f lowers by training a Custom Vision model. You receive images of new flower species. You need to add the new images to the classifier. Solution: You create a new model, and then upload t he new images and labels. Does this meet the goal?",
+        "options": [
+            "A. Yes",
+            "B. No"
+        ],
+        "correct": "B. No",
+        "explanation": "The model needs to be extended and retrained.",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT You are developing a service that records lectures given in English (United Kingdom). You have a method named AppendToTranscriptFile that  takes translated text and a language identifier. You need to develop code that will provide transcri pts of the lectures to attendees in their respectiv e language. The supported languages are English, Fren ch, Spanish, and German. How should you complete the code? To answer, select  the appropriate options in the answer area. NOTE: Each correct selection is worth one point. A.",
+        "options": [
+            "B.",
+            "C.",
+            "D.",
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference: Box 1: Yes The Key Phrase Extraction API evaluates unstructure d text, and for each JSON document, returns a list of key phrases. Box 2: No 'the' is not a key phrase. This capability is useful if you need to quickly id entify the main points in a collection of documents . For example, given input text \"The food was delicio us and there were wonderful staff\", the service returns the main talking points: \"food\" and \"wonder ful staff\". Box 3: No Key phrase extraction does not have confidence leve ls.",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/text-analytics/how-tos/text-analyticshow- to-keyword-extraction"
+    },
+    {
+        "question": "You deploy a web app that is used as a management p ortal for indexing in Azure Cognitive Search. The app is configured to use the primary admin key. During a security review, you discover unauthorized  changes to the search index. You suspect that the primary access key is compromised. You need to prevent unauthorized access to the inde x management endpoint. The solution must minimize downtime. What should you do next?",
+        "options": [
+            "A. Regenerate the primary admin key, change the app to use the secondary admin key, and then regenerate",
+            "B. Change the app to use a query key, and then regen erate the primary admin key and the secondary admin",
+            "C. Regenerate the secondary admin key, change the ap p to use the secondary admin key, and then",
+            "D. Add a new query key, change the app to use the ne w query key, and then delete all the unused query k eys."
+        ],
+        "correct": "C. Regenerate the secondary admin key, change the ap p to use the secondary admin key, and then",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You have an existing Azure Cognitive Search service . You have an Azure Blob storage account that contain s millions of scanned documents stored as images an d PDFs. You need to make the scanned documents available to  search as quickly as possible. What should you do?",
+        "options": [
+            "A. Split the data into multiple blob containers. Cre ate a Cognitive Search service for each container.",
+            "B. Split the data into multiple blob containers. Cre ate an indexer for each container. Increase the",
+            "C. Create a Cognitive Search service for each type o f document.",
+            "D. Split the data into multiple virtual folders. Cre ate an indexer for each folder. Increase the search"
+        ],
+        "correct": "D. Split the data into multiple virtual folders. Cre ate an indexer for each folder. Increase the search",
+        "explanation": "Incorrect Answers: A: Need more search units to process the data in pa rallel. B: Run them in parallel, not sequentially. C: Need a blob indexer. Note: A blob indexer is used for ingesting content from Azure Blob storage into a Cognitive Search index. Index large datasets Indexing blobs can be a time-consuming process. In cases where you have millions of blobs to index, you can speed up indexing by partitioning your data  and using multiple indexers to process the data in parallel. Here's how you can set this up: Partition your data into multiple blob containers o r virtual folders Set up several data sources, one per container or folder. Create a corresponding indexer for each data source . All of the indexers should point to the same target search index. One search unit in your service can run one indexer  at any given time. Creating multiple indexers as described above is only useful if they actually run  in parallel.",
+        "references": "https://docs.microsoft.com/en-us/azure/search/searc h-howto-indexing-azure-blob-storage"
+    },
+    {
+        "question": "You need to implement a table projection to generat e a physical expression of an Azure Cognitive Search index. Which three properties should you specify in the sk illset definition JSON configuration table node? Each correct answer presents part of the solution. (Choose three.) NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A. tableName",
+            "B. generatedKeyName",
+            "C. dataSource",
+            "D. dataSourceConnection"
+        ],
+        "correct": "",
+        "explanation": "Defining a table projection. Each table requires three properties: tableName: The name of the table in Azure Storage. generatedKeyName: The column name for the key that uniquely identifies this row. source: The node from the enrichment tree you are s ourcing your enrichments from. This node is usually the output of a shaper, but could be the ou tput of any of the skills.",
+        "references": "https://docs.microsoft.com/en-us/azure/search/knowl edge-store-projection-overview"
+    },
+    {
+        "question": "HOTSPOT You are creating an enrichment pipeline that will u se Azure Cognitive Search. The knowledge store contains unstructured JSON data and scanned PDF doc uments that contain text. Which projection type should you use for each data type? To answer, select the appropriate options in the answer area. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference: Box 1: Object projection Object projections are JSON representations of the enrichment tree that can be sourced from any node. Box 2: File projection File projections are similar to object projections and only act on the normalized_images collection.",
+        "references": "https://docs.microsoft.com/en-us/azure/search/knowl edge-store-projection-overview"
+    },
+    {
+        "question": "HOTSPOT You are building an Azure Cognitive Search custom s kill. You have the following custom skill schema definiti on. For each of the following statements, select Yes if  the statement. Otherwise, select No. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference: Box 1: Yes Once you have defined a skillset, you must map the output fields of any skill that directly contribute s values to a given field in your search index. Box 2: Yes The definition is a custom skill that calls a web A PI as part of the enrichment process. Box 3: No For each organization identified by entity recognit ion, this skill calls a web API to find the descrip tion of that organization.",
+        "references": "https://docs.microsoft.com/en-us/azure/search/cogni tive-search-output-field-mapping"
+    },
+    {
+        "question": "You have the following data sources: Finance: On-premises Microsoft SQL Server database Sales: Azure Cosmos DB using the Core (SQL) API Logs: Azure Table storage HR: Azure SQL database You need to ensure that you can search all the data  by using the Azure Cognitive Search REST API. What should you do?",
+        "options": [
+            "A. Configure multiple read replicas for the data in Sales.",
+            "B. Mirror Finance to an Azure SQL database.",
+            "C. Migrate the data in Sales to the MongoDB API.",
+            "D. Ingest the data in Logs into Azure Sentinel."
+        ],
+        "correct": "B. Mirror Finance to an Azure SQL database.",
+        "explanation": "On-premises Microsoft SQL Server database cannot be  used as an index data source. Note: Indexer in Azure Cognitive Search: : Automate  aspects of an indexing operation by configuring a data source and an indexer that you can schedule or run on demand. This feature is supported for a limited number of data source types on Azure. Indexers crawl data stores on Azure. Azure Blob Storage Azure Data Lake Storage Gen2 (in preview) Azure Table Storage Azure Cosmos DB Azure SQL Database SQL Managed Instance SQL Server on Azure Virtual Machines",
+        "references": "https://docs.microsoft.com/en-us/azure/search/searc h-indexer-overview#supported-data-sources"
+    },
+    {
+        "question": "You are building a multilingual chatbot. You need to send a different answer for positive an d negative messages. Which two Text Analytics APIs should you use? Each correct answer presents part of the solution. (Choose two.) NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A. Linked entities from a well-known knowledge base",
+            "B. Sentiment Analysis",
+            "C. Key Phrases",
+            "D. Detect Language"
+        ],
+        "correct": "",
+        "explanation": "B: The Text Analytics API's Sentiment Analysis feat ure provides two ways for detecting positive and negative sentiment. If you send a Sentiment Analysi s request, the API will return sentiment labels (such as \"negative\", \"neutral\" and \"positive\") and confidence scores at the sentence and documentlevel . D: The Language Detection feature of the Azure Text  Analytics REST API evaluates text input for each document and returns language identifiers with a sc ore that indicates the strength of the analysis. This capability is useful for content stores that c ollect arbitrary text, where language is unknown.",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/text-analytics/how-tos/text-analyticshow- to- sentiment-analysis?tabs=version-3-1 https://docs.microsoft.com/en-us/azure/cognitive-se rvices/text-analytics/how-tos/text-analyticshow- to- language-detection"
+    },
+    {
+        "question": "DRAG DROP You plan to build a chatbot to support task trackin g. You create a Language Understanding service named l u1. You need to build a Language Understanding model to  integrate into the chatbot. The solution must minimize development time to build the model. Which four actions should you perform in sequence? To answer, move the appropriate actions from the list of actions to the answer area and arrange them in the correct order. (Choose four.) A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference: 1. Add a new application 2. Add a prebuilt domain intent ToDo (it has alread y utterances so we can skip this step) 3. Train 4. Publish",
+        "references": ""
+    },
+    {
+        "question": "You are building a bot on a local computer by using  the Microsoft Bot Framework. The bot will use an existing Language Understanding model. You need to translate the Language Understanding mo del locally by using the Bot Framework CLI. What should you do first?",
+        "options": [
+            "A. From the Language Understanding portal, clone the  model.",
+            "B. Export the model as an .lu file.",
+            "C. Create a new Speech service.",
+            "D. Create a new Language Understanding service."
+        ],
+        "correct": "B. Export the model as an .lu file.",
+        "explanation": "You might want to manage the translation and locali zation for the language understanding content for your bot independently. Translate command in the @microsoft/bf-lu library t akes advantage of the Microsoft text translation API to automatically machine translate .lu files to  one or more than 60+ languages supported by the Microsoft text translation cognitive service. What is translated? An .lu file and optionally translate Comments in th e lu file LU reference link texts List of .lu files under a specific path.",
+        "references": "https://github.com/microsoft/botframework-cli/blob/ main/packages/luis/docs/translatecommand.md"
+    },
+    {
+        "question": "DRAG DROP You are using a Language Understanding service to h andle natural language input from the users of a web-based customer agent. The users report that the agent frequently responds  with the following generic response: \"Sorry, I don't understand that.\" You need to improve the ability of the agent to res pond to requests. Which three actions should you perform in sequence?  To answer, move the appropriate actions from the list of actions to the answer area and arrange them in the correct order. (Choose three.)",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "- enable active learning - validate the utterances - train and republish https://docs.microsoft.com/en-us/azure/cognitive-se rvices/luis/luis-how-to-review-endpointutterances# log-user-queries-to-enable-active-learning https://docs.microsoft.com/en-us/azure/cognitive-se rvices/luis/luis-concept-prebuilt-model",
+        "references": ""
+    },
+    {
+        "question": "You build a conversational bot named bot1. You need to configure the bot to use a QnA Maker ap plication. From the Azure Portal, where can you find the infor mation required by bot1 to connect to the QnA Maker application?",
+        "options": [
+            "A. Access control (IAM)",
+            "B. Properties",
+            "C. Keys and Endpoint",
+            "D. Identity"
+        ],
+        "correct": "C. Keys and Endpoint",
+        "explanation": "Obtain values to connect your bot to the knowledge base 1. In the QnA Maker site, select your knowledge bas e. 2. With your knowledge base open, select the SETTIN GS tab. Record the value shown for service name. This value is useful for finding your knowled ge base of interest when using the QnA Maker portal interface. It's not used to connect your bot  app to this knowledge base. 3. Scroll down to find Deployment details and recor d the following values from the Postman sample HTTP request: 4. POST /knowledgebases/<knowledge-base-id>/generat eAnswer 5. Host: <your-host-url> 6. Authorization: EndpointKey <your-endpoint-key>",
+        "references": "https://docs.microsoft.com/en-us/azure/bot-service/ bot-builder-howto-qna"
+    },
+    {
+        "question": "HOTSPOT You are building a chatbot by using the Microsoft B ot Framework Composer. You have the dialog design shown in the following e xhibit. For each of the following statements, select Yes if  the statement is true. Otherwise, select No. NOTE: Each correct selection is worth one point. A.",
+        "options": [
+            "B.",
+            "C.",
+            "D.",
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference: Box 1: Yes The ActivityHandler.OnMembersAddedAsync method over rides this in a derived class to provide logic for when members other than the bot join the conversation, such as your bot's welcome logic. Box 2: Yes membersAdded is a list of all the members added to the conversation, as described by the conversation update activity. Box 3: No",
+        "references": "https://docs.microsoft.com/enus/ dotnet/api/microsoft.bot.builder.activityhandler.on membersaddedasync?view=botbuilderdotnet-stable"
+    },
+    {
+        "question": "HOTSPOT You are building a chatbot by using the Microsoft B ot Framework SDK. You use an object named UserProfile to store user p rofile information and an object named ConversationData to store information related to a conversation. You create the following state accessors to store b oth objects in state. var userStateAccessors = _userState.CreateProperty< UserProfile>(nameof(UserProfile)); var conversationStateAccessors = _conversationState.CreateProperty<ConversationData> (nameof(ConversationData)); The state storage mechanism is set to Memory Storag e. For each of the following statements, select Yes if  the statement is true. Otherwise, select No. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Box 1: Yes You create property accessors using the CreatePrope rty method that provides a handle to the BotState object. Each state property accessor allow s you to get or set the value of the associated state property. Box 2: Yes Box 3: No Before you exit the turn handler, you use the state  management objects' SaveChangesAsync() method to write all state changes back to storage.",
+        "references": "https://docs.microsoft.com/en-us/azure/bot-service/ bot-builder-howto-v4-state"
+    },
+    {
+        "question": "HOTSPOT You are building a chatbot that will provide inform ation to users as shown in the following exhibit. Use the drop-down menus to select the answer choice  that completes each statement based on the information presented in the graphic. NOTE: Each correct selection is worth one point. A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Box 1: Adaptive card Box 2: an image",
+        "references": "https://docs.microsoft.com/en-us/microsoftteams/pla tform/task-modules-and-cards/cards/cardsreference https://docs.microsoft.com/en-us/composer/how-to-se nd-cards?tabs=v1x"
+    },
+    {
+        "question": "HOTSPOT You are reviewing the design of a chatbot. The chat bot includes a language generation file that contains the following fragment. # Greet(user) - ${Greeting()}, ${user.name} For each of the following statements, select Yes if  the statement is true. Otherwise, select No. NOTE: Each correct selection is worth one point. A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Box 1: No Example: Greet a user whose name is stored in `user .name` - ${ welcomeUser(user.name) } Example: Greet a user whose name you don't know: - ${ welcomeUser() } Box 2: No Greet(User) is a Send a response action. Box 3: Yes",
+        "references": "https://docs.microsoft.com/en-us/composer/how-to-as k-for-user-input"
+    },
+    {
+        "question": "A customer uses Azure Cognitive Search. The customer plans to enable a server-side encrypti on and use customer-managed keys (CMK) stored in Azure. What are three implications of the planned change? Each correct answer presents a complete solution. NOTE: Each correct selection is worth one point. A. The index size will increase.",
+        "options": [
+            "B. Query times will increase.",
+            "C. A self-signed X.509 certificate is required.",
+            "D. The index size will decrease."
+        ],
+        "correct": "",
+        "explanation": "\"Customer-managed keys require an additional billab le service, Azure Key Vault, which can be in a different region, but under the same subscription, as Azure Cognitive Search. Enabling CMK encryption will increase index size and degrade que ry performance.\" same document also lists Azure Key Vault as a requi rement: https://docs.microsoft.com/en-us/azure/search/searc h-security-overview#data-protection",
+        "references": ""
+    },
+    {
+        "question": "You are developing a new sales system that will pro cess the video and text from a public-facing websit e. You plan to notify users that their data has been p rocessed by the sales system. Which responsible AI principle does this help meet?",
+        "options": [
+            "A. transparency",
+            "B. fairness",
+            "C. inclusiveness",
+            "D. reliability and safety"
+        ],
+        "correct": "A. transparency",
+        "explanation": "\"When an AI application relies on personal data, su ch as a facial recognition system that takes images of people to recognize them; you should make it cle ar to the user how their data is used and retained, and who has access to it.\" from: https:// docs.microsoft.com/en-us/learn/paths/preparefor- ai-engineering/",
+        "references": ""
+    },
+    {
+        "question": "Note: This question is part of a series of question s that present the same scenario. Each question in the series contains a unique solution that might me et the stated goals. Some question sets might have more than one correct solution, while others m ight not have a correct solution. After you answer a question in this section, you wi ll NOT be able to return to it. As a result, these questions will not appear in the review screen. You create a web app named app1 that runs on an Azu re virtual machine named vm1. Vm1 is on an Azure virtual network named vnet1. You plan to create a new Azure Cognitive Search ser vice named service1. You need to ensure that app1 can connect directly t o service1 without routing traffic over the public internet. Solution: You deploy service1 and a public endpoint  to a new virtual network, and you configure Azure Private Link. Does this meet the goal?",
+        "options": [
+            "A. Yes",
+            "B. No Correct Answer: B"
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/cognitive-services-virtualnetworks? tabs=portal#use-private-endpoints"
+    },
+    {
+        "question": "Note: This question is part of a series of question s that present the same scenario. Each question in the series contains a unique solution that might me et the stated goals. Some question sets might have more than one correct solution, while others m ight not have a correct solution. After you answer a question in this section, you wi ll NOT be able to return to it. As a result, these questions will not appear in the review screen. You create a web app named app1 that runs on an Azu re virtual machine named vm1. Vm1 is on an Azure virtual network named vnet1. You plan to create a new Azure Cognitive Search ser vice named service1. You need to ensure that app1 can connect directly t o service1 without routing traffic over the public internet. Solution: You deploy service1 and a public endpoint , and you configure an IP firewall rule. Does this meet the goal?",
+        "options": [
+            "A. Yes",
+            "B. No"
+        ],
+        "correct": "B. No",
+        "explanation": "",
+        "references": "https://docs.microsoft.com/en-us/azure/private-link /private-link-overview"
+    },
+    {
+        "question": "Note: This question is part of a series of question s that present the same scenario. Each question in the series contains a unique solution that might me et the stated goals. Some question sets might have more than one correct solution, while others m ight not have a correct solution. After you answer a question in this section, you wi ll NOT be able to return to it. As a result, these questions will not appear in the review screen. You create a web app named app1 that runs on an Azu re virtual machine named vm1. Vm1 is on an Azure virtual network named vnet1. You plan to create a new Azure Cognitive Search ser vice named service1. You need to ensure that app1 can connect directly t o service1 without routing traffic over the public internet. Solution: You deploy service1 and a public endpoint , and you configure a network security group (NSG) for vnet1. Does this meet the goal?",
+        "options": [
+            "A. Yes",
+            "B. No"
+        ],
+        "correct": "A. Yes",
+        "explanation": "https://docs.microsoft.com/en-us/azure/virtual-netw ork/network-security-groupsoverview# network-security-groups https://docs.microsoft.com/en-us/azure/virtual-netw ork/virtual-networks-overview",
+        "references": ""
+    },
+    {
+        "question": "You plan to perform predictive maintenance. You collect IoT sensor data from 100 industrial mac hines for a year. Each machine has 50 different sensors that generate data at one-minute intervals.  In total, you have 5,000 time series datasets. You need to identify unusual values in each time se ries to help predict machinery failures. Which Azure Cognitive Services service should you u se?",
+        "options": [
+            "A. Anomaly Detector",
+            "B. Cognitive Search",
+            "C. Form Recognizer",
+            "D. Custom Vision"
+        ],
+        "correct": "A. Anomaly Detector",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT You are developing a streaming Speech to Text solut ion that will use the Speech SDK and MP3 encoding. You need to develop a method to convert speech to t ext for streaming MP3 data. How should you complete the code? To answer, select  the appropriate options in the answer area. NOTE: Each correct selection is worth one point. A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/speech-service/how-to-use-codeccompressed- audio-input-streams?tabs=debian&pivots=programming- language-csharp"
+    },
+    {
+        "question": "HOTSPOT You are developing an internet-based training solut ion for remote learners. Your company identifies that during the training, s ome learners leave their desk for long periods or become distracted. You need to use a video and audio feed from each le arner- computer to detect whether the learner is present and paying attention. The solution must minimize development effort and identify each learner. Which Azure Cognitive Services service should you u se for each requirement? To answer, select the appropriate options in the answer area. NOTE: Each correct selection is worth one point. A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/what-are-cognitive-services"
+    },
+    {
+        "question": "You plan to provision a QnA Maker service in a new resource group named RG1. In RG1, you create an App Service plan named AP1. Which two Azure resources are automatically created  in RG1 when you provision the QnA Maker service? Each correct answer presents part of the s olution. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A. Language Understanding",
+            "B. Azure SQL Database",
+            "C. Azure Storage",
+            "D. Azure Cognitive Search"
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/qnamaker/how-to/set-up-qnamakerservice- azure?tabs=v1#delete-azure-resources \"When you create a QnAMaker resource, you host the data in your own Azure subscription. Azure Search is used to index your data.\" & \"When you cre ate a QnAMaker resource, you host the runtime in your own Azure subscription. App Service is the compute engine that runs the QnA Maker queries for you.\""
+    },
+    {
+        "question": "You create a new Language Understanding resource. You need to add more contributors. What should you use?",
+        "options": [
+            "A. a conditional access policy in Azure Active Direc tory (Azure AD)",
+            "B. the Access control (1AM ) page for the authoring resources in the Azure portal",
+            "C. the Access control (1AM) page for the prediction resources in the Azure portal"
+        ],
+        "correct": "B. the Access control (1AM ) page for the authoring resources in the Azure portal",
+        "explanation": "",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/luis/luis-how-to-collaborate"
+    },
+    {
+        "question": "HOTSPOT You have a Computer Vision resource named contoso1 that is hosted in the West US Azure region. You need to use contoso1 to make a different size o f a product photo by using the smart cropping feature. How should you complete the API URL? To answer, sel ect the appropriate options in the answer area. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D.",
+            "A.",
+            "B.",
+            "C.",
+            "D.",
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "In user want to change to deploy offline model 1. Change model domain to compact model 2. Retrain compact model 3. Export model",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/custom-vision-service/export-yourmodel"
+    },
+    {
+        "question": "HOTSPOT You are developing an application to recognize empl oyees' faces by using the Face Recognition API. Images of the faces will be accessible from a URI e ndpoint. The application has the following code. For each of the following statements, select Yes if  the statement is true. Otherwise, select No. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D.",
+            "A. True",
+            "B. True",
+            "C. True"
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/face/face-api-how-to-topics/usepersondirecto ry"
+    },
+    {
+        "question": "DRAG DROP You have a Custom Vision resource named acvdev in a  development environment. You have a Custom Vision resource named acvprod in a production environment. In acvdev, you build an object detection model name d obj1 in a project named proj1. You need to move obj1 to acvprod. Which three actions should you perform in sequence?  To answer, move the appropriate actions from the list of actions to the answer area and arrange them in the correct order.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/luis/luis-tutorial-pattern#what-did-thistuto rial- accomplish"
+    },
+    {
+        "question": "DRAG DROP You train a Custom Vision model used in a mobile ap p. You receive 1,000 new images that do not have any a ssociated data. You need to use the images to retrain the model. Th e solution must minimize how long it takes to retrain the model. Which three actions should you perform in the Custo m Vision portal? To answer, move the appropriate actions from the list of actions to the  answer area and arrange them in the correct order.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "1.) upload all the images 2.) Get suggested tags 3.) Review the suggestions and confirm the tags reference: https://docs.microsoft.com/en-us/azure/cognitive-se rvices/custom-vision-service/suggested-tags",
+        "references": ""
+    },
+    {
+        "question": "You are building a Language Understanding model for  an e-commerce chatbot. Users can speak or type their billing address when prompted by the cha tbot. You need to construct an entity to capture billing addresses. Which entity type should you use?",
+        "options": [
+            "A. machine learned",
+            "B. Regex",
+            "C. list",
+            "D. Pattern.any Correct Answer: A"
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/luis/luis-concept-entity-types ML Entity with Structure An ML entity can be composed of smaller sub-entitie s, each of which can have its own properties. For example, Address could have the following struc ture: Address: 4567 Main Street, NY, 98052, USA Building Number: 4567 Street Name: Main Street State: NY Zip Code: 98052 Country: USA"
+    },
+    {
+        "question": "You are building an Azure Weblob that will create k nowledge bases from an array of URLs. You instantiate a QnAMakerClient object that has th e relevant API keys and assign the object to a variable named client. You need to develop a method to create the knowledg e bases. Which two actions should you include in the method?  Each correct answer presents part of the solution. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A. Create a list of FileDTO objects that represents data from the WebJob.",
+            "B. Call the client. Knowledgebase. CreateAsync metho d.",
+            "C. Create a list of QnADTO objects that represents d ata from the WebJob.",
+            "D. Create a CreaceKbDTO object."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": "https://docs.microsoft.com/en-us/rest/api/cognitive servicesqnamaker/ qnamaker4.0/knowledgebase/create"
+    },
+    {
+        "question": "HOTSPOT You are developing an application that includes lan guage translation. The application will translate text retrieved by us ing a function named getTextToBeTranslated. The text can be in one of many languages. The content o f the text must remain within the Americas Azure geography. You need to develop code to translate the text to a  single language. How should you complete the code? To answer, select  the appropriate options in the answer area. NOTE: Each correct selection is worth one point. A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "You are building a natural language model. You need to enable active learning. What should you do?",
+        "options": [
+            "A. Add show-all-intents=true to the prediction endpo int query.",
+            "B. Enable speech priming.",
+            "C. Add log=true to the prediction endpoint query.",
+            "D. Enable sentiment analysis.",
+            "A. keyPhrases",
+            "B. sentiment",
+            "C. languages",
+            "D. entities/recognition/general"
+        ],
+        "correct": "A. keyPhrases",
+        "explanation": "",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/text-analytics/overview"
+    },
+    {
+        "question": "DRAG DROP You have a web app that uses Azure Cognitive Search . When reviewing billing for the app, you discover mu ch higher than expected charges. You suspect that the query key is compromised. You need to prevent unauthorized access to the sear ch endpoint and ensure that users only have read only access to the documents collection. The s olution must minimize app downtime. Which three actions should you perform in sequence?  To answer, move the appropriate actions from the list of actions to the answer area and arrange them in the correct order.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": "https://docs.microsoft.com/en-us/azure/search/searc h-security-api-keys"
+    },
+    {
+        "question": "HOTSPOT You are building a bot and that will use Language U nderstanding. You have a LUDown file that contains the following content. Use the drop-down menus to select the answer choice  that completes each statement based on the information presented in the graphic. NOTE: Each correct selection is worth one point. A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": "https://github.com/solliancenet/tech-immersion-data -ai/blob/master/ai-exp1/README.md"
+    },
+    {
+        "question": "HOTSPOT You are designing a conversation flow to be used in  a chatbot. You need to test the conversation flow by using the  Microsoft Bot Framework Emulator. How should you complete the .chat file? To answer, select the appropriate options in the answer area. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": "https://docs.microsoft.com/en-us/azure/bot-service/ bot-builder-howto-add-mediaattachments? view=azure-bot-service-4.0&tabs=csharp"
+    },
+    {
+        "question": "You build a bot by using the Microsoft Bot Framewor k SDK and the Azure Bot Service. You plan to deploy the bot to Azure. You register the bot by using the Bot Channels Regi stration service. Which two values are required to complete the deplo yment? Each correct answer presents part of the solution. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A. botld",
+            "B. tenancld",
+            "C. appld",
+            "D. objeccld"
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": "https://github.com/MicrosoftDocs/bot-docs/blob/live /articles/bot-service-quickstart-registration.md"
+    },
+    {
+        "question": "Note: This question is part of a series of question s that present the same scenario. Each question in the series contains a unique solution that might me et the stated goals. Some question sets might have more than one correct solution, while others m ight not have a correct solution. After you answer a question in this section, you wi ll NOT be able to return to it. As a result, these questions will not appear in the review screen. You have an Azure Cognitive Search service. During the past 12 months, query volume steadily in creased. You discover that some search query requests to the  Cognitive Search service are being throttled. You need to reduce the likelihood that search query  requests are throttled. Solution: You migrate to a Cognitive Search service  that uses a higher tier. Does this meet the goal?",
+        "options": [
+            "A. Yes",
+            "B. No"
+        ],
+        "correct": "A. Yes",
+        "explanation": "A simple fix to most throttling issues is to throw more resources at the search service (typically replicas for query-based throttling, or partitions for indexing-based throttling). However, increasing replicas or partitions adds cost, which is why it i s important to know the reason why throttling is occurring at all.",
+        "references": "https://docs.microsoft.com/en-us/azure/search/searc h-performance-analysis"
+    },
+    {
+        "question": "DRAG DROP You need to develop an automated call handling syst em that can respond to callers in their own language. The system will support only French and E nglish. Which Azure Cognitive Services service should you u se to meet each requirement? To answer, drag the appropriate services to the correct requirement s. Each service may be used once, more than once, or not at all. You may need to drag the split  bat between panes or scroll to view content. NOTE: Each correct selection is worth one point. A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Box 1: Text Analytics The Language Detection feature of the Azure Text An alytics REST API evaluates text input for each document and returns language identifiers with a sc ore that indicates the strength of the analysis. Box 2: Translator Translator is a cloud-based neural machine translat ion service that is part of the Azure Cognitive Services family of REST APIs. Translator can be use d with any operating system and powers many Microsoft products and services used by thousands o f businesses worldwide to perform language translation and other language-related operations.",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/text-analytics/how-tos/text-analyticshow- to-language-detection https://docs.microsoft.com/en-us/azure/cognitive-se rvices/translator/translator-overview"
+    },
+    {
+        "question": "You have receipts that are accessible from a URL. You need to extract data from the receipts by using  Form Recognizer and the SDK. The solution must use a prebuilt model. Which client and method should you use?",
+        "options": [
+            "A. the FormRecognizerClienc client and the ScarcReco gnizeConcencFromUri method",
+            "B. the FormTrainingClienc client and the ScarcRecogn izeContentFromUri method",
+            "C. the FormRecognizerClienc client and the ScarcReco gnizeReceipcsFromUri method",
+            "D. the FormTrainingClient client and the ScarcRecogn izeReceipcsFromUri method"
+        ],
+        "correct": "D. the FormTrainingClient client and the ScarcRecogn izeReceipcsFromUri method",
+        "explanation": "To analyze receipts from a URL, use the StartRecogn izeReceiptsFromUri method Example code: private static async Task AnalyzeReceipt( FormRecognizerClient recognizerClient, string recei ptUri) { RecognizedFormCollection receipts = await recognize rClient.StartRecognizeReceiptsFromUri(new Uri(receiptUrl)).WaitForCompletionAsync();",
+        "references": "https://docs.microsoft.com/en-us/azure/applied-ai-s ervices/form-recognizer/quickstarts/clientlibrary"
+    },
+    {
+        "question": "You have a collection of 50,000 scanned documents t hat contain text. You plan to make the text available through Azure C ognitive Search. You need to configure an enrichment pipeline to per form optical character recognition (OCR) and text analytics. The solution must minimize costs. What should you attach to the skillset?",
+        "options": [
+            "A. a new Computer Vision resource",
+            "B. a free (Limited enrichments) Cognitive Services r esource",
+            "C. an Azure Machine Learning pipeline",
+            "D. a new Cognitive Services resource that uses the S O pricing tier"
+        ],
+        "correct": "A. a new Computer Vision resource",
+        "explanation": "The Computer Vision API uses text recognition APIs to extract and recognize text information from images. Read uses the latest recognition models, an d is optimized for large, text-heavy documents and noisy images.",
+        "references": "https://docs.microsoft.com/en-us/azure/architecture /solution-ideas/articles/cognitive-search-withskill sets"
+    },
+    {
+        "question": "Note: This question is part of a series of question s that present the same scenario. Each question in the series contains a unique solution that might me et the stated goals. Some question sets might have more than one correct solution, while others m ight not have a correct solution. After you answer a question in this section, you wi ll NOT be able to return to it. As a result, these questions will not appear in the review screen. You have an Azure Cognitive Search service. During the past 12 months, query volume steadily in creased. You discover that some search query requests to the  Cognitive Search service are being throttled. You need to reduce the likelihood that search query  requests are throttled. Solution: You add indexes. Does this meet the goal?",
+        "options": [
+            "A. Yes",
+            "B. No"
+        ],
+        "correct": "B. No",
+        "explanation": "Instead, you could migrate to a Cognitive Search se rvice that uses a higher tier. Note: A simple fix to most throttling issues is to throw more resources at the search service (typical ly replicas for query-based throttling, or partitions for indexing-based throttling). However, increasing replicas or partitions adds cost, which is why it i s important to know the reason why throttling is occurring at all.",
+        "references": "https://docs.microsoft.com/en-us/azure/search/searc h-performance-analysis"
+    },
+    {
+        "question": "Note: This question is part of a series of question s that present the same scenario. Each question in the series contains a unique solution that might me et the stated goals. Some question sets might have more than one correct solution, while others m ight not have a correct solution. After you answer a question in this section, you wi ll NOT be able to return to it. As a result, these questions will not appear in the review screen. You have an Azure Cognitive Search service. During the past 12 months, query volume steadily in creased. You discover that some search query requests to the  Cognitive Search service are being throttled. You need to reduce the likelihood that search query  requests are throttled. Solution: You enable customer-managed key (CMK) enc ryption. Does this meet the goal?",
+        "options": [
+            "A. Yes",
+            "B. No"
+        ],
+        "correct": "B. No",
+        "explanation": "Customer-managed key (CMK) encryption does not affe ct throttling. Instead, you could migrate to a Cognitive Search se rvice that uses a higher tier. Note: A simple fix to most throttling issues is to throw more resources at the search service (typical ly replicas for query-based throttling, or partitions for indexing-based throttling). However, increasing replicas or partitions adds cost, which is why it i s important to know the reason why throttling is occurring at all.",
+        "references": "https://docs.microsoft.com/en-us/azure/search/searc h-performance-analysis"
+    },
+    {
+        "question": "DRAG DROP You are developing an application that will recogni ze faults in components produced on a factory production line. The components are specific to you r business. You need to use the Custom Vision API to help detec t common faults. Which three actions should you perform in sequence?  To answer, move the appropriate actions from the list of actions to the answer area and arrange them in the correct order. A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Step 1: Create a project Create a new project. Step 2: Upload and tag the images Choose training images. Then upload and tag the ima ges. Step 3: Train the classifier model. Train the classifier",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/custom-vision-service/getting-startedbuild- a-classifier"
+    },
+    {
+        "question": "You are building a model that will be used in an iO S app. You have images of cats and dogs. Each image contai ns either a cat or a dog. You need to use the Custom Vision service to detect  whether the images is of a cat or a dog. How should you configure the project in the Custom Vision portal? To answer, select the appropriate options in the answer area. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference: Box 1: Classification Box 2: Multiclass A multiclass classification project is for classify ing images into a set of tags, or target labels. An  image can be assigned to one tag only. Box 3: General General: Optimized for a broad range of image class ification tasks. If none of the other specific domains are appropriate, or if you're unsure of whi ch domain to choose, select one of the General domains.",
+        "references": "https://cran.r-project.org/web/packages/AzureVision /vignettes/customvision.html"
+    },
+    {
+        "question": "HOTSPOT You run the following command. For each of the following statements, select Yes if  the statement is true. Otherwise, select No. A.",
+        "options": [
+            "B.",
+            "C.",
+            "D.",
+            "A. Enable active learning.",
+            "B. Add a machine learned entity.",
+            "C. Add additional examples to the GetContactDetails intent.",
+            "D. Add examples to the None intent."
+        ],
+        "correct": "A. Enable active learning.",
+        "explanation": "Active learning is a technique of machine learning in which the machine learned model is used to identify informative new examples to label. In LUIS , active learning refers to adding utterances from the endpoint traffic whose current predictions are unclear to improve your model.",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/luis/luis-glossary"
+    },
+    {
+        "question": "DRAG DROP You are building a Language Understanding model for  purchasing tickets. You have the following utterance for an intent name d PurchaseAndSendTickets. Purchase [2 audit business] tickets to [Paris] [nex t Monday] and send tickets to [email@domain.com] You need to select the entity types. The solution m ust use built-in entity types to minimize training data whenever possible. Which entity type should you use for each label? To  answer, drag the appropriate entity types to the correct labels. Each entity type may be used once, more than once, or not at all. You may need to drag the split bar between panes or  scroll to view content.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Box 1: GeographyV2 The prebuilt geographyV2 entity detects places. Bec ause this entity is already trained, you do not need to add example utterances containing Geography V2 to the application intents. Box 2: Email Email prebuilt entity for a LUIS app: Email extract ion includes the entire email address from an utterance. Because this entity is already trained, you do not need to add example utterances containing email to the application intents. Box 3: Machine learned The machine-learning entity is the preferred entity  for building LUIS applications.",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/luis/luis-reference-prebuilt-geographyv2 https://docs.microsoft.com/en-us/azure/cognitive-se rvices/luis/luis-reference-prebuilt-email https://docs.microsoft.com/en-us/azure/cognitive-se rvices/luis/reference-entity-machine-learnedentity"
+    },
+    {
+        "question": "You are developing an application that will use Azu re Cognitive Search for internal documents. You need to implement document-level filtering for Azure Cognitive Search. Which three actions should you include in the solut ion? Each correct answer presents part of the solution. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A. Send Azure AD access tokens with the search reque st.",
+            "B. Retrieve all the groups.",
+            "C. Retrieve the group memberships of the user.",
+            "D. Add allowed groups to each index entry."
+        ],
+        "correct": "",
+        "explanation": "Your documents must include a field specifying whic h groups have access. This information becomes the filter criteria against which documents are sel ected or rejected from the result set returned to the issuer. D: A query request targets the documents collection  of a single index on a search service. CF: In order to trim documents based on group_ids a ccess, you should issue a search query with a group_ids/any(g:search.in(g, 'group_id1, group_id2, ...')) filter, where 'group_id1, group_id2,...' are the groups to which the search request issuer belon gs.",
+        "references": "https://docs.microsoft.com/en-us/azure/search/searc h-security-trimming-for-azure-search"
+    },
+    {
+        "question": "You are building a chatbot by using the Microsoft B ot Framework Composer as shown in the exhibit. (Click the Exhibit tab.) The chatbot contains a dialog named GetUserDetails.  GetUserDetails contains a TextInput control that prompts users for their name. The user input will be stored in a property named n ame. You need to ensure that you can dispose of the prop erty when the last active dialog ends. Which scope should you assign to name?",
+        "options": [
+            "A. dialog",
+            "B. user",
+            "C. curn",
+            "D. conversation"
+        ],
+        "correct": "A. dialog",
+        "explanation": "The dialog scope associates properties with the act ive dialog. Properties in the dialog scope are retained until the dialog ends. Incorrect Answers: A: The conversation scope associates properties wit h the current conversation. Properties in the conversation scope have a lifetime of the conversat ion itself. These properties are in scope while the bot is processing an activity associated with the c onversation (for example, multiple users together i n a Microsoft Teams channel). B: The user scope associates properties with the cu rrent user. Properties in the user scope do not expire. These properties are in scope while the bot  is processing an activity associated with the user . C: The turn scope associates properties with the cu rrent turn. Properties in the turn scope expire at the end of the turn.",
+        "references": "https://docs.microsoft.com/en-us/composer/concept-m emory?tabs=v2x"
+    },
+    {
+        "question": "DRAG DROP You have a chatbot that uses a QnA Maker applicatio n. You enable active learning for the knowledge base u sed by the QnA Maker application. You need to integrate user input into the model. Which four actions should you perform in sequence? To answer, move the appropriate actions from the list of actions to the answer area and arrange them in the correct order. A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference: Step 1: For the knowledge base, select Show active learning suggestions. In order to see the suggested questions, on the Edi t knowledge base page, select View Options, then select Show active learning suggestions. Step 2: Approve and reject suggestions. or an x to reject the suggestions. Select the check  mark to add the question. Step 3: Save and train the knowledge base. Select Save and Train to save the changes to the kn owledge base. Step 4: Publish the knowledge base. Select Publish to allow the changes to be available  from the GenerateAnswer API. When 5 or more similar queries are clustered, every  30 minutes, QnA Maker suggests the alternate questions for you to accept or reject.",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/qnamaker/how-to/improve-knowledgebase"
+    },
+    {
+        "question": "You need to enable speech capabilities for a chatbo t. Which three actions should you perform? Each correc t answer presents part of the solution. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A. Enable WebSockets for the chatbot app.",
+            "B. Create a Speech service.",
+            "C. Register a Direct Line Speech channel.",
+            "D. Register a Cortana channel."
+        ],
+        "correct": "",
+        "explanation": "You can use the Speech service to voice-enable a ch at bot. The Direct Line Speech channel uses the text-to-spe ech service, which has neural and standard voices. You'll need to make a small configuration change so  that your bot can communicate with the Direct Line Speech channel using web sockets.",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/speech-service/tutorial-voice-enableyour- bot-speech-sdk"
+    },
+    {
+        "question": "You are examining the Text Analytics output of an a pplication. The text analyzed is: \"Our tour guide took us up th e Space Needle during our trip to Seattle last week.\" The response contains the data shown in the followi ng table. Which Text Analytics API is used to analyze the tex t?",
+        "options": [
+            "A. Sentiment Analysis",
+            "B. Named Entity Recognition",
+            "C. Entity Linking",
+            "D. Key Phrase Extraction"
+        ],
+        "correct": "B. Named Entity Recognition",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT You are developing an application that includes lan guage translation. The application will translate text retrieved by us ing a function named get_text_to_be_translated. The text can be in one of many languages. The conte nt of the text must remain within the Americas Azure geography. You need to develop code to translate the text to a  single language. How should you complete the code? To answer, select  the appropriate options in the answer area. NOTE: Each correct selection is worth one point. A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT You create a knowledge store for Azure Cognitive Se arch by using the following JSON. Use the drop-down menus to select the answer choice  that completes each statement based on the information presented in the graphic. NOTE Each cor rect selection is worth one point.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "Note: This question is part of a series of question s that present the same scenario. Each question in the series contains a unique solution that might me et the stated goals. Some question sets might have more than one correct solution, while others m ight not have a correct solution. After you answer a question in this section, you wi ll NOT be able to return to it. As a result, these questions will not appear in the review screen. You create a web app named app1 that runs on an Azu re virtual machine named vm1. Vm1 is on an Azure virtual network named vnet1. You plan to create a new Azure Cognitive Search ser vice named service1. You need to ensure that app1 can connect directly t o service1 without routing traffic over the public internet. Solution: You deploy service1 and a private endpoin t to vnet1. Does this meet the goal?",
+        "options": [
+            "A. Yes",
+            "B. No"
+        ],
+        "correct": "A. Yes",
+        "explanation": "A private endpoint is a network interface that uses  a private IP address from your virtual network. This network interface connects you privately and s ecurely to a service powered by Azure Private Link. By enabling a private endpoint, you're bringi ng the service into your virtual network. The service could be an Azure service such as: Azure Storage Azure Cosmos DB Azure SQL Database Your own service using a Private Link Service.",
+        "references": "https://docs.microsoft.com/en-us/azure/private-link /private-endpoint-overview"
+    },
+    {
+        "question": "You have a Language Understanding resource named lu 1. You build and deploy an Azure bot named bot1 that u ses lu1. You need to ensure that bot1 adheres to the Microso ft responsible AI principle of inclusiveness. How should you extend bot1?",
+        "options": [
+            "A. Implement authentication for bot1.",
+            "B. Enable active learning for Iu1.",
+            "C. Host Iu1 in a container.",
+            "D. Add Direct Line Speech to bot1."
+        ],
+        "correct": "",
+        "explanation": "Inclusiveness: AI systems should empower everyone a nd engage people. Direct Line Speech is a robust, end-to-end solution  for creating a flexible, extensible voice assistan t. It is powered by the Bot Framework and its Direct Line  Speech channel, that is optimized for voice-in, voice-out interaction with bots.",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/speech-service/direct-line-speech"
+    },
+    {
+        "question": "Your company uses an Azure Cognitive Services solut ion to detect faces in uploaded images. The method to detect the faces uses the following code. You discover that the solution frequently fails to detect faces in blurred images and in images that contain sideways faces.",
+        "options": [
+            "A. Use a different version of the Face API.",
+            "B. Use the Computer Vision service instead of the Fa ce service.",
+            "C. Use the Identify method instead of the Detect met hod.",
+            "D. Change the detection model."
+        ],
+        "correct": "D. Change the detection model.",
+        "explanation": "Evaluate different models. The best way to compare the performances of the det ection models is to use them on a sample dataset. We recommend calling the Face - Detect API  on a variety of images, especially images of many faces or of faces that are difficult to see, u sing each detection model. Pay attention to the number of faces that each model returns.",
+        "references": "https://docs.microsoft.com/en-us/azure/cognitive-se rvices/face/face-api-how-to-topics/specifydetection - model"
+    },
+    {
+        "question": "You have the following C# method. You need to deploy an Azure resource to the East US  Azure region. The resource will be used to perform sentiment analysis. How should you call the method?",
+        "options": [
+            "A. create_resource(\"res1\", \"ContentModerator\", \"S0\",  \"eastus\")",
+            "B. create_resource(\"res1\", \"TextAnalytics\", \"S0\", \"e astus\")",
+            "C. create_resource(\"res1\", \"ContentModerator\", \"Stan dard\", \"East US\")",
+            "D. create_resource(\"res1\", \"TextAnalytics\", \"Standar d\", \"East US\")"
+        ],
+        "correct": "B. create_resource(\"res1\", \"TextAnalytics\", \"S0\", \"e astus\")",
+        "explanation": "To perform sentiment analysis, we specify TextAnaly tics, not ContentModerator. Possible SKU names include: 'F0','F1','S0','S1','S2 ','S3','S4','S5','S6','S7','S8' Possible location names include: westus, eastus",
+        "references": "https://docs.microsoft.com/en-us/powershell/module/ az.cognitiveservices/newazcognitiveservicesaccount"
+    },
+    {
+        "question": "You build a Language Understanding model by using t he Language Understanding portal. You export the model as a JSON file as shown in the  following sample. To what does the Weather.Historic entity correspond  in the utterance?",
+        "options": [
+            "A. by month",
+            "B. chicago",
+            "C. rain",
+            "D. location"
+        ],
+        "correct": "A. by month",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "DRAG DROP Match the Azure services to the appropriate locatio ns in the architecture. To answer, drag the appropriate service from the co lumn on the left to its location on the right. Each service may be used once, more than once, or not at  all. NOTE: Each correct match is worth one point.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT For each of the following statements, select Yes if  the statement is true. Otherwise, select No. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "Which statement is an example of Data Manipulation Language (DML)?",
+        "options": [
+            "A. Revoke",
+            "B. UPDATE",
+            "C. DROP",
+            "D. CREATE"
+        ],
+        "correct": "B. UPDATE",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT For each of the following statements, select Yes if  the statement is true. Otherwise, select No. NOTE: Each correct selection is worth one point. A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT Select the answer that correctly completes the sent ence.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT Select the answer that correctly completes the sent ence.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "Your company needs to implement a relational databa se in Azure. The solution must minimize ongoing maintenance. Which Azure service should you  use?",
+        "options": [
+            "A. SQL Server on Azure Virtual Machines",
+            "B. Azure SOL Database",
+            "C. Azure HDInsight",
+            "D. Azure Cosmos DB"
+        ],
+        "correct": "B. Azure SOL Database",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You have a SQL query that combines customer data an d order dat",
+        "options": [
+            "A. The query includes calculated columns. You need t o create a database object that would allow",
+            "B. an Index",
+            "C. a view",
+            "D. a scalar function"
+        ],
+        "correct": "B. an Index",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "What are two benefits of platform as a service (Paa S) relational database offerings in Azure, such as Azure SQL Database? Each correct answer presents a complete solution. NOTE: Each correct selection Is worth one point.",
+        "options": [
+            "A. reduced administrative effort for managing the se rver infrastructure",
+            "B. complete control over backup and restore processe s",
+            "C. in-database machine learning services S3",
+            "D. access to the latest features"
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You have data saved in the following format. Which format was used?",
+        "options": [
+            "A. CSV",
+            "B. JSON",
+            "C. HTML",
+            "D. YAML"
+        ],
+        "correct": "A. CSV",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "What is a primary characteristic of a relational da tabase?",
+        "options": [
+            "A. data is queried and manipulated by using a varian t of the SOL language",
+            "B. a lack of dependencies between tables",
+            "C. a flexible data structure",
+            "D. a large amount of duplicate data"
+        ],
+        "correct": "C. a flexible data structure",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT Select the answer that correctly completes the sent ence.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT Select the answer that correctly completes the sent ence. A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "DRAG DROP Match the types of workloads to the appropriate sce narios. To answer, drag the appropriate workload type from the column on the left to its scenario on the right. Each workload type may he used once, more th an once, or not at all. NOTE: Each correct match is worth one point.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "What ate two uses of data visualization? Each corre ct answer presents a complete solution. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A. Communicate the significance of data.",
+            "B. Represent trends and patterns over time.",
+            "C. Implement machine learning to predict future valu es.",
+            "D. Enforce business logic across reports."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "What should you use to build a Microsoft Power Bi p aginated report?",
+        "options": [
+            "A. Power BI Report Builder",
+            "B. Charciculator",
+            "C. Power BI Desktop",
+            "D. the Power BI service"
+        ],
+        "correct": "A. Power BI Report Builder",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT Select the answer that correctly completes the sent ence. A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "Which scenario is an example of a streaming workloa d?",
+        "options": [
+            "A. sending transactions daily from point of sale (PO S) devices",
+            "B. sending cloud infrastructure metadata every 30 mi nutes",
+            "C. sending transactions that are older than a month to an archive",
+            "D. sending telemetry data from edge devices"
+        ],
+        "correct": "D. sending telemetry data from edge devices",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "What is the primary purpose of a data warehouse?",
+        "options": [
+            "A. to provide storage for transactional line-of-busi ness (LOB) applications",
+            "B. to provide transformation services between source  and target data stores",
+            "C. to provide read only storage of relational and no n relational historical data",
+            "D. to provide answers to complex queries that rely o n data from multiple sources"
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT For each of the following statements, select Yes if  the statement is true. Otherwise, select No. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You need to develop a solution to provide data to e xecutives. The solution must provide an interactive graphical interface, depict various key  performance indicators, and support data exploration by using drill down. What should you us e in Microsoft Power Bl?",
+        "options": [
+            "A. a report",
+            "B. Microsoft Power Apps",
+            "C. a view",
+            "D. a dataflow"
+        ],
+        "correct": "C. a view",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "Your company has a repotting solution that has pagi nated reports. The reports query a dimensional model in a data warehouse. Which type of processing  does the reporting solution use?",
+        "options": [
+            "A. Online Transaction Processing (OLTP)",
+            "B. Online Analytical Processing (OLAP)",
+            "C. batch processing",
+            "D. stream processing"
+        ],
+        "correct": "B. Online Analytical Processing (OLAP)",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You need to create a visualization of running sales  totals per quarter as shown in the following exhibit. What should you create in Cower Bl Desktop;1",
+        "options": [
+            "A. a waterfall chart",
+            "B. a ribbon chart",
+            "C. a bar chart",
+            "D. a decomposition tree Correct Answer: C"
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT For each of the following statements, select Yes if  the statement is tine. Otherwise, select No. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "Which Azure Storage service implements the key/valu e model?",
+        "options": [
+            "A. Azure Files",
+            "B. Azure Blob",
+            "C. Azure Table",
+            "D. Azure Queue"
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT Select the answer that correctly completes the sent ence.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "What is used to define a query in a stream processi ng jobs in Azure Stream Analytics?",
+        "options": [
+            "A. SQL",
+            "B. XML",
+            "C. YAML",
+            "D. KOL"
+        ],
+        "correct": "A. SQL",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT Select the answer that correctly completes the sent ence.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT Select the answer that correctly completes the sent ence.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "Which property of a transactional workload guarante es that each transaction is treated as a single unit that either succeeds completely or tails compl etely?",
+        "options": [
+            "A. isolation",
+            "B. atomicity",
+            "C. consistency",
+            "D. durability"
+        ],
+        "correct": "B. atomicity",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "Which database transaction property ensures that tr ansactional changes to a database are preserved during unexpected operating system restarts?",
+        "options": [
+            "A. durability",
+            "B. atomicity",
+            "C. consistency",
+            "D. isolation"
+        ],
+        "correct": "A. durability",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT Select the answer that correctly completes the sent ence.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT Select the answer that correctly completes the sent ence.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "Which database transaction property ensures that in dividual transactions are executed only once and either succeed in their entirety or roll back?",
+        "options": [
+            "A. consistency",
+            "B. isolation",
+            "C. atomicity",
+            "D. durability",
+            "A. table",
+            "B. queue",
+            "C. file",
+            "D. blob"
+        ],
+        "correct": "C. file",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You need to recommend a non-relational data store t hat is optimized for storing and retrieving text files, videos, audio streams, and virtual disk imag es. The data store must store data, some metadata, and a unique ID for each file. Which type of data s tore should you recommend?",
+        "options": [
+            "A. columnar",
+            "B. key/value",
+            "C. document",
+            "D. object"
+        ],
+        "correct": "D. object",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT Select the answer that correctly completes the sent ence.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "DRAG DROP Match the Azure Cosmos DB APIs to the appropriate d ata structures. To answer, drag the appropriate API from the column  on the left to its data structure on the right. Each API may be used once, more than once, or not a t all. NOTE: Each correct match is worth one point.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You need to store event log data that is semi-struc tured and received as the logs occur. What should you use?",
+        "options": [
+            "A. Azure Table storage",
+            "B. Azure Queue storage",
+            "C. Azure Files"
+        ],
+        "correct": "A. Azure Table storage",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "What should you use to automatically delete blobs f rom Azure Blob Storage?",
+        "options": [
+            "A. the change feed",
+            "B. a lifecycle management policy",
+            "C. soft delete",
+            "D. archive storage"
+        ],
+        "correct": "D. archive storage",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "What is a characteristic of a non-relational databa se?",
+        "options": [
+            "A. full support for Transact-SGL",
+            "B. a fixed schema",
+            "C. self describing entities"
+        ],
+        "correct": "C. self describing entities",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT Select the answer that correctly completes the sent ence.",
+        "options": [
+            "A. B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You are building a retail kiosk system that will us e a custom neural voice. You acquire audio samples and consent from the voice talent. You need to crea te a voice talent profile. What should you upload to the profile?",
+        "options": [
+            "A. a five-minute wav or mp3 file of the voce talent describing the kiosk system",
+            "B. a five-minute .flac audio file and the associated  transcript as a w file",
+            "C. a .wav or mp3 file of the voice talent consenting  to the creation of a synthetic version of their vo ice",
+            "D. a .zip file that contains 10-second .wav files an d the associated transcripts as .txt files"
+        ],
+        "correct": "B. a five-minute .flac audio file and the associated  transcript as a w file",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You have an app named App1 that uses an Azure Cogni tive Services model to identify anomalies in a time series data stream. You need to run App1 in a location that has limited connectivity. The solution must minimize costs. What should you use t o host the model?",
+        "options": [
+            "A. Azure Kubernetes Services (AKS)",
+            "B. a Kubernetes cluster hosted in an Azure Stack Hub  integrated system",
+            "C. Azure Container instances",
+            "D. the Docker Engine"
+        ],
+        "correct": "A. Azure Kubernetes Services (AKS)",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You plan create an index for an Azure Cognitive Sea rch service by using the Azure portal. The Cognitive Search service will connect to an Azure S QL database The Azure SQL database contains a table named UserM essages. Each row m User Messages has a field named MessageCopy that contains the text of s ocial media messages sent by a user Users win perform full text searches against the Me ssageCopy field, and the values of the field will be shown to the users- You need to configure the properties of the index f or the MessageCopy field to support the solution. Winch attributes should you enable for the field?",
+        "options": [
+            "A. Searchable arc Retrievable",
+            "B. Sortable and Retrievable",
+            "C. Searchable arc Facetable",
+            "D. Filterable and Retrievable"
+        ],
+        "correct": "A. Searchable arc Retrievable",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT You are developing a text processing solution. You have the function shown below.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT You have a library that contains thousands of image s. You need to tag the images as photographs, drawings , or clipart. Which service endpoint and response property should  you use? To answer, select the appropriate options in the answer area. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT You are building a model to detect objects in image s. The performance of the model based on training data  is shown in the following exhibit.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You have an Azure loT hub that receives series data  from machinery. You need to build an app that will perform the following actions: Perform anomaly detection across multiple correlate d sensors Identify the root cause of process stops. Send incident alerts The solution must minimize development time. Which Azure service should you use?",
+        "options": [
+            "A. Azure Metrics Advisor",
+            "B. Form Recognizer",
+            "C. Azure Machine teaming",
+            "D. Anomaly Detector"
+        ],
+        "correct": "D. Anomaly Detector",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You build a language model by using Conversational Language Understanding. The language model is used to search for information on a contact list by  using an intent named Findcontact. A conversational expert provides you with the followi ng list of phrases to use for training Find contacts in London. Who do I know in Seattle? Search for contacts m Ukraine. You need to implement the phrase list in Conversati onal Language Understanding. Solution: You create a new utterance for each phras e in the FindContact intent. Does this meet the goal?",
+        "options": [
+            "A. Yes",
+            "B. No"
+        ],
+        "correct": "B. No",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You develop a Conversational Language Undemanding m odel by using Language Studio During testing, users receive incorrect responses t o requests that do NOT relate to the capabilities o f the model. You need to ensure that the model identifies spurio us requests. What should you do?",
+        "options": [
+            "A. Enable active learning.",
+            "B. Add examples to the custom intents.",
+            "C. Add examples to the None intent",
+            "D. Add entities.",
+            "A. a table projection",
+            "B. a projection group",
+            "C. an object projection",
+            "D. a file projection"
+        ],
+        "correct": "C. an object projection",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You develop a custom question answering project in Azure Cognitive Service for Language. The project will be used by a chatbot. You need to conf igure the project to engage in multi-turn conversations. What should you do?",
+        "options": [
+            "A. Add follow-up prompts.",
+            "B. Enable active learning.",
+            "C. Add alternate questions.",
+            "D. Enable chit-chat."
+        ],
+        "correct": "A. Add follow-up prompts.",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT You are building an app that will enable users to u pload images. The solution must meet the following requirements: Automatically suggest alt text for the images. Detect inappropriate images and block them. Minimize development effort. You need to recommend a computer vision endpoint fo r each requirement. What should you recommend? To answer, select the ap propriate options in the answer area. NOTE: Each correct selection is worth one point. A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT You are building content for a video training solut ion. You need to create narration to accompany the video  content. The solution must use Custom Neural Voice. What should you use to create a custom neural voice , and which service should you use to generate the narration? To answer, select the appropriate op tions in the answer area. NOTE: Each correct answer is worth one point.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You need to measure the public perception of your b rand on social media by using natural language processing. Which Azure service should you use?",
+        "options": [
+            "A. Content Moderator",
+            "B. Form Recognizer",
+            "C. Computer Vision",
+            "D. Language service"
+        ],
+        "correct": "D. Language service",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You need to measure the public perception of your b rand on social media by using natural language processing. Which Azure service should you use?",
+        "options": [
+            "A. Content Moderator",
+            "B. Form Recognizer",
+            "C. Computer Vision",
+            "D. Language service"
+        ],
+        "correct": "D. Language service",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT You have a bot that was built by using the Microsof t Bot Framework composer as shown in the following exhibit. Use the drop-down menus 10 select the answer choice  that completes each statement based on the information presented in the graphic. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT You are building a chatbot by using the Microsoft B ot Framework Composer. You have the dialog design shown in the following exhibit. For each of the following statements, select Yes if  the statement is true. Otherwise, select No. NOTE: Each correct selection Is worth one point.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "You are examining the Language service output of an  application. The text analyzed is: Our tour guide took us up the  Space Needle during our trip to Seattle last week. The response contains the data shown in the followi ng table. Which Language service API is used 10 analyze the T ext?",
+        "options": [
+            "A. Entity Linking",
+            "B. Named Entity Recognition",
+            "C. Key Phrase Extraction",
+            "D. Sentiment Analysis"
+        ],
+        "correct": "B. Named Entity Recognition",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "DRAG DROP You plan to build a chatbot to support task trackin g. You create a Conversational Language Understanding service named Iu1. You need to build a Conversational Language Underst anding model to Integrate into the chatbot. The solution must minimize development time to build th e model. Which four actions should you perform In sequence? To answer, move the appropriate actions from the list of actions to the answer area and arrange them in the correct order. A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You are building a Conversational Language Understa nding model. You need to ensure that the model will support the following sample utterances: Set all the lights to on. Turn off the lights in the living room. What is the current thermostat temperature? Lower the temperature of the thermostat by five deg rees. Which three elements should you add to the model? Each correct answer presents part of the solution. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A. a location Intent",
+            "B. a change setting entity",
+            "C. a device intent",
+            "D. a change setting intent"
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You build a bot by using the Microsoft Bot Framewor k SDK. You need to test the bot interactively on a local m achine. Which three actions should you perform in sequence?  To answer, move the appropriate actions from the list of actions to the answer area and arrange them in the correct order. NOTE: More than one order of answer choices is corr ect. You will receive credit for any of the correct orders you select.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You are building a social media extension that will  convert text to speech. The solution must meet the following requirements: Support messages of up to 400 characters. Provide users with multiple voice options. Minimize costs. You create an Azure Cognitive Services resource. Which Speech API endpoint provides users with the a vailable voice options?",
+        "options": [
+            "A. https://uksouth.customvoice.apispeech.microsoft.e om/api/texttospeech/v3.0/longaudiosynthesis/voices",
+            "B. https://uksouth.tts.speech.microsoft.conT/cogniti veservices/voices/list",
+            "C. https://uksouth.voice.speech.microsoft.com/cognit iveservices/v1?deploymentld ={deploymentld>",
+            "D. https://uksouth.api.cognitive.microsoft.eom/speec htotext/v3.0/models/base"
+        ],
+        "correct": "A. https://uksouth.customvoice.apispeech.microsoft.e om/api/texttospeech/v3.0/longaudiosynthesis/voices",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "DRAG DROP You have a Custom Vision service project that perfo rms object detection. The project uses the General domain for classification and contains a tr ained model. You need to export the model for use on a network t hat is disconnected from the internet. Which three actions should you perform in sequence?  To answer, move the appropriate actions from the list o' actions to the answer area and arrange them in the correct order.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "DRAG DROP You have a question answering project in Azure Cogn itive Service for Language. You need to move the project to a Language service instance in a different Azure region. Which three actions should you perform in sequence?  To answer, move the appropriate actions from the list of actions to the answer area and arrange them in the correct order. A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You are building a chatbot that will use question a nswering in Azure Cognitive Service for Language. You have a PDF named Docl.pdf that contains a produ ct catalogue and a price list You upload Docl.pdf and train the model. During testing, users report that the chatbot respo nds correctly to the following question: What is the price of < product>? The chatbot fails to respond to the following quest ion: How much does <product* cost? You need to ensure that the chatbot responds correc tly to both questions. Solution: From Language Studio, you create an entit y for cost, and then retrain and republish the model. Does this meet the goal?",
+        "options": [
+            "A. Yes",
+            "B. No"
+        ],
+        "correct": "B. No",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "DRAG DROP You are building an app that will scan confidential  documents and use the Language service to analyze the contents. You provision an Azure Cognitive Services resource. You need to ensure that the app can make requests t o the Language service endpoint. The solution must ensure that confidential documents remain on-p remises. Which three actions should you perform in sequence?  To answer, move the appropriate actions from the list of actions to the answer area and arrange them in the correct order.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You have a factory that produces food products. You need to build a monitoring solution for staff c ompliance with personal protective equipment (PPE) requirements. The solution must meet the foll owing requirements: identify staff who have removed masks or safety gla sses. Perform a compliance check every 15 minutes. Minimize development effort. Minimize costs. Which service should you use?",
+        "options": [
+            "A. Face B. Computer Vision",
+            "C. Azure Video Analyzer for Media (formerly Video in dexer)"
+        ],
+        "correct": "A. Face B. Computer Vision",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT You have an Azure subscription that has the followi ng configurations: Subscription ID: 8d3591aa-96b8-4737-ad09-OOf9b1ed35 ad Tenant ID: 3edfe572-cbS4-3ced-ae12-c5c177f39a12 You plan to create a resource that will perform sen timent analysis and optical character recognition (OCR). You need to use an HTTP request to create the resou rce in the subscription. The solution must use a single key and endpoint. How should you complete the request? To answer, sel ect the appropriate options in the answer area. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    },
+    {
+        "question": "You have a text-based chatbot. You need to enable content moderation by using the Text Moderation API of Content Moderator. Which two service responses should you use? Each co rrect answer presents part of the solution NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A. the adult classification score",
+            "B. optical character recognition (OCR)",
+            "C. personal data",
+            "D. text classification"
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You are building an Al solution that will use Senti ment Analysis results from surveys to calculate bonuses for customer service staff. You need to ens ure that the solution meets the Microsoft responsible Al principles. What should you do?",
+        "options": [
+            "A. Add a human review and approval step before makin g decisions that affect the staffs financial situat ion",
+            "B. Include the Sentiment Analysis results when surve ys return a low confidence score.",
+            "C. Use all the surveys, including surveys by custome rs who requested that their account be deleted and their",
+            "D. Publish the raw survey data to a central location  and provide the staff with access to the location."
+        ],
+        "correct": "A. Add a human review and approval step before makin g decisions that affect the staffs financial situat ion",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "DRAG DROP You have a Language Understanding solution that run s in a Docker container. You download the Language Understanding container i mage from the Microsoft Container Registry (MCR). You need to deploy the container image to a host co mputer. Which three actions should you perform in sequence?  To answer, move the appropriate actions from the list of actions to the answer area and arrange them in the correct order. A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "DRAG DROP You are building a customer support chatbot. You need to configure the bot to identify the follo wing: Code names for internal product development Messages that include credit card numbers The solution must minimize development effort. Which Azure Cognitive Service for Language feature should you use for each requirement? To answer, drag the appropriate features to the correc t requirements. Each feature may be used once, more than once, or not at all. You may need to drag  the split bar between panes or scroll to view content NOTE: Each correct selection is worth one point. A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You are building a chatbot. You need to configure the bot to guide users throug h a product setup process. Which type of dialog should you use?",
+        "options": [
+            "A. component",
+            "B. waterfall",
+            "C. adaptive",
+            "D. action",
+            "A. Identity",
+            "B. Keys and Endpoint",
+            "C. Properties",
+            "D. Networking"
+        ],
+        "correct": "B. Keys and Endpoint",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You are building a chatbot by using Microsoft Bot F ramework Composer. You need to configure the chatbot to present a list  of available options. The solution must ensure tha t an image is provided for each option. Which two features should you use? Each correct ans wer presents part of the solution. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A. an Azure function",
+            "B. an adaptive card",
+            "C. an entity",
+            "D. a dialog"
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You are building a chatbot. You need to configure the chatbot to query a knowle dge base. Which dialog class should you use?",
+        "options": [
+            "A. AdaptiveDialog",
+            "B. QnAMakerDialog",
+            "C. ComponentDialog",
+            "D. SkillDialog"
+        ],
+        "correct": "B. QnAMakerDialog",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You need to analyze video content to identify any m entions of specific company names. Which three actions should you perform in sequence?  To answer move the appropriate actions from the list of actions to the answer area and arrange them in the correct order.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You plan to build an app that will generate a list of tags for uploaded images. The app must meet the following requirements: Generate tags in a users preferred language. Support English, French, and Spanish. Minimize development effort You need to build a function that will generate the  tags for the app. Which Azure service endpoint should you use?",
+        "options": [
+            "A. Custom Vision image classification",
+            "B. Content Moderator Image Moderation C. Custom Translator",
+            "D. Computer Vision image Analysis"
+        ],
+        "correct": "D. Computer Vision image Analysis",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT You have an Azure Cognitive Search resource named S earch 1 that is used by multiple apps You need to secure Search 1. The solution must meet the foll owing requirements: Prevent access to Search1 from the internet. Limit the access of each app to specific queries What should you do? To answer, select the appropria te options in the answer area NOTE Each correct answer is worth one point.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You have a mobile app that manages printed forms. You need the app to send images of the forms direct ly to Forms Recognizer to extract relevant information. For compliance reasons, the image file s must not be stored in the cloud. In which format should you send the images to the F orm Recognizer API endpoint?",
+        "options": [
+            "A. raw image binary",
+            "B. form URL encoded",
+            "C. JSON"
+        ],
+        "correct": "A. raw image binary",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "DRAG DROP You have a factory that produces cardboard packagin g for food products. The factory has intermittent internet connectivity. The packages are required to include four samples o f each product. You need to build a Custom Vision model that will i dentify defects in packaging and provide the location of the defects to an operator. The model m ust ensure that each package contains the four products. Which project type and domain should you use? To an swer, drag the appropriate options to the correct targets. Each option may be used once, more  than once, or not at all. You may need to drag the split bar between panes or scroll to view conte nt NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You have an app that analyzes images by using the C omputer Vision API. You need to configure the app to provide an output for users who are vision impaired. The solution must provide the output in complete sentences. Which API call should you perform?",
+        "options": [
+            "A. readInStreamAsync",
+            "B. describelmagelnStreamAsync",
+            "C. toglfiagelnStreaaAsync",
+            "D. analyreImageByDomainInStreamAsync"
+        ],
+        "correct": "B. describelmagelnStreamAsync",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You are designing a conversational interface for an  app that will be used to make vacation requests. The interface must gather the following data: The start date of a vacation The end date of a vacation The amount of required paid time off The solution must minimize dialog complexity. Which  type of dialog should you use?",
+        "options": [
+            "A. Skill",
+            "B. waterfall",
+            "C. adaptive",
+            "D. component"
+        ],
+        "correct": "D. component",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You have a Language service resource that performs the following: Sentiment analysis Named Entity Recognition (NER) Personally Identifiable Information (Pll) identific ation You need to prevent the resource from persisting in put data once the data is analyzed. Which query parameter in the Language service API should you co nfigure?",
+        "options": [
+            "A. loggingOptOut",
+            "B. piiCategories",
+            "C. showStats",
+            "D. Model-version"
+        ],
+        "correct": "A. loggingOptOut",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You have an Azure subscription that contains a Lang uage service resource named ta1 and a virtual network named vnet1. You need to ensure that only r esources in vnet1 can access ta1. What should you configure?",
+        "options": [
+            "A. a network security group (NSG) for vnet1",
+            "B. Azure Firewall for vnet1",
+            "C. the virtual network settings for ta 1",
+            "D. a Language service container for ta1"
+        ],
+        "correct": "C. the virtual network settings for ta 1",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT You have a collection of press releases stored as P DF files. You need to extract text from the files and perform  sentiment analysis. Which service should you use for each task? To answ er, select the appropriate options in the answer area. NOTE: Each correct selection is worth one point. A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT You are building a chatbot. You need to use the Content Moderator service to id entify messages that contain sexually explicit lang uage. Which section in the response from the service will  contain the category score, and which category will be assigned to the message? To answer, select the appropriate options in the answer area, NOTE: Each correct selection is worth one point. A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "HOTSPOT You are building a solution that students will use to find references for essays. You use the followin g code to start building the solution. For each of the following statements, select Yes is  the statement is true. Otherwise, select No. NOTE: Each correct selection is worth one point. A.",
+        "options": [
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You are building a bot by using Microsoft Bot Frame work. You need to configure the bot to respond to spoken requests. The solution must minimize development effort. What should you do?",
+        "options": [
+            "A. Deploy the bot to Azure and register the bot with  a Direct Une Speech channel",
+            "B. Integrate the bot with Cortana by using the Bot F ramework SDK.",
+            "C. Create an Azure function that will call the Speec h service and connect the bot to the function.",
+            "D. Deploy the bot to Azure and register the bot with  a Microsoft Teams channel."
+        ],
+        "correct": "A. Deploy the bot to Azure and register the bot with  a Direct Une Speech channel",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You have a chatbot that was built by using Microsof t Bot Framework and deployed to Azure. You need to configure the bot to support voice inte ractions. The solution must support multiple client  apps. Which type of channel should you use?",
+        "options": [
+            "A. Cortana",
+            "B. Microsoft Teams",
+            "C. Direct Line Speech"
+        ],
+        "correct": "C. Direct Line Speech",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You are developing a monitoring system that will an alyze engine sensor data, such as rotation speed, angle, temperature, and pressure. The system must g enerate an alert in response to atypical values. What should you include in the solution?",
+        "options": [
+            "A. Application Insights in Azure Monitor",
+            "B. metric alerts in Azure Monitor",
+            "C. Multivariate Anomaly Detection",
+            "D. Univariate Anomaly Detection"
+        ],
+        "correct": "D. Univariate Anomaly Detection",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "DRAG DROP You develop an app in O named App1 that performs sp eech-to-speech translation. You need to configure App1 to translate English to German. How should you complete the speechTransiationConf i g object? To answer, drag the appropriate values to the correct targets. Each value may be us ed once, more than once, or not at all. You may need to drag the split bar between panes or scroll to view content. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A.",
+            "B.",
+            "C.",
+            "D."
+        ],
+        "correct": "",
+        "explanation": "",
+        "references": ""
+    },
+    {
+        "question": "You train a Conversational Language Understanding m odel to understand the natural language input of us ers. You need to evaluate the accuracy of the model befo re deploying it. What are two methods you can use? Each correct answ er presents a complete solution. NOTE: Each correct selection is worth one point.",
+        "options": [
+            "A. From the language authoring REST endpoint, retrie ve the model evaluation summary.",
+            "B. From Language Studio, enable Active Learning, and  then validate the utterances logged for review.",
+            "C. From Language Studio, select Model performance.",
+            "D. From the Azure portal, enable log collection in L og Analytics, and then analyze the logs."
+        ],
+        "correct": "",
+        "explanation": "Explanation/Reference:",
+        "references": ""
+    }
+]
