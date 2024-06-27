@@ -1,13 +1,11 @@
 '''
-AWS Exam Simulator v.02
+AWS Exam Simulator v.03.1
 Program Developed by Ruslan Magana Vsevolovna
 The purpose of this program is help to practice the questions of AWS Exams.
 '''
-
 import gradio as gr
 from gradio_client import Client
 import os
-import re
 import json
 
 # Function to load question sets from a directory
@@ -22,7 +20,6 @@ def load_question_sets_vce(directory='questions'):
 exams = load_question_sets_vce('questions/')
 print("question_sets:", exams)
 
-
 def select_exam_vce(exam_name):
     file_path = os.path.join(os.getcwd(), 'questions', f'{exam_name}.json')
     try:
@@ -34,13 +31,16 @@ def select_exam_vce(exam_name):
         print(f"File {file_path} not found.")
         return []  # Return an empty list to indicate no questions were found
 
-
 # Text-to-speech function
+client = Client("ruslanmv/text-to-speech-fast")
 def text_to_speech(text):
-    client = Client("ruslanmv/Text-To-Speech")
     result = client.predict(
-        text=text,
-        api_name="/predict"
+            language="English",
+            repo_id="csukuangfj/vits-piper-en_US-hfc_female-medium|1 speaker",
+            text=text,
+            sid="0",
+            speed=0.8,
+            api_name="/process"
     )
     return result  # result is already the path to the audio file
 
@@ -64,9 +64,7 @@ def display_question(index, audio_enabled):
     if index < 0 or index >= len(selected_questions):
         return "No more questions.", [], None
     question_text_ = selected_questions[index]['question']
-                 
     question_text = f"**Question {index + 1}:** {question_text_}"  # Numbering added
-
     choices_options = selected_questions[index]['options']
     audio_path = text_to_speech(question_text_ + " " + " ".join(choices_options)) if audio_enabled else None
     return question_text, choices_options, audio_path
@@ -111,7 +109,6 @@ def return_home():
         gr.update(visible=False), gr.update(visible=False), gr.update(visible=False), "", ""
     )
 
-
 description_str="""Developed by Ruslan Magana, this interactive quiz platform is designed to help you prepare and assess your knowledge in a variety of exams. 
 For more information about the developer, please visit [ruslanmv.com](https://ruslanmv.com/).
 
@@ -123,7 +120,7 @@ with gr.Blocks() as demo:
     # Home page elements
     title = gr.Markdown(value="**AWS Exam Simulator (Quiz)**")
     description = gr.Markdown(value=description_str)
-    exam_selector = gr.Dropdown(label="Select an exam", choices=exams,value='CLF-C02-v1')
+    exam_selector = gr.Dropdown(label="Select an exam", choices=exams, value='CLF-C02-v1')
     audio_checkbox = gr.Checkbox(label="Enable Audio", value=True)
     start_button = gr.Button("Start Exam")
 
@@ -137,7 +134,8 @@ with gr.Blocks() as demo:
     prev_button = gr.Button("Previous Question", visible=False)
     home_button = gr.Button("Return to Home", visible=False)
     question_audio = gr.Audio(visible=False, label="Question Audio", autoplay=True)
-    answer_audio = gr.Audio(visible=False,label="Answer Audio",autoplay=True)
+    answer_audio = gr.Audio(visible=False, label="Answer Audio", autoplay=True)
+
     # Layout for the home page
     with gr.Row():
         gr.Column([title])
@@ -187,3 +185,6 @@ with gr.Blocks() as demo:
     ])
 
 demo.launch()
+
+### Notes revision v0.3.1
+#In this revised code, JavaScript is used to stop any currently playing audio when a new audio is about to be played. The _js parameter is added to the click function of the buttons that play audio (answer_button, next_button, and prev_button) to ensure that no multiple audios are played simultaneously
