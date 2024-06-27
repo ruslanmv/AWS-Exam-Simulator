@@ -1,58 +1,39 @@
 '''
-AWS Exam Simulator v.01
+AWS Exam Simulator v.02
 Program Developed by Ruslan Magana Vsevolovna
 The purpose of this program is help to practice the questions of AWS Exams.
-https://ruslanmv.com/
 '''
 
 import gradio as gr
 from gradio_client import Client
 import os
 import re
+import json
 
 # Function to load question sets from a directory
-def load_question_sets(directory='questions'):
-    question_sets = [f.split('.')[0] for f in os.listdir(directory) if f.endswith('.set')]
+def load_question_sets_vce(directory='questions'):
+    question_sets = []
+    for root, dirs, files in os.walk(directory):
+        for file in files:
+            if file.endswith(".json"):
+                question_sets.append(os.path.join( file)[:-5])  # remove the .json extension
     return question_sets
 
-exams = load_question_sets()
+exams = load_question_sets_vce('questions/')
 print("question_sets:", exams)
 
-def parse_questions(file_path):
-    with open(file_path, 'r', encoding='utf-8') as file:
-        content = file.read()
-    questions_raw = re.split(r'## ', content)[1:]
-    questions = []
-    for q in questions_raw:
-        parts = q.split('\n')
-        question_text = parts[0].strip()
-        options = [opt.strip() for opt in parts[1:] if opt.strip()]
-        correct_options = [opt for opt in options if opt.startswith('- [x]')]
-        if correct_options:
-            correct_answer = correct_options[0]
-        else:
-            correct_answer = None
-        questions.append({
-            'question': question_text,
-            'options': options,
-            'correct': correct_answer
-        })
-    return questions
 
-# Function to select exam questions
-def select_exam_(exam_name, num_questions=2):
-    questions = parse_questions(f'questions/{exam_name}.set')
-    num_questions = len(questions)
-    print("num_questions", num_questions)
-    selected_questions = questions[:int(num_questions)]
-    #return selected_questions
-    cleaned_questions = [
-        {'question': q['question'], 
-        'options': [o.replace('- [ ] ', '').replace('- [x] ', '').replace('- [X] ', '') for o in q['options']], 
-        'correct': q['correct'].replace('- [x] ', '').replace('- [X] ', '') if q['correct'] is not None else ''}
-        for q in selected_questions
-    ]
-    return cleaned_questions
+def select_exam_vce(exam_name):
+    file_path = os.path.join(os.getcwd(), 'questions', f'{exam_name}.json')
+    try:
+        with open(file_path, 'r') as f:
+            questions = json.load(f)
+            print(f"Loaded {len(questions)} questions")
+            return questions  # Ensure the questions are returned here
+    except FileNotFoundError:
+        print(f"File {file_path} not found.")
+        return []  # Return an empty list to indicate no questions were found
+
 
 # Text-to-speech function
 def text_to_speech(text):
@@ -69,7 +50,7 @@ selected_questions = []
 # Function to start exam
 def start_exam(exam_choice, audio_enabled):
     global selected_questions
-    selected_questions = select_exam_(exam_choice)
+    selected_questions = select_exam_vce(exam_choice)
     question, options, audio_path = display_question(0, audio_enabled)
     return (
         gr.update(visible=False), gr.update(visible=False), gr.update(visible=False), gr.update(visible=False),
@@ -82,9 +63,12 @@ def start_exam(exam_choice, audio_enabled):
 def display_question(index, audio_enabled):
     if index < 0 or index >= len(selected_questions):
         return "No more questions.", [], None
-    question_text = selected_questions[index]['question']
+    question_text_ = selected_questions[index]['question']
+                 
+    question_text = f"**Question {index + 1}:** {question_text_}"  # Numbering added
+
     choices_options = selected_questions[index]['options']
-    audio_path = text_to_speech(question_text + " " + " ".join(choices_options)) if audio_enabled else None
+    audio_path = text_to_speech(question_text_ + " " + " ".join(choices_options)) if audio_enabled else None
     return question_text, choices_options, audio_path
 
 # Function to check the answer
@@ -139,11 +123,11 @@ with gr.Blocks() as demo:
     # Home page elements
     title = gr.Markdown(value="**AWS Exam Simulator (Quiz)**")
     description = gr.Markdown(value=description_str)
-    exam_selector = gr.Dropdown(label="Select an exam", choices=exams, value='AWS')
+    exam_selector = gr.Dropdown(label="Select an exam", choices=exams,value='CLF-C02-v1')
     audio_checkbox = gr.Checkbox(label="Enable Audio", value=True)
     start_button = gr.Button("Start Exam")
 
-    # Quiz elements (initially hidden)
+    #Quiz elements (initially hidden)
     question_state = gr.State(0)
     question_text = gr.Markdown(visible=False, elem_id="question-text")
     choices = gr.Radio(visible=False, label="Options")
