@@ -83,7 +83,7 @@ def handle_previous(index, audio_enabled):
     """Moves to the previous question and updates the UI."""
     new_index = max(index - 1, 0)
     question, options, new_index, audio_path = update_question(new_index, audio_enabled)
-    return question, options, new_index, "", audio_path, gr.update(visible(False))  # Hide explanation
+    return question, options, new_index, "", audio_path, gr.update(visible=False)  # Hide explanation
 
 def return_home():
     """Returns to the home screen."""
