@@ -1,2 +1,3 @@
 /backup
 *.pdf
+/__pycache__
