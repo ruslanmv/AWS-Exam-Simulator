@@ -1,5 +1,5 @@
 import json
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor
 from langchain.prompts import PromptTemplate
 from langchain_ibm import WatsonxLLM
 from dotenv import load_dotenv
@@ -85,7 +85,7 @@ def process_question(question_data, exp=False):
     else:
         system = '''You are an expert in the Cloud. Your task is to give an explanation about the
     correct answer and explain why the other options are wrong.
-    You will recieve additional explantion that maybe can help otherwise give your explanation. 
+    You will receive additional explanation that maybe can help otherwise give your explanation. 
     The question and explanation are the following:'''
 
     context = f"Question: {question_data['question']}\n"
@@ -106,12 +106,11 @@ def update_json_file(file_path):
         futures = []
         for question in questions:
             if "explanation" not in question:
-                futures.append(executor.submit(process_question, question, exp=False))
+                futures.append((question, executor.submit(process_question, question, exp=False)))
             else:
-                old_explanation = question["explanation"]
-                futures.append(executor.submit(process_question, question, exp=True))
+                futures.append((question, executor.submit(process_question, question, exp=True)))
 
-        for future, question in zip(as_completed(futures), questions):
+        for question, future in futures:
             explanation = future.result()
             question["explanation"] = explanation
             print(f"Updated Explanation: {explanation}")
