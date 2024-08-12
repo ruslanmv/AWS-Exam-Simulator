@@ -1,11 +1,12 @@
 '''
-AWS Exam Simulator v.04
+AWS Exam Simulator v.05
 Program Developed by Ruslan Magana Vsevolovna
 The purpose of this program is help to practice the questions of AWS Exams.
 '''
 import gradio as gr
 from tool import *  # Assuming this module contains your exam data and text-to-speech functionality
 from backend1 import *
+
 
 # Global variable to store the currently selected set of exam questions
 selected_questions = []
@@ -29,7 +30,7 @@ def start_exam(exam_choice, audio_enabled):
         # Show quiz elements
         gr.update(visible=True), question, gr.update(choices=options, visible=True), gr.update(visible=True),
         gr.update(visible=True), gr.update(visible=True), gr.update(visible=True), 0, "", audio_path, gr.update(visible=True),
-        gr.update(visible=True)
+        gr.update(visible=True), None  # None for the audio stop signal
     )
 
 def display_question(index, audio_enabled):
@@ -67,11 +68,18 @@ def update_question(index, audio_enabled):
     question, options, audio_path = display_question(index, audio_enabled)
     return question, gr.update(choices=options), index, audio_path
 
-def handle_answer(index, answer, audio_enabled):
+def handle_answer(index, answer, audio_enabled, current_audio):
     """Handles answer submission, provides feedback, and generates audio."""
+    # Handle the case when no answer is selected
+    if answer is None:
+        return "Please select an option before submitting.", None, None
+    
+    # Stop the current question audio before playing the answer audio
+    stop_audio = True if current_audio else False
     result = check_answer(index, answer)
-    audio_path = text_to_speech(result) if audio_enabled else None
-    return result, audio_path
+    answer_audio_path = text_to_speech(result) if audio_enabled else None
+    return result, answer_audio_path, stop_audio
+
 
 def handle_next(index, audio_enabled):
     """Moves to the next question and updates the UI."""
@@ -107,6 +115,7 @@ with gr.Blocks() as demo:
 
     # Quiz elements (initially hidden)
     question_state = gr.State(0)
+    current_audio_state = gr.State(None)  # State to track the current audio playing
     question_text = gr.Markdown(visible=False, elem_id="question-text")
     choices = gr.Radio(visible=False, label="Options")
     result_text = gr.Markdown(visible=True)
@@ -154,12 +163,12 @@ with gr.Blocks() as demo:
             audio_checkbox,  # Ensure the checkbox visibility is updated
             question_text, question_text, choices, answer_button, 
             next_button, prev_button, home_button, question_state, result_text, question_audio,
-            explain_button # Add this to make the explain button visible
+            explain_button, current_audio_state  # Add current_audio_state to the outputs
         ]
     )
     
     # Connect the quiz buttons to their functions
-    answer_button.click(fn=handle_answer, inputs=[question_state, choices, audio_checkbox], outputs=[result_text, answer_audio])
+    answer_button.click(fn=handle_answer, inputs=[question_state, choices, audio_checkbox, current_audio_state], outputs=[result_text, answer_audio, current_audio_state])
     next_button.click(fn=handle_next, inputs=[question_state, audio_checkbox], outputs=[question_text, choices, question_state, result_text, question_audio, explanation_text])
     prev_button.click(fn=handle_previous, inputs=[question_state, audio_checkbox], outputs=[question_text, choices, question_state, result_text, question_audio, explanation_text])
 

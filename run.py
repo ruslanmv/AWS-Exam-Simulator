@@ -129,11 +129,7 @@ for root, dirs, files in os.walk(directory):
             json_file_paths.append(os.path.join(root, file))  # include the full path
 
 json_file_paths=[
- 'c:\\Blog\\AWS-Exam-Simulator\\questions\\GCP-ML-vA.json',
- 'c:\\Blog\\AWS-Exam-Simulator\\questions\\GCP-ML-vB.json',  
- 'c:\\Blog\\AWS-Exam-Simulator\\questions\\SAA-C03-v1.json',
- 'c:\\Blog\\AWS-Exam-Simulator\\questions\\SAA-C03-v2.json',
- 'c:\\Blog\\AWS-Exam-Simulator\\questions\\SAP-C02-v1.json',
+ 'c:\\Blog\\AWS-Exam-Simulator\\questions\\SAA-C03-v2.json',   
  'c:\\Blog\\AWS-Exam-Simulator\\questions\\MLS-C01-v0624.json',
  'c:\\Blog\\AWS-Exam-Simulator\\questions\\MLS-C01-v4.json',
 ]
@@ -141,7 +137,7 @@ json_file_paths=[
 print("JSON files:", json_file_paths)
 
 # --- Main Execution ---
-for file_path in json_file_paths[:1]:
+for file_path in json_file_paths[:2]:
     file_name = os.path.basename(file_path)  # Extract file name with extension
     print("Working with:", file_name)
     update_json_file(file_path)
