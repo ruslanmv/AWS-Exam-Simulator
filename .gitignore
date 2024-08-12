@@ -1,3 +1,4 @@
 /backup
 *.pdf
 /__pycache__
+.env
