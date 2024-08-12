@@ -1,5 +1,3 @@
 /backup
 *.pdf
 .env
-__pycache__/backend1.cpython-310.pyc
-__pycache__/tool.cpython-310.pyc
