@@ -101,7 +101,7 @@ def update_json_file(file_path):
     """Reads, processes, and updates the JSON file with explanations."""  
     with open(file_path, 'r') as file:
         questions = json.load(file)
-    for question in questions[:1]:
+    for question in questions:
         # Check if the question already has an explanation
         if "explanation" not in question:
             explanation = process_question(question,exp=False)
