@@ -142,7 +142,7 @@ json_file_paths=[
 print("JSON files:", json_file_paths)
 
 # --- Main Execution ---
-for file_path in json_file_paths:
+for file_path in json_file_paths[:1]:
     file_name = os.path.basename(file_path)  # Extract file name with extension
     print("Working with:", file_name)
     update_json_file(file_path)
