@@ -40,7 +40,7 @@ connection_params: IbmConnectionParams = load_connection_params()
 # Define parameters for the model
 parameters = {
     "decoding_method": "sample",
-    "max_new_tokens": 400,
+    "max_new_tokens": 300,
     "min_new_tokens": 1,
     "temperature": 0.5,
     "top_k": 50,
@@ -161,21 +161,8 @@ json_file_paths=[
  'c:\\Blog\\AWS-Exam-Simulator\\questions\\SAA-C03-v2.json',
  'c:\\Blog\\AWS-Exam-Simulator\\questions\\SAP-C02-v1.json',
  'c:\\Blog\\AWS-Exam-Simulator\\questions\\MLS-C01-v0624.json',
- 'c:\\Blog\\AWS-Exam-Simulator\\questions\\MLS-C01-v1.json',
- 'c:\\Blog\\AWS-Exam-Simulator\\questions\\MLS-C01-v2.json',
- 'c:\\Blog\\AWS-Exam-Simulator\\questions\\MLS-C01-v3.json',
  'c:\\Blog\\AWS-Exam-Simulator\\questions\\MLS-C01-v4.json',
- 'c:\\Blog\\AWS-Exam-Simulator\\questions\\MLS-C01.json',
- 'c:\\Blog\\AWS-Exam-Simulator\\questions\\AI-102.json',
- 'c:\\Blog\\AWS-Exam-Simulator\\questions\\AI-900-v1.json',
- 'c:\\Blog\\AWS-Exam-Simulator\\questions\\AI-900-v2.json',
- 'c:\\Blog\\AWS-Exam-Simulator\\questions\\AI-900-v3.json',
- 'c:\\Blog\\AWS-Exam-Simulator\\questions\\CLF-C02-v1.json',
- 'c:\\Blog\\AWS-Exam-Simulator\\questions\\DOP-C02-v1.json',
- 'c:\\Blog\\AWS-Exam-Simulator\\questions\\DP-100-v1.json',
- 'c:\\Blog\\AWS-Exam-Simulator\\questions\\GCP-CA.json',
 ]
-
 import os
 # --- Main Execution ---
 for file_path in json_file_paths:
