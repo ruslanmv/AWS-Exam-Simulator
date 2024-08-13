@@ -163,6 +163,21 @@ json_file_paths=[
  'c:\\Blog\\AWS-Exam-Simulator\\questions\\MLS-C01-v0624.json',
  'c:\\Blog\\AWS-Exam-Simulator\\questions\\MLS-C01-v4.json',
 ]
+
+json_file_paths=[
+ 'c:\\Blog\\AWS-Exam-Simulator\\questions\\CLF-C02-v1.json',
+ 'c:\\Blog\\AWS-Exam-Simulator\\questions\\DOP-C02-v1.json',
+ 'c:\\Blog\\AWS-Exam-Simulator\\questions\\DP-100-v1.json',
+ 'c:\\Blog\\AWS-Exam-Simulator\\questions\\GCP-CA.json',
+ 'c:\\Blog\\AWS-Exam-Simulator\\questions\\GCP-ML-vB.json',
+ 'c:\\Blog\\AWS-Exam-Simulator\\questions\\MLS-C01-v1.json',
+ 'c:\\Blog\\AWS-Exam-Simulator\\questions\\MLS-C01-v2.json',
+ 'c:\\Blog\\AWS-Exam-Simulator\\questions\\MLS-C01-v3.json',
+ 'c:\\Blog\\AWS-Exam-Simulator\\questions\\MLS-C01-v4.json',
+ 'c:\\Blog\\AWS-Exam-Simulator\\questions\\MLS-C01.json',
+ 'c:\\Blog\\AWS-Exam-Simulator\\questions\\SAA-C03-v1.json',
+ 'c:\\Blog\\AWS-Exam-Simulator\\questions\\SAP-C02-v1.json']
+
 import os
 # --- Main Execution ---
 for file_path in json_file_paths:
