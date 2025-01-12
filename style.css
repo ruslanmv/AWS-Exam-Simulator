@@ -41,6 +41,40 @@ body {
     background-color: #FFFFFF;
 }
 
+.exam_mode_radio {
+  width: auto !important; /* Allow the container to adjust its width */
+  margin-bottom: 15px !important; /* Add some space below */
+}
+
+.exam_mode_radio > label {
+  display: inline-flex; /* Align items in a row */
+  align-items: center; /* Center items vertically */
+  margin-right: 20px; /* Add some space between options */
+  cursor: pointer;
+}
+
+.exam_mode_radio input[type="radio"] {
+  margin-right: 8px; /* Space between the radio button and the label */
+  width: 18px;
+  height: 18px;
+  border: 2px solid #AAB7B8;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+
+.exam_mode_radio input[type="radio"]:checked {
+    background-color: #D56600;
+    border-color: #D56600;
+}
+
+
 input, select, button {
     width: 100%;
     padding: 12px;

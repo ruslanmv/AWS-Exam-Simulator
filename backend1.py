@@ -68,16 +68,54 @@ def text_to_speech(text, retries=3, delay=5):
     print("Max retries exceeded. Could not process the request.")
     return None
 # Function to start exam
-def start_exam(exam_choice, audio_enabled):
-    global selected_questions
+
+
+def start_exam(exam_choice, start_question, audio_enabled, exam_mode, num_questions):
+    """Starts the exam, selects questions, and sets up the UI."""
+    global selected_questions, exam_start_time, num_questions_to_perform
     selected_questions = select_exam_vce(exam_choice)
-    question, options, audio_path = display_question(0, audio_enabled)
+    num_questions_to_perform = num_questions if exam_mode == "exam" else len(selected_questions)
+
+    # Reset user answers for a new exam
+    for q in selected_questions:
+        q['user_answer'] = None
+
+    if start_question >= len(selected_questions):
+        start_question = 0
+
+    exam_start_time = time.time()
+
+    question, options, audio_path = display_question(start_question, audio_enabled and exam_mode == "training")
+
     return (
-        gr.update(visible=False), gr.update(visible=False), gr.update(visible=False), gr.update(visible=False),
+        gr.update(visible=False),  # Hide title
+        gr.update(visible=False),  # Hide description
+        gr.update(visible=False),  # Hide exam_selector
+        gr.update(visible=False),  # Hide start_button
         gr.update(visible=False),  # Hide the audio_checkbox
-        gr.update(visible=True), question, gr.update(choices=options, visible=True), gr.update(visible=True),
-        gr.update(visible=True), gr.update(visible=True), gr.update(visible=True), 0, "", audio_path
+        gr.update(visible=False),  # Hide start_question_slider
+        gr.update(visible=False),  # Hide exam_mode_radio
+        gr.update(visible=False),  # Hide num_questions_slider
+
+        # Show quiz elements
+        gr.update(visible=True),  # Show question_text
+        question,  # Question to display
+        gr.update(choices=options, visible=True, interactive=True),  # Update Radio choices, make visible and interactive
+        gr.update(visible=True),  # Show answer_button
+        gr.update(visible=True if exam_mode == 'training' or start_question < num_questions_to_perform - 1 else False),  # Show next_button
+        gr.update(visible=True),  # Show prev_button
+        gr.update(visible=True),  # Show home_button
+        start_question, "",  # Update the question state
+        audio_path if exam_mode == "training" else None,  # Provide the audio_path based on mode
+        gr.update(visible=True),  # Show explain_button
+        gr.update(visible=True),  # Show result_text
+        None,  # None for the audio stop signal
+        gr.update(visible=True if exam_mode == "exam" else False),  # Timer visibility based on mode
+        exam_mode,
+        gr.update(visible=True if exam_mode == 'exam' and start_question == num_questions_to_perform - 1 else False),  # Finish button visibility
+        selected_questions, num_questions_to_perform
     )
+
 
 # Function to display a question
 def display_question(index, audio_enabled):
