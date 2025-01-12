@@ -1,7 +1,8 @@
 import gradio as gr
 from backend1 import *
 import time
-from utils import generate_exam_report
+from utils import generate_exam_report, save_report_to_pdf, generate_html_report, display_report
+import json
 
 # --- Global Variables ---
 selected_questions = []
@@ -70,7 +71,7 @@ def start_exam(exam_choice, start_question, audio_enabled, exam_mode, num_questi
         start_question, "",  # Update the question state
         audio_path if exam_mode == "training" else None,  # Provide the audio_path based on mode
         gr.update(visible=True),  # Show explain_button
-        gr.update(visible=True),
+        gr.update(visible=True), #result text
         None,  # None for the audio stop signal
         gr.update(visible=True if exam_mode == "exam" else False),  # Timer visibility based on mode
         exam_mode,
@@ -142,8 +143,9 @@ def handle_next(index, audio_enabled, exam_mode):
     # Update finish button visibility for the last question
     show_finish = gr.update(visible=True if exam_mode == "exam" and new_index == num_questions_to_perform - 1 else False)
     show_next = gr.update(visible=False if new_index == num_questions_to_perform - 1 else True)
+    show_prev = gr.update(visible=True)
 
-    return question, options, new_index, "", audio_path, gr.update(visible=False), show_finish, show_next, show_next
+    return question, options, new_index, "", audio_path, gr.update(visible=False), show_finish, show_next, show_prev
 
 
 def handle_previous(index, audio_enabled, exam_mode):
@@ -154,8 +156,9 @@ def handle_previous(index, audio_enabled, exam_mode):
     # Update finish button visibility
     show_finish = gr.update(visible=True if exam_mode == "exam" and new_index == num_questions_to_perform - 1 else False)
     show_next = gr.update(visible=True)
+    show_prev = gr.update(visible=True if new_index > 0 else False)
 
-    return question, options, new_index, "", audio_path, gr.update(visible=False), show_finish, show_next, show_next
+    return question, options, new_index, "", audio_path, gr.update(visible=False), show_finish, show_next, show_prev
 
 
 def return_home():
@@ -164,13 +167,13 @@ def return_home():
         # Show start screen elements
         gr.update(visible=True), gr.update(visible=True), gr.update(visible=True), gr.update(visible=True),
         gr.update(visible=True),  # Show the audio_checkbox
-        gr.update(visible=False), gr.update(visible=False), gr.update(choices=[], visible=False, interactive=False), gr.update(visible=False),
-        gr.update(visible=False), gr.update(visible=False), gr.update(visible=False), "", "", gr.update(visible=False),
-        gr.update(visible=False),
+        gr.update(visible=False), gr.update(choices=[], visible=False, interactive=False), gr.update(visible=False),
+        gr.update(visible=False), gr.update(visible=False), gr.update(visible=False), 0, "", "", gr.update(visible=False),
         gr.update(visible=False),  # Hide explain button
         gr.update(visible=False),  # Hide timer
         gr.update(visible=True),  # Show exam mode
-        gr.update(visible=False)  # Hide num_questions
+        gr.update(visible=False),  # Hide num_questions
+        gr.update(visible=False) # Hide result_text
     )
 
 def update_timer():
@@ -181,13 +184,24 @@ def update_timer():
     seconds = elapsed_time % 60
     return f"Time: {minutes:02d}:{seconds:02d}"
 
+
+
+def on_exam_mode_change(exam_mode):
+    """Shows or hides the number of questions slider based on the exam mode."""
+    if exam_mode == "exam":
+        return gr.update(visible=True), gr.update(visible=False)  # Show num_questions, hide audio
+    else:
+        return gr.update(visible=False), gr.update(visible=True)  # Hide num_questions, show audio
+
 def finish_exam(selected_questions, num_questions_to_perform):
     """Displays the final results using generate_exam_report and hides the quiz elements."""
+    report_data = generate_exam_report(selected_questions, num_questions_to_perform)
 
-    report_content = generate_exam_report(selected_questions, num_questions_to_perform)
+    # Convert the report data to JSON
+    report_json = json.dumps(report_data)
 
+    # Hide quiz elements
     return (
-        # Hide quiz elements
         gr.update(visible=False),  # question_text
         gr.update(choices=[], visible=False, interactive=False),  # choices
         gr.update(visible=False),  # answer_button
@@ -198,20 +212,10 @@ def finish_exam(selected_questions, num_questions_to_perform):
         gr.update(visible=False),  # answer_audio
         gr.update(visible=False),  # timer_text
         gr.update(visible=False),  # finish_button
-
-        # Show result elements
-        gr.update(visible=True),  # result_text
-        report_content,  # Update result_text with the report content
-        gr.update(visible=True),  # home_button
-        gr.update(visible=False)  # explanation
+        gr.update(visible=False),  # home_button
+        gr.update(visible=False),  # explanation_text
+        report_json  # Return the report data to update report_data_state
     )
-
-def on_exam_mode_change(exam_mode):
-    """Shows or hides the number of questions slider based on the exam mode."""
-    if exam_mode == "exam":
-        return gr.update(visible=True), gr.update(visible=False)  # Show num_questions, hide audio
-    else:
-        return gr.update(visible=False), gr.update(visible=True)  # Hide num_questions, show audio
 
 # --- Gradio Interface ---
 with gr.Blocks(css="style.css", title="Exam Simulator") as demo:
@@ -323,20 +327,40 @@ with gr.Blocks(css="style.css", title="Exam Simulator") as demo:
 
     # Connect the quiz buttons to their functions
     answer_button.click(fn=handle_answer, inputs=[question_state, choices, audio_checkbox, current_audio_state, exam_mode_state], outputs=[result_text, answer_audio, current_audio_state])
-    next_button.click(fn=handle_next, inputs=[question_state, audio_checkbox, exam_mode_state], outputs=[question_text, choices, question_state, result_text, question_audio, explanation_text, finish_button, next_button,prev_button])
-    prev_button.click(fn=handle_previous, inputs=[question_state, audio_checkbox, exam_mode_state], outputs=[question_text, choices, question_state, result_text, question_audio, explanation_text, finish_button, next_button,prev_button])
+    next_button.click(fn=handle_next, inputs=[question_state, audio_checkbox, exam_mode_state], outputs=[question_text, choices, question_state, result_text, question_audio, explanation_text, finish_button, next_button, prev_button])
+    prev_button.click(fn=handle_previous, inputs=[question_state, audio_checkbox, exam_mode_state], outputs=[question_text, choices, question_state, result_text, question_audio, explanation_text, finish_button, next_button, prev_button])
     explain_button.click(fn=show_explanation, inputs=[question_state], outputs=[explanation_text, result_text, explanation_text])
-    finish_button.click(fn=finish_exam, inputs=[selected_questions_state, num_questions_to_perform_state], outputs=[
-    question_text, choices, answer_button, next_button, prev_button, explain_button, question_audio, answer_audio, timer_text, finish_button, result_text, home_button, explanation_text
-    ])
 
-    home_button.click(fn=return_home, inputs=None, outputs=[
-        title, description, exam_selector, start_button,
-        audio_checkbox,  # Ensure the checkbox visibility is updated
-        question_text, question_text, choices, answer_button,
-        next_button, prev_button, home_button, question_state, result_text, explanation_text, explain_button, timer_text,
-        exam_mode_radio, num_questions_slider
-    ])
+    report_data_state = gr.State()
+
+    finish_button.click(
+        fn=finish_exam,
+        inputs=[selected_questions_state, num_questions_to_perform_state],
+        outputs=[
+            question_text, choices, answer_button, next_button, prev_button,
+            explain_button, question_audio, answer_audio, timer_text, finish_button,
+            home_button, explanation_text, report_data_state
+        ]
+    )
+
+    # Attach the display_report function to report_data_state change
+    demo.load(
+        fn=lambda report_json: display_report(report_json) if report_json else (gr.update(value=""), gr.update(visible=False)),
+        inputs=report_data_state,
+        outputs=[result_text, home_button]
+    )
+
+    home_button.click(
+        fn=return_home,
+        inputs=None,
+        outputs=[
+            title, description, exam_selector, start_button,
+            audio_checkbox,
+            question_text, choices, answer_button,
+            next_button, prev_button, home_button, question_state, result_text, explanation_text, explain_button, timer_text,
+            exam_mode_radio, num_questions_slider, result_text
+        ]
+    )
 
     # Update timer periodically
     demo.load(fn=update_timer, inputs=None, outputs=timer_text, every=1)
@@ -344,4 +368,4 @@ with gr.Blocks(css="style.css", title="Exam Simulator") as demo:
     # Handle exam mode changes
     exam_mode_radio.change(fn=on_exam_mode_change, inputs=exam_mode_radio, outputs=[num_questions_slider, audio_checkbox])
 
-demo.launch()            
+demo.launch()
