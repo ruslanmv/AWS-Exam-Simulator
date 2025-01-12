@@ -1,0 +1,202 @@
+body {
+    font-family: 'Amazon Ember', Arial, sans-serif;
+    background-color: #EAEDED;
+    margin: 0;
+    padding: 0;
+    color: #232F3E;
+}
+
+.app-container {
+    max-width: 950px;
+    margin: 30px auto;
+    background-color: #FFFFFF;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.title {
+    color: #D56600; /* OnVUE Orange */
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.description {
+    margin-top: 20px;
+    line-height: 1.7;
+    font-size: 1.1em;
+    text-align: left; /* Left-aligned text */
+    color: #333333;
+}
+
+.exam_selector {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border: 2px solid #D56600;
+    border-radius: 6px;
+    font-size: 1em;
+    background-color: #FFFFFF;
+}
+
+input, select, button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border: 1px solid #AAB7B8;
+    border-radius: 6px;
+    font-size: 1em;
+}
+
+.start_button {
+    background-color: #F5A623; /* Light orange background */
+    color: black; /* Black text for visibility */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 700;
+}
+
+.start_button:hover {
+    background-color: #F39C12; /* Darker orange on hover */
+}
+
+.start_button:disabled {
+    background-color: #FAD7A0; /* Lighter orange when disabled */
+    cursor: not-allowed;
+    color: black;
+}
+
+.audio_checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.audio_checkbox input[type="checkbox"] {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.audio_checkbox label {
+    font-size: 1.1em;
+    font-weight: 500;
+    color: #232F3E;
+}
+
+.question-text {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: #232F3E;
+}
+
+/* Radio option list style */
+.options-list {
+    padding: 0;
+    margin: 20px 0 30px 0;
+    display: flex;
+    flex-direction: column; /* Ensures vertical alignment */
+    gap: 10px; /* Space between options */
+}
+
+.options-list label {
+    width: 100%; /* Make each option take the full width */
+    background-color: transparent; /* Removed background color */
+    margin: 0;
+    padding: 12px 20px;
+    border: 1px solid #AAB7B8;
+    border-radius: 8px;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center; /* Align radio button with text */
+    justify-content: flex-start; /* Ensure label contents start from the left */
+    transition: background-color 0.3s ease, transform 0.1s, color 0.3s ease;
+    cursor: pointer;
+}
+
+.options-list input[type="radio"] {
+    margin-right: 15px; /* Space between radio button and text */
+    width: 18px;
+    height: 18px;
+    accent-color: #D56600; /* On-brand color for the radio circle */
+    appearance: none; /* Custom appearance for consistent styling */
+    border: 2px solid #AAB7B8;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    cursor: pointer;
+    outline: none;
+}
+
+.options-list input[type="radio"]:checked {
+    background-color: #D56600; /* Selected circle fills with brand color */
+    border-color: #D56600;
+}
+
+.options-list label:hover {
+    background-color: #EAEDED;
+    transform: translateY(-1px);
+}
+
+.options-list label.selected {
+    background-color: #D56600;
+    color: black; /* Keep text black for visibility when selected */
+    border-color: #D56600;
+}
+
+.result-text {
+    margin-top: 25px;
+    font-weight: 600;
+    font-size: 1.1em;
+    color: #232F3E;
+}
+
+.explanation-text {
+    margin-top: 15px;
+    font-style: italic;
+    font-size: 1.1em;
+}
+
+.nav-buttons button {
+    background-color: #D56600;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 700;
+}
+
+.nav-buttons button:hover {
+    background-color: #EC7211;
+}
+
+button:disabled {
+    background-color: #FABD64;
+    cursor: not-allowed;
+}
+
+.question_audio, .answer_audio {
+    margin-top: 15px;
+}
+
+audio {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .options-list label {
+        padding: 10px;
+        font-size: 1em;
+    }
+
+    .title {
+        font-size: 2em;
+    }
+
+    .question-text {
+        font-size: 1.1em;
+    }
+}
