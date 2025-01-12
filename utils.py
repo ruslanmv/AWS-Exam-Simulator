@@ -108,6 +108,60 @@ def generate_html_report(report_data):
         <div class="return-home">
             <button onclick="window.location.reload();">Return to Home & Start New Exam</button>
         </div>
+    </body>
+    </html>
+    """
+
+    return html_content
+
+def generate_html_report_old(report_data):
+    """Generates an HTML formatted report from the report data."""
+    html_content = f"""
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exam Report</title>
+        <style>
+            body {{ font-family: Arial, sans-serif; }}
+            table {{ width: 80%; margin: 20px auto; border-collapse: collapse; }}
+            th, td {{ text-align: left; padding: 8px; border: 1px solid #ddd; }}
+            th {{ background-color: #f0f0f0; }}
+            .return-home {{ text-align: center; margin-top: 20px; }}
+        </style>
+    </head>
+    <body>
+        <h1 style="text-align: center;">Exam Report</h1>
+        <p style="text-align: center;"><strong>Overall Score:</strong> {report_data['score']}</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Question</th>
+                    <th>Your Answer</th>
+                    <th>Correct Answer</th>
+                    <th>Explanation</th>
+                </tr>
+            </thead>
+            <tbody>
+    """
+
+    for item in report_data['questions']:
+        html_content += f"""
+                <tr>
+                    <td>{item['question']}</td>
+                    <td>{item['user_answer']}</td>
+                    <td>{item['correct_answer']}</td>
+                    <td>{item['explanation']}</td>
+                </tr>
+        """
+
+    html_content += f"""
+            </tbody>
+        </table>
+        <div class="return-home">
+            <button onclick="window.location.reload();">Return to Home & Start New Exam</button>
+        </div>
         <div style="text-align: center; margin-top: 10px;">
             <strong>Download PDF:</strong>
             <a href="#" id="download-link">Click to download</a>
@@ -145,7 +199,7 @@ def save_report_to_pdf(report_data):
 
     return pdf_file_path
 
-def display_report(report_json):
+def display_report_old(report_json):
     """
     Displays the exam report and provides a PDF download link.
     """
@@ -167,3 +221,42 @@ def display_report(report_json):
     html_report = html_report.replace("#", f"file://{pdf_file_path}")
 
     return html_report, gr.update(visible=True)
+
+
+def display_report_old2(report_json):
+    """
+    Displays the exam report and provides a PDF download link.
+    """
+    if report_json is None:
+        return "No report data available", gr.update(visible=False)
+
+    try:
+        report_data = json.loads(report_json)
+    except json.JSONDecodeError:
+        return "Error decoding report data.", gr.update(visible=False)
+
+    # Generate the PDF report and get the file path
+    pdf_file_path = save_report_to_pdf(report_data)
+
+    # Generate HTML report for display
+    html_report = generate_html_report(report_data)
+
+    # Add a dynamic link to download the PDF
+    html_report = html_report.replace("#", f"file://{pdf_file_path}")
+
+    return html_report, gr.update(visible=True)
+
+
+def display_report(report_json):
+    """Displays the report in a new page-like format."""
+    if report_json is None:
+        return "Report data is not available.", gr.update(visible=False)
+    try:
+        report_data = json.loads(report_json)
+    except json.JSONDecodeError:
+        return "Error decoding report data.", gr.update(visible=False)  # Return an error message and hide the home button
+
+    # Generate HTML report
+    html_content = generate_html_report(report_data)
+
+    return html_content, gr.update(visible=True)
