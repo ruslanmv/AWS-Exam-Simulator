@@ -1,8 +1,9 @@
 import gradio as gr
 from backend1 import *
 import time
-from utils import generate_exam_report, save_report_to_pdf, generate_html_report, display_report
+from utils import display_report
 import json
+import tempfile
 
 # --- Global Variables ---
 selected_questions = []
@@ -47,6 +48,18 @@ def start_exam(exam_choice, start_question, audio_enabled, exam_mode, num_questi
 
     exam_start_time = time.time()
 
+    # Create a temporary file to store report data in real-time
+    temp_report_file = tempfile.NamedTemporaryFile(mode='w+', delete=False, suffix=".json", dir=tempfile.gettempdir())
+    temp_report_path = temp_report_file.name
+    temp_report_file.close()  # Close the file so it can be written to later
+
+    # Log the temporary file path
+    print(f"Temporary report file created at: {temp_report_path}")
+
+    # Initialize the temporary file with basic structure
+    with open(temp_report_path, 'w') as f:
+        json.dump({"questions": [], "score": ""}, f)
+
     question, options, audio_path = display_question(start_question, audio_enabled and exam_mode == "training")
 
     return (
@@ -76,7 +89,8 @@ def start_exam(exam_choice, start_question, audio_enabled, exam_mode, num_questi
         gr.update(visible=True if exam_mode == "exam" else False),  # Timer visibility based on mode
         exam_mode,
         gr.update(visible=True if exam_mode == 'exam' and start_question == num_questions_to_perform - 1 else False),  # Show finish button if on the last question in exam mode
-        selected_questions, num_questions_to_perform
+        selected_questions, num_questions_to_perform,
+        temp_report_path
     )
 
 
@@ -124,18 +138,37 @@ def update_question(index, audio_enabled):
     question, options, audio_path = display_question(index, audio_enabled)
     return question, gr.update(choices=options, visible=True, interactive=True), index, audio_path
 
-def handle_answer(index, answer, audio_enabled, current_audio, exam_mode):
+def handle_answer(index, answer, audio_enabled, current_audio, exam_mode, temp_report_path):
     """Handles answer submission, provides feedback, and generates audio."""
     if answer is None:
-        return "<div class='result-text'>Please select an option before submitting.</div>", None, None
+        return "<div class='result-text'>Please select an option before submitting.</div>", None, None, temp_report_path
 
     stop_audio = True if current_audio else False
     result = check_answer(index, answer)
     answer_audio_path = text_to_speech(result) if audio_enabled and exam_mode == "training" else None
 
-    return result, answer_audio_path, stop_audio
+    # Update the temporary JSON file with the question data
+    if temp_report_path:
+        with open(temp_report_path, 'r+') as f:
+            try:
+                report_data = json.load(f)
+            except json.JSONDecodeError:
+                report_data = {"questions": [], "score": ""}
 
-def handle_next(index, audio_enabled, exam_mode):
+            question_data = selected_questions[index]
+            report_data["questions"].append({
+                "question": question_data.get('question', 'No question text available.'),
+                "user_answer": answer,
+                "correct_answer": question_data.get('correct', 'No correct answer provided.'),
+                "explanation": question_data.get('explanation', 'No explanation available.')
+            })
+            f.seek(0)  # Rewind to the beginning of the file
+            json.dump(report_data, f)
+            f.truncate()  # Remove any remaining old data
+
+    return result, answer_audio_path, stop_audio, temp_report_path
+
+def handle_next(index, audio_enabled, exam_mode, temp_report_path):
     """Moves to the next question and updates the UI."""
     new_index = min(index + 1, num_questions_to_perform - 1)
     question, options, new_index, audio_path = update_question(new_index, audio_enabled and exam_mode == "training")
@@ -145,10 +178,10 @@ def handle_next(index, audio_enabled, exam_mode):
     show_next = gr.update(visible=False if new_index == num_questions_to_perform - 1 else True)
     show_prev = gr.update(visible=True)
 
-    return question, options, new_index, "", audio_path, gr.update(visible=False), show_finish, show_next, show_prev
+    return question, options, new_index, "", audio_path, gr.update(visible=False), show_finish, show_next, show_prev, temp_report_path
 
 
-def handle_previous(index, audio_enabled, exam_mode):
+def handle_previous(index, audio_enabled, exam_mode, temp_report_path):
     """Moves to the previous question and updates the UI."""
     new_index = max(index - 1, 0)
     question, options, new_index, audio_path = update_question(new_index, audio_enabled and exam_mode == "training")
@@ -158,7 +191,7 @@ def handle_previous(index, audio_enabled, exam_mode):
     show_next = gr.update(visible=True)
     show_prev = gr.update(visible=True if new_index > 0 else False)
 
-    return question, options, new_index, "", audio_path, gr.update(visible=False), show_finish, show_next, show_prev
+    return question, options, new_index, "", audio_path, gr.update(visible=False), show_finish, show_next, show_prev, temp_report_path
 
 
 def return_home():
@@ -173,7 +206,8 @@ def return_home():
         gr.update(visible=False),  # Hide timer
         gr.update(visible=True),  # Show exam mode
         gr.update(visible=False),  # Hide num_questions
-        gr.update(visible=False) # Hide result_text
+        gr.update(visible=False),  # Hide result_text
+        ""  # Reset temp_report_path_state
     )
 
 def update_timer():
@@ -193,12 +227,39 @@ def on_exam_mode_change(exam_mode):
     else:
         return gr.update(visible=False), gr.update(visible=True)  # Hide num_questions, show audio
 
-def finish_exam(selected_questions, num_questions_to_perform):
+def finish_exam(temp_report_path):
     """Displays the final results using generate_exam_report and hides the quiz elements."""
-    report_data = generate_exam_report(selected_questions, num_questions_to_perform)
+    if temp_report_path:
+        try:
+            with open(temp_report_path, 'r') as f:
+                report_data = json.load(f)
 
-    # Convert the report data to JSON
-    report_json = json.dumps(report_data)
+            # Calculate score
+            correct_answers = 0
+            for question in report_data['questions']:
+                if question['user_answer'] == question['correct_answer']:
+                    correct_answers += 1
+
+            num_questions_to_perform = len(report_data['questions'])
+            score = (correct_answers / num_questions_to_perform) * 100 if num_questions_to_perform > 0 else 0
+            report_data["score"] = f"{score:.2f}% ({correct_answers} out of {num_questions_to_perform} correct)"
+
+            # Update report_data in the file
+            with open(temp_report_path, 'w') as f:
+                json.dump(report_data, f)
+
+        except FileNotFoundError:
+            print(f"Error: Temporary report file not found at {temp_report_path}")
+            report_data = None
+        except json.JSONDecodeError:
+            print(f"Error: Invalid JSON data in the temporary report file at {temp_report_path}")
+            report_data = None
+
+        # Convert the report data to JSON string if report_data is not None
+        report_json = json.dumps(report_data) if report_data else None
+    else:
+        print("Error: Temporary report file path is not set.")
+        report_json = None
 
     # Hide quiz elements
     return (
@@ -214,7 +275,8 @@ def finish_exam(selected_questions, num_questions_to_perform):
         gr.update(visible=False),  # finish_button
         gr.update(visible=False),  # home_button
         gr.update(visible=False),  # explanation_text
-        report_json  # Return the report data to update report_data_state
+        report_json,  # Return the report data to update report_data_state
+        temp_report_path
     )
 
 # --- Gradio Interface ---
@@ -250,6 +312,9 @@ with gr.Blocks(css="style.css", title="Exam Simulator") as demo:
     # Hidden State components to store selected_questions and num_questions_to_perform
     selected_questions_state = gr.State(value=[])
     num_questions_to_perform_state = gr.State(value=0)
+
+    # Hidden State component to store the temporary report file path
+    temp_report_path_state = gr.State(value="")
 
     # --- Layout ---
     # Layout for the home page
@@ -321,29 +386,29 @@ with gr.Blocks(css="style.css", title="Exam Simulator") as demo:
             question_text, question_text, choices, answer_button,
             next_button, prev_button, home_button, question_state, result_text, question_audio,
             explain_button, result_text, current_audio_state, timer_text, exam_mode_state, finish_button,
-            selected_questions_state, num_questions_to_perform_state
+            selected_questions_state, num_questions_to_perform_state, temp_report_path_state
         ]
     )
 
     # Connect the quiz buttons to their functions
-    answer_button.click(fn=handle_answer, inputs=[question_state, choices, audio_checkbox, current_audio_state, exam_mode_state], outputs=[result_text, answer_audio, current_audio_state])
-    next_button.click(fn=handle_next, inputs=[question_state, audio_checkbox, exam_mode_state], outputs=[question_text, choices, question_state, result_text, question_audio, explanation_text, finish_button, next_button, prev_button])
-    prev_button.click(fn=handle_previous, inputs=[question_state, audio_checkbox, exam_mode_state], outputs=[question_text, choices, question_state, result_text, question_audio, explanation_text, finish_button, next_button, prev_button])
+    answer_button.click(fn=handle_answer, inputs=[question_state, choices, audio_checkbox, current_audio_state, exam_mode_state, temp_report_path_state], outputs=[result_text, answer_audio, current_audio_state, temp_report_path_state])
+    next_button.click(fn=handle_next, inputs=[question_state, audio_checkbox, exam_mode_state, temp_report_path_state], outputs=[question_text, choices, question_state, result_text, question_audio, explanation_text, finish_button, next_button, prev_button, temp_report_path_state])
+    prev_button.click(fn=handle_previous, inputs=[question_state, audio_checkbox, exam_mode_state, temp_report_path_state], outputs=[question_text, choices, question_state, result_text, question_audio, explanation_text, finish_button, next_button, prev_button, temp_report_path_state])
     explain_button.click(fn=show_explanation, inputs=[question_state], outputs=[explanation_text, result_text, explanation_text])
 
     report_data_state = gr.State()
 
     finish_button.click(
         fn=finish_exam,
-        inputs=[selected_questions_state, num_questions_to_perform_state],
+        inputs=[temp_report_path_state],
         outputs=[
             question_text, choices, answer_button, next_button, prev_button,
             explain_button, question_audio, answer_audio, timer_text, finish_button,
-            home_button, explanation_text, report_data_state
+            home_button, explanation_text, report_data_state, temp_report_path_state
         ]
     )
 
-    # Attach the display_report function to report_data_state change
+    # Attach the display_report function to the demo's load event
     demo.load(
         fn=lambda report_json: display_report(report_json) if report_json else (gr.update(value=""), gr.update(visible=False)),
         inputs=report_data_state,
