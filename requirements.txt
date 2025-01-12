@@ -6,4 +6,5 @@ langchain_community
 langchain_ibm
 langchain
 python-dotenv
+fpdf
 #textract
