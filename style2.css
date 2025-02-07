@@ -1,0 +1,62 @@
+/* style1.css */
+
+/* Generic OnVue-like background and font styles */
+body, .gradio-container {
+    background-color: #f5f7fa;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* A container style to mimic an exam environment */
+  .gradio-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    border: 1px solid #d3d3d3;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  /* Style for the question text */
+  #question-text {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    border-left: 4px solid #0073e6; 
+  }
+  
+  /* 
+     Force the Radio options to be vertical:
+     - Some Gradio versions use .gradio-radio-group
+     - Some older versions may have a different DOM structure 
+  */
+  #choices-radio .gradio-radio-group,
+  #choices-radio .gradio-radio .radio-group {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  
+  /* Buttons styling: blue background with white text */
+  button {
+    background-color: #0073e6; /* Blue background */
+    color: #ffffff;           /* White text */
+    border: none;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #005bb5; /* Darker blue on hover */
+  }
+  
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    color: #2e3640;
+  }
+  
