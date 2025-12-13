@@ -5,6 +5,7 @@ const ExamSelector = ({ onExamSelect }) => {
   const [exams, setExams] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedExam, setSelectedExam] = useState(null);
+  const [selectedMode, setSelectedMode] = useState('training'); // 'training' or 'exam'
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
@@ -29,7 +30,7 @@ const ExamSelector = ({ onExamSelect }) => {
 
   const handleStartExam = () => {
     if (selectedExam) {
-      onExamSelect(selectedExam);
+      onExamSelect(selectedExam, selectedMode);
     }
   };
 
@@ -123,6 +124,100 @@ const ExamSelector = ({ onExamSelect }) => {
           </div>
         </div>
 
+        {/* Mode Selection */}
+        <div className="max-w-2xl mx-auto mb-12">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">Select Study Mode</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Training Mode */}
+            <button
+              onClick={() => setSelectedMode('training')}
+              className={`p-6 rounded-xl border-2 transition-all ${
+                selectedMode === 'training'
+                  ? 'border-exam-blue bg-blue-50 shadow-lg ring-2 ring-exam-blue ring-opacity-50'
+                  : 'border-gray-300 bg-white hover:border-exam-blue hover:shadow-md'
+              }`}
+            >
+              <div className="flex items-start space-x-4">
+                <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${
+                  selectedMode === 'training' ? 'bg-exam-blue' : 'bg-gray-200'
+                }`}>
+                  <i className={`fas fa-book-reader text-2xl ${
+                    selectedMode === 'training' ? 'text-white' : 'text-gray-600'
+                  }`}></i>
+                </div>
+                <div className="flex-1 text-left">
+                  <h4 className="text-xl font-bold text-gray-900 mb-2">Training Mode</h4>
+                  <p className="text-sm text-gray-600 mb-2">
+                    Study at your own pace with instant feedback
+                  </p>
+                  <ul className="text-xs text-gray-500 space-y-1">
+                    <li className="flex items-center">
+                      <i className="fas fa-check text-green-500 mr-2"></i>
+                      See correct answers immediately
+                    </li>
+                    <li className="flex items-center">
+                      <i className="fas fa-check text-green-500 mr-2"></i>
+                      View explanations and references
+                    </li>
+                    <li className="flex items-center">
+                      <i className="fas fa-check text-green-500 mr-2"></i>
+                      No time limit
+                    </li>
+                    <li className="flex items-center">
+                      <i className="fas fa-check text-green-500 mr-2"></i>
+                      Navigate freely between questions
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </button>
+
+            {/* Exam Mode */}
+            <button
+              onClick={() => setSelectedMode('exam')}
+              className={`p-6 rounded-xl border-2 transition-all ${
+                selectedMode === 'exam'
+                  ? 'border-exam-blue bg-blue-50 shadow-lg ring-2 ring-exam-blue ring-opacity-50'
+                  : 'border-gray-300 bg-white hover:border-exam-blue hover:shadow-md'
+              }`}
+            >
+              <div className="flex items-start space-x-4">
+                <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${
+                  selectedMode === 'exam' ? 'bg-exam-blue' : 'bg-gray-200'
+                }`}>
+                  <i className={`fas fa-stopwatch text-2xl ${
+                    selectedMode === 'exam' ? 'text-white' : 'text-gray-600'
+                  }`}></i>
+                </div>
+                <div className="flex-1 text-left">
+                  <h4 className="text-xl font-bold text-gray-900 mb-2">Exam Mode</h4>
+                  <p className="text-sm text-gray-600 mb-2">
+                    Take a timed exam simulation
+                  </p>
+                  <ul className="text-xs text-gray-500 space-y-1">
+                    <li className="flex items-center">
+                      <i className="fas fa-check text-green-500 mr-2"></i>
+                      Timed exam experience
+                    </li>
+                    <li className="flex items-center">
+                      <i className="fas fa-check text-green-500 mr-2"></i>
+                      See results after submission
+                    </li>
+                    <li className="flex items-center">
+                      <i className="fas fa-check text-green-500 mr-2"></i>
+                      Real exam simulation
+                    </li>
+                    <li className="flex items-center">
+                      <i className="fas fa-check text-green-500 mr-2"></i>
+                      Track your performance
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+
         {/* Exam Grid */}
         <div className="max-w-6xl mx-auto">
           {Object.keys(groupedExams).length === 0 ? (
@@ -189,9 +284,10 @@ const ExamSelector = ({ onExamSelect }) => {
           <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
             <button
               onClick={handleStartExam}
-              className="px-8 py-4 bg-exam-blue text-white text-lg font-bold rounded-xl shadow-2xl hover:bg-blue-700 transition-all flex items-center space-x-3 animate-pulse-slow"
+              className="px-8 py-4 bg-exam-blue text-white text-lg font-bold rounded-xl shadow-2xl hover:bg-blue-700 transition-all flex items-center space-x-3"
             >
-              <span>Start {selectedExam.name}</span>
+              <i className={`fas ${selectedMode === 'training' ? 'fa-book-reader' : 'fa-stopwatch'}`}></i>
+              <span>Start {selectedMode === 'training' ? 'Training' : 'Exam'}: {selectedExam.name}</span>
               <i className="fas fa-arrow-right"></i>
             </button>
           </div>

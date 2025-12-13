@@ -22,18 +22,33 @@ export const ExamProvider = ({ children }) => {
   const [isPaused, setIsPaused] = useState(false);
   const [timeSpentPerQuestion, setTimeSpentPerQuestion] = useState({});
   const [lastQuestionChangeTime, setLastQuestionChangeTime] = useState(null);
+  const [examMode, setExamMode] = useState('exam'); // 'exam' or 'training'
+  const [showFeedback, setShowFeedback] = useState({}); // Track which questions show feedback in training mode
 
   // Initialize exam
-  const initializeExam = (data) => {
+  const initializeExam = (data, mode = 'exam') => {
     setExamData(data);
     setCurrentQuestionIndex(0);
     setAnswers({});
     setFlaggedQuestions(new Set());
-    setTimeRemaining(data.timeLimit * 60); // Convert minutes to seconds
-    setExamStartTime(new Date());
-    setLastQuestionChangeTime(new Date());
+    setExamMode(mode);
+    setShowFeedback({});
+
+    // Only set timer for exam mode
+    if (mode === 'exam') {
+      setTimeRemaining(data.timeLimit * 60); // Convert minutes to seconds
+      setExamStartTime(new Date());
+      setLastQuestionChangeTime(new Date());
+      setIsExamActive(true);
+    } else {
+      // Training mode: no timer
+      setTimeRemaining(null);
+      setExamStartTime(null);
+      setLastQuestionChangeTime(null);
+      setIsExamActive(false);
+    }
+
     setExamEndTime(null);
-    setIsExamActive(true);
     setIsPaused(false);
     setTimeSpentPerQuestion({});
   };
@@ -99,6 +114,14 @@ export const ExamProvider = ({ children }) => {
       ...prev,
       [questionId]: optionId,
     }));
+
+    // In training mode, show feedback immediately
+    if (examMode === 'training') {
+      setShowFeedback((prev) => ({
+        ...prev,
+        [questionId]: true,
+      }));
+    }
   };
 
   // Clear answer for current question
@@ -153,6 +176,8 @@ export const ExamProvider = ({ children }) => {
     setIsPaused(false);
     setTimeSpentPerQuestion({});
     setLastQuestionChangeTime(null);
+    setExamMode('exam');
+    setShowFeedback({});
   };
 
   // Get exam statistics
@@ -212,6 +237,8 @@ export const ExamProvider = ({ children }) => {
     isExamActive,
     isPaused,
     timeSpentPerQuestion,
+    examMode,
+    showFeedback,
     initializeExam,
     navigateToQuestion,
     nextQuestion,
