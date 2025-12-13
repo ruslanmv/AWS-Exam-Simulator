@@ -23,7 +23,7 @@ const ExamPage = () => {
     }
   }, [timeRemaining, examData]);
 
-  const handleExamSelect = async (exam) => {
+  const handleExamSelect = async (exam, mode = 'exam') => {
     try {
       setLoading(true);
       setError(null);
@@ -31,7 +31,7 @@ const ExamPage = () => {
 
       // Load the selected exam
       const data = await getExamData(exam.id);
-      initializeExam(data);
+      initializeExam(data, mode);
     } catch (err) {
       console.error('Error loading exam:', err);
       setError('Failed to load exam data');
