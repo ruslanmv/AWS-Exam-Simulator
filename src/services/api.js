@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { loadExamFromJSON, getAvailableExams } from '../utils/examLoader';
 
 // Create axios instance with base configuration
 const api = axios.create({
@@ -48,8 +49,8 @@ api.interceptors.response.use(
  */
 export const getExamData = async (examId) => {
   try {
-    const response = await api.get(`/exams/${examId}`);
-    return response.data;
+    // Load exam from local JSON files instead of API
+    return await loadExamFromJSON(examId);
   } catch (error) {
     console.error('Error fetching exam data:', error);
     throw error;
@@ -62,8 +63,8 @@ export const getExamData = async (examId) => {
  */
 export const getExamList = async () => {
   try {
-    const response = await api.get('/exams');
-    return response.data;
+    // Load exam list from local data instead of API
+    return await getAvailableExams();
   } catch (error) {
     console.error('Error fetching exam list:', error);
     throw error;
