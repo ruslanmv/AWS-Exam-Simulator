@@ -8,12 +8,14 @@ import ExamInstructions from '../components/exam/ExamInstructions';
 import ExamControls from '../components/exam/ExamControls';
 import Footer from '../components/exam/Footer';
 import ExamSelector from '../components/exam/ExamSelector';
+import LearningMode from '../components/learning/LearningMode';
 
 const ExamPage = () => {
-  const { examData, initializeExam, timeRemaining, resetExam } = useExam();
+  const { examData, examMode, initializeExam, timeRemaining, resetExam } = useExam();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [showExamSelector, setShowExamSelector] = useState(true);
+  const [learningExamData, setLearningExamData] = useState(null);
 
   useEffect(() => {
     // Auto-submit when time runs out
@@ -31,7 +33,15 @@ const ExamPage = () => {
 
       // Load the selected exam
       const data = await getExamData(exam.id);
-      initializeExam(data, mode);
+
+      if (mode === 'learning') {
+        // For AI Learning Mode, store data separately and set mode in context
+        setLearningExamData(data);
+        initializeExam(data, 'learning');
+      } else {
+        setLearningExamData(null);
+        initializeExam(data, mode);
+      }
     } catch (err) {
       console.error('Error loading exam:', err);
       setError('Failed to load exam data');
@@ -43,6 +53,7 @@ const ExamPage = () => {
 
   const handleBackToExamSelector = () => {
     resetExam();
+    setLearningExamData(null);
     setShowExamSelector(true);
     setError(null);
   };
@@ -84,6 +95,11 @@ const ExamPage = () => {
 
   if (!examData) {
     return null;
+  }
+
+  // AI Learning Mode - render the dedicated learning interface
+  if (examMode === 'learning' && learningExamData) {
+    return <LearningMode examData={learningExamData} onBack={handleBackToExamSelector} />;
   }
 
   return (
