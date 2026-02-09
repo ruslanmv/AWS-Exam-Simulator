@@ -1,16 +1,32 @@
 import { useState, useEffect } from 'react';
 import { getExamList } from '../../services/api';
+import { checkTutorHealth } from '../../services/tutorApi';
 
 const ExamSelector = ({ onExamSelect }) => {
   const [exams, setExams] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedExam, setSelectedExam] = useState(null);
-  const [selectedMode, setSelectedMode] = useState('training'); // 'training' or 'exam'
+  const [selectedMode, setSelectedMode] = useState('training'); // 'training', 'exam', or 'learning'
   const [searchTerm, setSearchTerm] = useState('');
+  const [aiAvailable, setAiAvailable] = useState(false);
+  const [aiChecking, setAiChecking] = useState(true);
 
   useEffect(() => {
     loadExams();
+    checkAI();
   }, []);
+
+  const checkAI = async () => {
+    setAiChecking(true);
+    try {
+      const health = await checkTutorHealth();
+      setAiAvailable(health.ollama === true);
+    } catch {
+      setAiAvailable(false);
+    } finally {
+      setAiChecking(false);
+    }
+  };
 
   const loadExams = async () => {
     try {
@@ -125,9 +141,9 @@ const ExamSelector = ({ onExamSelect }) => {
         </div>
 
         {/* Mode Selection */}
-        <div className="max-w-2xl mx-auto mb-12">
+        <div className="max-w-5xl mx-auto mb-12">
           <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">Select Study Mode</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Training Mode */}
             <button
               onClick={() => setSelectedMode('training')}
@@ -215,6 +231,71 @@ const ExamSelector = ({ onExamSelect }) => {
                 </div>
               </div>
             </button>
+
+            {/* AI Learning Mode */}
+            <button
+              onClick={() => aiAvailable && setSelectedMode('learning')}
+              className={`p-6 rounded-xl border-2 transition-all relative ${
+                !aiAvailable
+                  ? 'border-gray-200 bg-gray-50 opacity-70 cursor-not-allowed'
+                  : selectedMode === 'learning'
+                  ? 'border-purple-500 bg-purple-50 shadow-lg ring-2 ring-purple-500 ring-opacity-50'
+                  : 'border-gray-300 bg-white hover:border-purple-500 hover:shadow-md'
+              }`}
+              disabled={!aiAvailable}
+            >
+              {!aiAvailable && !aiChecking && (
+                <div className="absolute top-2 right-2 text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded-full">
+                  Ollama offline
+                </div>
+              )}
+              {aiChecking && (
+                <div className="absolute top-2 right-2 text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full">
+                  <i className="fas fa-spinner fa-spin mr-1"></i>Detecting AI...
+                </div>
+              )}
+              {aiAvailable && (
+                <div className="absolute top-2 right-2 text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">
+                  <i className="fas fa-circle text-green-500 mr-1 text-[6px]"></i>AI Online
+                </div>
+              )}
+              <div className="flex items-start space-x-4">
+                <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${
+                  selectedMode === 'learning' ? 'bg-purple-600' : aiAvailable ? 'bg-purple-100' : 'bg-gray-200'
+                }`}>
+                  <i className={`fas fa-brain text-2xl ${
+                    selectedMode === 'learning' ? 'text-white' : aiAvailable ? 'text-purple-600' : 'text-gray-400'
+                  }`}></i>
+                </div>
+                <div className="flex-1 text-left">
+                  <h4 className="text-xl font-bold text-gray-900 mb-2">
+                    AI Learning Mode
+                    <span className="ml-2 text-xs font-normal bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full align-middle">NEW</span>
+                  </h4>
+                  <p className="text-sm text-gray-600 mb-2">
+                    AI tutor teaches until you master each concept
+                  </p>
+                  <ul className="text-xs text-gray-500 space-y-1">
+                    <li className="flex items-center">
+                      <i className="fas fa-check text-purple-500 mr-2"></i>
+                      AI evaluates your answers in real-time
+                    </li>
+                    <li className="flex items-center">
+                      <i className="fas fa-check text-purple-500 mr-2"></i>
+                      Deep-dive into 3+ topics on wrong answers
+                    </li>
+                    <li className="flex items-center">
+                      <i className="fas fa-check text-purple-500 mr-2"></i>
+                      Interactive chat to clarify concepts
+                    </li>
+                    <li className="flex items-center">
+                      <i className="fas fa-check text-purple-500 mr-2"></i>
+                      Learn until you dominate each question
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </button>
           </div>
         </div>
 
@@ -284,10 +365,18 @@ const ExamSelector = ({ onExamSelect }) => {
           <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
             <button
               onClick={handleStartExam}
-              className="px-8 py-4 bg-exam-blue text-white text-lg font-bold rounded-xl shadow-2xl hover:bg-blue-700 transition-all flex items-center space-x-3"
+              className={`px-8 py-4 text-white text-lg font-bold rounded-xl shadow-2xl transition-all flex items-center space-x-3 ${
+                selectedMode === 'learning'
+                  ? 'bg-purple-600 hover:bg-purple-700'
+                  : 'bg-exam-blue hover:bg-blue-700'
+              }`}
             >
-              <i className={`fas ${selectedMode === 'training' ? 'fa-book-reader' : 'fa-stopwatch'}`}></i>
-              <span>Start {selectedMode === 'training' ? 'Training' : 'Exam'}: {selectedExam.name}</span>
+              <i className={`fas ${
+                selectedMode === 'learning' ? 'fa-brain' : selectedMode === 'training' ? 'fa-book-reader' : 'fa-stopwatch'
+              }`}></i>
+              <span>Start {
+                selectedMode === 'learning' ? 'AI Learning' : selectedMode === 'training' ? 'Training' : 'Exam'
+              }: {selectedExam.name}</span>
               <i className="fas fa-arrow-right"></i>
             </button>
           </div>

@@ -22,7 +22,7 @@ export const ExamProvider = ({ children }) => {
   const [isPaused, setIsPaused] = useState(false);
   const [timeSpentPerQuestion, setTimeSpentPerQuestion] = useState({});
   const [lastQuestionChangeTime, setLastQuestionChangeTime] = useState(null);
-  const [examMode, setExamMode] = useState('exam'); // 'exam' or 'training'
+  const [examMode, setExamMode] = useState('exam'); // 'exam', 'training', or 'learning'
   const [showFeedback, setShowFeedback] = useState({}); // Track which questions show feedback in training mode
 
   // Initialize exam
