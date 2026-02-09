@@ -1,0 +1,36 @@
+name: aws-exam-tutor
+version: 1.0.0
+description: >
+  AI-powered AWS exam tutor with adaptive learning and teach-until-learned
+  methodology. Supports AWS, Azure, and GCP certification exams.
+endpoint: http://aws-exam-tutor:8080/a2a
+protocol_version: v1
+interaction_types: [query]
+
+required_tools:
+  - exam_list
+  - exam_start_session
+  - exam_next_question
+  - exam_submit_answer
+  - exam_get_explanation
+  - session_get_status
+
+optional_tools:
+  - kb_search
+
+supported_exams:
+  - SAA-C03
+  - SAP-C02
+  - CLF-C02
+  - DOP-C02
+  - MLS-C01
+  - AI-900
+  - AI-102
+  - DP-100
+  - GCP-ML
+  - GCP-CA
+
+modes:
+  - learning
+  - practice
+  - exam

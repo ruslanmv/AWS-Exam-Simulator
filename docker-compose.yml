@@ -1,0 +1,50 @@
+version: "3.9"
+
+services:
+  # MCP Tool Server - exposes exam tools via SSE
+  mcp-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.mcp
+    ports:
+      - "9101:9101"
+    volumes:
+      - ./questions:/data/questions:ro
+      - mcp-state:/data/state
+    environment:
+      - AWS_EXAM_QUESTION_DIR=/data/questions
+      - AWS_EXAM_DB_PATH=/data/state/aws_exam.sqlite
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket; s=socket.socket(); s.connect(('localhost',9101)); s.close()"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # A2A Tutor Agent - HTTP server
+  tutor-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile.agent
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./questions:/data/questions:ro
+      - agent-state:/data/state
+    environment:
+      - AWS_EXAM_QUESTION_DIR=/data/questions
+      - AWS_EXAM_DB_PATH=/data/state/aws_exam.sqlite
+      - USE_DIRECT_MCP=true
+      - AGENT_HOST=0.0.0.0
+      - AGENT_PORT=8080
+    depends_on:
+      mcp-server:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/a2a/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  mcp-state:
+  agent-state:
