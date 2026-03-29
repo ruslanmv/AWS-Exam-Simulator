@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getExamList } from '../../services/api';
-import { checkTutorHealth } from '../../services/tutorApi';
+import { checkTutorHealth, resetHealthCache } from '../../services/tutorApi';
+import AISettingsModal from '../settings/AISettingsModal';
 
 const ExamSelector = ({ onExamSelect }) => {
   const [exams, setExams] = useState([]);
@@ -10,6 +11,8 @@ const ExamSelector = ({ onExamSelect }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [aiAvailable, setAiAvailable] = useState(false);
   const [aiChecking, setAiChecking] = useState(true);
+  const [aiProvider, setAiProvider] = useState('none'); // 'ollama' | 'ollabridge' | 'none'
+  const [showSettings, setShowSettings] = useState(false);
 
   useEffect(() => {
     loadExams();
@@ -20,12 +23,19 @@ const ExamSelector = ({ onExamSelect }) => {
     setAiChecking(true);
     try {
       const health = await checkTutorHealth();
-      setAiAvailable(health.ollama === true);
+      setAiAvailable(health.status === 'ok');
+      setAiProvider(health.provider || 'none');
     } catch {
       setAiAvailable(false);
+      setAiProvider('none');
     } finally {
       setAiChecking(false);
     }
+  };
+
+  const handleSettingsChange = () => {
+    resetHealthCache();
+    checkAI();
   };
 
   const loadExams = async () => {
@@ -91,15 +101,25 @@ const ExamSelector = ({ onExamSelect }) => {
                 <p className="text-sm text-gray-600">Prepare for your certification exams</p>
               </div>
             </div>
-            <a
-              href="https://github.com/ruslanmv/AWS-Exam-Simulator"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-2 px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors"
-            >
-              <i className="fab fa-github"></i>
-              <span>Star on GitHub</span>
-            </a>
+            <div className="flex items-center space-x-3">
+              <button
+                onClick={() => setShowSettings(true)}
+                className="flex items-center space-x-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+                title="AI Settings"
+              >
+                <i className="fas fa-cog"></i>
+                <span className="hidden sm:inline">AI Settings</span>
+              </button>
+              <a
+                href="https://github.com/ruslanmv/AWS-Exam-Simulator"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2 px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors"
+              >
+                <i className="fab fa-github"></i>
+                <span className="hidden sm:inline">Star on GitHub</span>
+              </a>
+            </div>
           </div>
         </div>
       </header>
@@ -245,8 +265,9 @@ const ExamSelector = ({ onExamSelect }) => {
               disabled={!aiAvailable}
             >
               {!aiAvailable && !aiChecking && (
-                <div className="absolute top-2 right-2 text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded-full">
-                  Ollama offline
+                <div className="absolute top-2 right-2 text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded-full cursor-pointer hover:bg-gray-300"
+                     onClick={(e) => { e.stopPropagation(); setShowSettings(true); }}>
+                  <i className="fas fa-cog mr-1"></i>AI offline — Configure
                 </div>
               )}
               {aiChecking && (
@@ -256,7 +277,8 @@ const ExamSelector = ({ onExamSelect }) => {
               )}
               {aiAvailable && (
                 <div className="absolute top-2 right-2 text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">
-                  <i className="fas fa-circle text-green-500 mr-1 text-[6px]"></i>AI Online
+                  <i className={`fas ${aiProvider === 'ollabridge' ? 'fa-cloud' : 'fa-circle text-[6px]'} text-green-500 mr-1`}></i>
+                  {aiProvider === 'ollabridge' ? 'OllaBridge' : 'Ollama'} Online
                 </div>
               )}
               <div className="flex items-start space-x-4">
@@ -382,6 +404,13 @@ const ExamSelector = ({ onExamSelect }) => {
           </div>
         )}
       </main>
+
+      {/* AI Settings Modal */}
+      <AISettingsModal
+        isOpen={showSettings}
+        onClose={() => setShowSettings(false)}
+        onSettingsChange={handleSettingsChange}
+      />
     </div>
   );
 };

@@ -1,122 +1,191 @@
 /**
- * API service for the Ollama AI Tutor backend (port 8081).
- * Session-based architecture for Learning Mode.
+ * API service for the AI Tutor backend.
+ *
+ * Supports two backends:
+ *  1. Local Ollama tutor (ollama_tutor.py on port 8081)
+ *  2. OllaBridge Cloud (HuggingFace Spaces) — for Vercel deployments
+ *
+ * Fallback logic (in "auto" mode):
+ *  - Try local tutor first
+ *  - If unavailable, route AI calls through OllaBridge Cloud
  */
+
+import {
+  loadAISettings,
+  checkOllaBridgeHealth,
+  generateFeedback as obGenerateFeedback,
+  generateMicroCheck as obGenerateMicroCheck,
+  chatWithOllaBridge,
+} from './ollabridgeService';
 
 const TUTOR_BASE_URL = import.meta.env.VITE_TUTOR_URL || 'http://localhost:8081';
 
-/**
- * Check if the AI tutor backend (Ollama) is available
- */
+let _ollamaAvailable = null;
+let _ollabridgeAvailable = null;
+let _lastCheck = 0;
+
+function getProvider() {
+  const settings = loadAISettings();
+  return settings.provider || 'auto';
+}
+
+function shouldUseTutor() {
+  const provider = getProvider();
+  if (provider === 'ollabridge') return false;
+  if (provider === 'ollama') return true;
+  return _ollamaAvailable === true;
+}
+
 export const checkTutorHealth = async () => {
-  try {
-    const response = await fetch(`${TUTOR_BASE_URL}/api/health`, {
-      method: 'GET',
-      signal: AbortSignal.timeout(3000),
-    });
-    if (!response.ok) throw new Error('Tutor backend unavailable');
-    return await response.json();
-  } catch {
-    return { status: 'unavailable', ollama: false, model: '' };
+  const settings = loadAISettings();
+  const provider = settings.provider || 'auto';
+  const now = Date.now();
+
+  if (now - _lastCheck < 10000 && _ollamaAvailable !== null) {
+    return {
+      status: _ollamaAvailable || _ollabridgeAvailable ? 'ok' : 'unavailable',
+      ollama: _ollamaAvailable === true,
+      ollabridge: _ollabridgeAvailable === true,
+      model: settings.ollabridge?.model || '',
+      provider: shouldUseTutor() ? 'ollama' : _ollabridgeAvailable ? 'ollabridge' : 'none',
+    };
   }
+  _lastCheck = now;
+
+  if (provider !== 'ollabridge') {
+    try {
+      const response = await fetch(`${TUTOR_BASE_URL}/api/health`, {
+        method: 'GET',
+        signal: AbortSignal.timeout(3000),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        _ollamaAvailable = data.ollama === true;
+      } else {
+        _ollamaAvailable = false;
+      }
+    } catch {
+      _ollamaAvailable = false;
+    }
+  }
+
+  if (provider !== 'ollama') {
+    try {
+      const result = await checkOllaBridgeHealth(settings);
+      _ollabridgeAvailable = result.available;
+    } catch {
+      _ollabridgeAvailable = false;
+    }
+  }
+
+  const active = provider === 'ollama'
+    ? (_ollamaAvailable ? 'ollama' : 'none')
+    : provider === 'ollabridge'
+    ? (_ollabridgeAvailable ? 'ollabridge' : 'none')
+    : _ollamaAvailable ? 'ollama' : (_ollabridgeAvailable ? 'ollabridge' : 'none');
+
+  return {
+    status: active !== 'none' ? 'ok' : 'unavailable',
+    ollama: _ollamaAvailable === true,
+    ollabridge: _ollabridgeAvailable === true,
+    model: settings.ollabridge?.model || '',
+    provider: active,
+  };
 };
 
-/**
- * Start a new learning session
- * @param {string} examId - Exam ID (e.g. 'SAA-C03-v1')
- * @returns {Promise<{session_id, exam_id, total_questions, question}>}
- */
+export const resetHealthCache = () => {
+  _ollamaAvailable = null;
+  _ollabridgeAvailable = null;
+  _lastCheck = 0;
+};
+
 export const startSession = async (examId) => {
-  const response = await fetch(`${TUTOR_BASE_URL}/api/session/start`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ exam_id: examId }),
-  });
-  if (!response.ok) throw new Error('Failed to start session');
-  return await response.json();
+  if (shouldUseTutor()) {
+    const response = await fetch(`${TUTOR_BASE_URL}/api/session/start`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ exam_id: examId }),
+    });
+    if (response.ok) return await response.json();
+  }
+  throw new Error('Local tutor unavailable — using OllaBridge Cloud for AI');
 };
 
-/**
- * Get next question (adaptive selection)
- * @param {string} sessionId
- * @returns {Promise<{session_id, complete, question?, stats}>}
- */
 export const getNextQuestion = async (sessionId) => {
-  const response = await fetch(`${TUTOR_BASE_URL}/api/session/next`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ session_id: sessionId }),
-  });
-  if (!response.ok) throw new Error('Failed to get next question');
-  return await response.json();
+  if (shouldUseTutor()) {
+    const response = await fetch(`${TUTOR_BASE_URL}/api/session/next`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ session_id: sessionId }),
+    });
+    if (response.ok) return await response.json();
+  }
+  throw new Error('Local tutor unavailable');
 };
 
-/**
- * Submit an answer for evaluation
- * @param {Object} params
- * @param {string} params.session_id
- * @param {number|null} params.answer_index - For single select
- * @param {number[]|null} params.answer_indices - For multi-select
- * @param {boolean} params.idk - "I don't know"
- * @returns {Promise<{correct, correct_answer, ai_response, needs_micro_check, ...}>}
- */
 export const submitAnswer = async (params) => {
-  const response = await fetch(`${TUTOR_BASE_URL}/api/session/answer`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(params),
-  });
-  if (!response.ok) throw new Error('Failed to submit answer');
-  return await response.json();
+  if (shouldUseTutor()) {
+    const response = await fetch(`${TUTOR_BASE_URL}/api/session/answer`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(params),
+    });
+    if (response.ok) return await response.json();
+  }
+  throw new Error('Local tutor unavailable');
 };
 
-/**
- * Generate or check a micro-check question
- * @param {Object} params
- * @param {string} params.session_id
- * @param {string} params.action - "generate" or "check"
- * @param {number} [params.answer_index] - For checking
- * @returns {Promise<{micro_check?, correct?, mastered?, ...}>}
- */
 export const microCheck = async (params) => {
-  const response = await fetch(`${TUTOR_BASE_URL}/api/session/microcheck`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(params),
-  });
-  if (!response.ok) throw new Error('Failed to process micro-check');
-  return await response.json();
+  if (shouldUseTutor()) {
+    const response = await fetch(`${TUTOR_BASE_URL}/api/session/microcheck`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(params),
+    });
+    if (response.ok) return await response.json();
+  }
+  throw new Error('Local tutor unavailable');
 };
 
-/**
- * Get session status and stats
- * @param {string} sessionId
- * @returns {Promise<{session_id, stats}>}
- */
 export const getSessionStatus = async (sessionId) => {
-  const response = await fetch(
-    `${TUTOR_BASE_URL}/api/session/status?session_id=${encodeURIComponent(sessionId)}`,
-    { method: 'GET' }
-  );
-  if (!response.ok) throw new Error('Failed to get session status');
-  return await response.json();
+  if (shouldUseTutor()) {
+    const response = await fetch(
+      `${TUTOR_BASE_URL}/api/session/status?session_id=${encodeURIComponent(sessionId)}`,
+      { method: 'GET' }
+    );
+    if (response.ok) return await response.json();
+  }
+  throw new Error('Local tutor unavailable');
 };
 
-/**
- * Send a follow-up chat message to the AI tutor
- * @param {Object} params
- * @param {string} params.message
- * @param {string} params.exam_id
- * @param {string} params.question_context
- * @param {Array} params.history
- * @returns {Promise<{response: string}>}
- */
 export const chatWithTutor = async (params) => {
-  const response = await fetch(`${TUTOR_BASE_URL}/api/chat`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(params),
-  });
-  if (!response.ok) throw new Error('Failed to chat with tutor');
-  return await response.json();
+  if (shouldUseTutor()) {
+    try {
+      const response = await fetch(`${TUTOR_BASE_URL}/api/chat`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(params),
+      });
+      if (response.ok) return await response.json();
+    } catch {
+      // Fall through to OllaBridge
+    }
+  }
+
+  if (_ollabridgeAvailable !== false) {
+    const settings = loadAISettings();
+    const text = await chatWithOllaBridge(
+      params.message,
+      params.question_context,
+      params.history,
+      params.exam_id,
+      settings,
+    );
+    return { response: text };
+  }
+
+  throw new Error('No AI backend available');
 };
+
+export { obGenerateFeedback as generateCloudFeedback };
+export { obGenerateMicroCheck as generateCloudMicroCheck };
