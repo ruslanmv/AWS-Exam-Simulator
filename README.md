@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0ODAiIGhlaWdodD0iMTIwIiB2aWV3Qm94PSIwIDAgNDgwIDEyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNoaWVsZC1kYXJrIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNGRjk5MDAiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjRjc4NjBGIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJicmFpbi1kYXJrIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzYzQjNFRCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMzQjgyRjYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDwhLS0gU2hpZWxkIC0tPgogIDxwYXRoIGQ9Ik0yMCAxNSBMNjAgNSBMMTAwIDE1IEwxMDAgNjUgQzEwMCA4NSA2MCAxMTAgNjAgMTEwIEM2MCAxMTAgMjAgODUgMjAgNjUgWiIgZmlsbD0idXJsKCNzaGllbGQtZGFyaykiIG9wYWNpdHk9IjAuOSIvPgogIDwhLS0gQ2hlY2ttYXJrIC0tPgogIDxwYXRoIGQ9Ik00MCA1NSBMNTQgNjkgTDgwIDM1IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgPCEtLSBCcmFpbi9BSSBub2RlcyAtLT4KICA8Y2lyY2xlIGN4PSI5MiIgY3k9IjIwIiByPSI2IiBmaWxsPSJ1cmwoI2JyYWluLWRhcmspIiBvcGFjaXR5PSIwLjgiLz4KICA8Y2lyY2xlIGN4PSIxMDUiIGN5PSIzNSIgcj0iNCIgZmlsbD0idXJsKCNicmFpbi1kYXJrKSIgb3BhY2l0eT0iMC42Ii8+CiAgPGNpcmNsZSBjeD0iMTAyIiBjeT0iNTIiIHI9IjMiIGZpbGw9InVybCgjYnJhaW4tZGFyaykiIG9wYWNpdHk9IjAuNCIvPgogIDxsaW5lIHgxPSI5MiIgeTE9IjI2IiB4Mj0iMTA1IiB5Mj0iMzEiIHN0cm9rZT0iIzYzQjNFRCIgc3Ryb2tlLXdpZHRoPSIxLjUiIG9wYWNpdHk9IjAuNSIvPgogIDxsaW5lIHgxPSIxMDUiIHkxPSIzOSIgeDI9IjEwMiIgeTI9IjQ5IiBzdHJva2U9IiM2M0IzRUQiIHN0cm9rZS13aWR0aD0iMS41IiBvcGFjaXR5PSIwLjQiLz4KICA8IS0tIFRpdGxlIC0tPgogIDx0ZXh0IHg9IjEyNSIgeT0iNTAiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsICdTZWdvZSBVSScsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMzAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5BV1MgRXhhbSBTaW11bGF0b3I8L3RleHQ+CiAgPHRleHQgeD0iMTI1IiB5PSI3NSIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgJ1NlZ29lIFVJJywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iI2FhYWFhYSIgbGV0dGVyLXNwYWNpbmc9IjMiPkFJLVBPV0VSRUQgVFVUT1I8L3RleHQ+Cjwvc3ZnPg==">
-    <img alt="AWS Exam Simulator" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0ODAiIGhlaWdodD0iMTIwIiB2aWV3Qm94PSIwIDAgNDgwIDEyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNoaWVsZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRkY5OTAwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0Y3ODYwRiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYnJhaW4iIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMzQ5OERCIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzIxNjNBNSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPCEtLSBTaGllbGQgLS0+CiAgPHBhdGggZD0iTTIwIDE1IEw2MCA1IEwxMDAgMTUgTDEwMCA2NSBDMTAwIDg1IDYwIDExMCA2MCAxMTAgQzYwIDExMCAyMCA4NSAyMCA2NSBaIiBmaWxsPSJ1cmwoI3NoaWVsZCkiIG9wYWNpdHk9IjAuOSIvPgogIDwhLS0gQ2hlY2ttYXJrIC0tPgogIDxwYXRoIGQ9Ik00MCA1NSBMNTQgNjkgTDgwIDM1IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgPCEtLSBCcmFpbi9BSSBub2RlcyAtLT4KICA8Y2lyY2xlIGN4PSI5MiIgY3k9IjIwIiByPSI2IiBmaWxsPSJ1cmwoI2JyYWluKSIgb3BhY2l0eT0iMC44Ii8+CiAgPGNpcmNsZSBjeD0iMTA1IiBjeT0iMzUiIHI9IjQiIGZpbGw9InVybCgjYnJhaW4pIiBvcGFjaXR5PSIwLjYiLz4KICA8Y2lyY2xlIGN4PSIxMDIiIGN5PSI1MiIgcj0iMyIgZmlsbD0idXJsKCNicmFpbikiIG9wYWNpdHk9IjAuNCIvPgogIDxsaW5lIHgxPSI5MiIgeTE9IjI2IiB4Mj0iMTA1IiB5Mj0iMzEiIHN0cm9rZT0iIzM0OThEQiIgc3Ryb2tlLXdpZHRoPSIxLjUiIG9wYWNpdHk9IjAuNSIvPgogIDxsaW5lIHgxPSIxMDUiIHkxPSIzOSIgeDI9IjEwMiIgeTI9IjQ5IiBzdHJva2U9IiMzNDk4REIiIHN0cm9rZS13aWR0aD0iMS41IiBvcGFjaXR5PSIwLjQiLz4KICA8IS0tIFRpdGxlIC0tPgogIDx0ZXh0IHg9IjEyNSIgeT0iNTAiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsICdTZWdvZSBVSScsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMzAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMyMzI5MzMiIGxldHRlci1zcGFjaW5nPSItMC41Ij5BV1MgRXhhbSBTaW11bGF0b3I8L3RleHQ+CiAgPHRleHQgeD0iMTI1IiB5PSI3NSIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgJ1NlZ29lIFVJJywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzU1NjY3NyIgbGV0dGVyLXNwYWNpbmc9IjMiPkFJLVBPV0VSRUQgVFVUT1I8L3RleHQ+Cjwvc3ZnPg==">
+    <source media="(prefers-color-scheme: dark)" srcset="docs/logo-dark.svg">
+    <img alt="AWS Exam Simulator" src="docs/logo.svg" width="540">
   </picture>
 </p>
 
@@ -94,8 +94,70 @@ The tutor also tracks your weak areas across 17 AWS domains and adaptively selec
 | **DP-100** | Microsoft Azure Data Scientist | 65+ |
 | **GCP-ML** (vA, vB) | Google Cloud ML Engineer | 130+ |
 | **GCP-CA** | Google Cloud Associate Cloud Engineer | 65+ |
+| **C1000-185** | IBM watsonx Generative AI Engineer – Associate | 190 |
 
-**Total: 1,500+ questions** across 20 exam banks.
+**Total: 1,700+ questions** across 21 exam banks.
+
+---
+
+## Importing your own exam
+
+Bring your own practice exam in a single JSON file. Scroll to the bottom
+of the home page to the **"Import your own exam"** card, drop a file in,
+set a name and time limit, then choose **Training mode** or **Timed exam**.
+The file stays in your browser — nothing is uploaded.
+
+### Custom exam JSON format
+
+Each question is an object with `question`, `options`, and a correct-answer
+field. The simplest valid file is just an array of questions:
+
+```jsonc
+[
+  {
+    "question": "What is the capital of France?",
+    "options": [
+      "A. Berlin",
+      "B. Madrid",
+      "C. Paris",
+      "D. Rome"
+    ],
+    "correct": "C. Paris",
+    "explanation": "Paris has been the capital of France since the 10th century.",
+    "references": ""
+  }
+]
+```
+
+**Field reference**
+
+| Field | Required | Notes |
+|---|---|---|
+| `question` | yes | The question text. |
+| `options` | yes | Array of option strings. Prefix with `A.`, `B.`, … for letter labels. |
+| `correct` | one of | Full text of the correct option, e.g. `"C. Paris"`. |
+| `correct_labels` | one of | Array of letter labels, e.g. `["C"]` or `["A", "C"]` for multi-select. |
+| `correct_answers` | one of | Array of full option texts (multi-select). |
+| `explanation` | no | Shown in Training mode after answering. |
+| `references` | no | Optional reference URL or note. |
+
+Multi-select questions are detected automatically when more than one
+option is marked correct. The pipe syntax `"A. ... | C. ..."` in `correct`
+is also supported for legacy banks.
+
+You can also wrap questions in an envelope with metadata:
+
+```jsonc
+{
+  "meta": { "id": "MY-EXAM", "name": "My Exam", "timeLimit": 90 },
+  "questions": [ /* same shape as above */ ]
+}
+```
+
+### Template
+
+Download the starter template: [`examples/custom-exam-template.json`](./examples/custom-exam-template.json)
+— three sample questions covering single-choice and multi-select.
 
 ---
 

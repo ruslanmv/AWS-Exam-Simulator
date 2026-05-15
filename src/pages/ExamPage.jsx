@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useExam } from '../context/ExamContext';
 import { getExamData } from '../services/api';
+import { sampleExamSnapshot } from '../utils/examLoader';
 import Header from '../components/exam/Header';
 import Sidebar from '../components/exam/Sidebar';
 import QuestionCard from '../components/exam/QuestionCard';
@@ -31,8 +32,16 @@ const ExamPage = () => {
       setError(null);
       setShowExamSelector(false);
 
-      // Load the selected exam
-      const data = await getExamData(exam.id);
+      // Use pre-built exam data when the user imported a custom JSON;
+      // otherwise load a built-in exam from /questions/.
+      let data = exam.importedData ? exam.importedData : await getExamData(exam.id);
+
+      // Real-exam snapshot: in Timed Exam Mode, sample the same number of
+      // questions as the real certification exam so each attempt feels real.
+      // Training & Learning modes keep the full bank for review.
+      if (mode === 'exam' && data.realExamQuestions) {
+        data = sampleExamSnapshot(data, data.realExamQuestions);
+      }
 
       if (mode === 'learning') {
         // For AI Learning Mode, store data separately and set mode in context

@@ -1,0 +1,44 @@
+[
+  {
+    "question": "What is the capital of France?",
+    "options": [
+      "A. Berlin",
+      "B. Madrid",
+      "C. Paris",
+      "D. Rome"
+    ],
+    "correct": "C. Paris",
+    "correct_labels": ["C"],
+    "explanation": "Paris has been the capital of France since the 10th century.",
+    "references": "https://en.wikipedia.org/wiki/Paris"
+  },
+  {
+    "question": "Which of the following are primary colors? (Select two.)",
+    "options": [
+      "A. Red",
+      "B. Green",
+      "C. Blue",
+      "D. Orange",
+      "E. Purple"
+    ],
+    "correct_labels": ["A", "C"],
+    "correct_answers": [
+      "A. Red",
+      "C. Blue"
+    ],
+    "explanation": "Red, yellow, and blue are the traditional primary colors in additive/subtractive color models.",
+    "references": ""
+  },
+  {
+    "question": "Which planet is known as the Red Planet?",
+    "options": [
+      "A. Venus",
+      "B. Mars",
+      "C. Jupiter",
+      "D. Saturn"
+    ],
+    "correct": "B. Mars",
+    "explanation": "Mars appears red due to iron oxide (rust) on its surface.",
+    "references": ""
+  }
+]
