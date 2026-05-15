@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="140" viewBox="0 0 600 140" role="img" aria-label="AWS Exam Simulator">
+  <defs>
+    <linearGradient id="shield" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FF9900"/>
+      <stop offset="100%" stop-color="#F7860F"/>
+    </linearGradient>
+    <linearGradient id="brain" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3498DB"/>
+      <stop offset="100%" stop-color="#2163A5"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Shield -->
+  <path d="M30 25 L70 15 L110 25 L110 75 C110 95 70 120 70 120 C70 120 30 95 30 75 Z"
+        fill="url(#shield)" opacity="0.95"/>
+
+  <!-- Checkmark -->
+  <path d="M50 65 L64 79 L90 45" fill="none" stroke="#ffffff"
+        stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- AI nodes -->
+  <circle cx="115" cy="32" r="6" fill="url(#brain)" opacity="0.85"/>
+  <circle cx="128" cy="48" r="4" fill="url(#brain)" opacity="0.65"/>
+  <circle cx="125" cy="65" r="3" fill="url(#brain)" opacity="0.45"/>
+  <line x1="115" y1="38" x2="128" y2="44" stroke="#3498DB" stroke-width="1.5" opacity="0.5"/>
+  <line x1="128" y1="52" x2="125" y2="62" stroke="#3498DB" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- Title -->
+  <text x="155" y="68" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+        font-size="32" font-weight="700" fill="#232933" letter-spacing="-0.5">AWS Exam Simulator</text>
+
+  <!-- Subtitle -->
+  <text x="156" y="95" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+        font-size="14" fill="#556677" letter-spacing="3">AI&#8209;POWERED&#160;ADAPTIVE&#160;TUTOR</text>
+</svg>

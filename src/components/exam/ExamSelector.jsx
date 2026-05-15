@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { getExamList } from '../../services/api';
 import { checkTutorHealth, resetHealthCache } from '../../services/tutorApi';
 import AISettingsModal from '../settings/AISettingsModal';
+import ImportExamPanel from './ImportExamPanel';
 
 const ExamSelector = ({ onExamSelect }) => {
   const [exams, setExams] = useState([]);
@@ -335,6 +336,7 @@ const ExamSelector = ({ onExamSelect }) => {
                   {provider === 'AWS' && <i className="fab fa-aws text-orange-500 mr-3"></i>}
                   {provider === 'Azure' && <i className="fab fa-microsoft text-blue-500 mr-3"></i>}
                   {provider === 'GCP' && <i className="fab fa-google text-red-500 mr-3"></i>}
+                  {provider === 'IBM' && <i className="fas fa-server text-blue-700 mr-3"></i>}
                   {provider} Certifications
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -363,15 +365,23 @@ const ExamSelector = ({ onExamSelect }) => {
                         </p>
                         <div className="flex items-center justify-between text-sm text-gray-500">
                           <div className="flex items-center space-x-4">
-                            <span className="flex items-center">
+                            <span className="flex items-center" title="Real-exam snapshot taken for Timed Exam Mode">
                               <i className="fas fa-question-circle mr-1"></i>
-                              {exam.totalQuestions} questions
+                              {exam.realExamQuestions || exam.bankSize || exam.totalQuestions} questions
                             </span>
                             <span className="flex items-center">
                               <i className="fas fa-clock mr-1"></i>
                               {exam.timeLimit} min
                             </span>
                           </div>
+                          {exam.bankSize && exam.realExamQuestions && exam.bankSize > exam.realExamQuestions && (
+                            <span
+                              className="text-xs text-gray-400"
+                              title={`Training mode reviews the full bank of ${exam.bankSize} questions`}
+                            >
+                              Bank: {exam.bankSize}
+                            </span>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -381,6 +391,9 @@ const ExamSelector = ({ onExamSelect }) => {
             ))
           )}
         </div>
+
+        {/* Import Custom Exam */}
+        <ImportExamPanel onImportedExam={onExamSelect} />
 
         {/* Start Button */}
         {selectedExam && (
